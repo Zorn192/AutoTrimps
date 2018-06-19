@@ -179,10 +179,10 @@ function findLastBionic() {
 //Praiding
 
 function Praiding() {
-    if (autoTrimpSettings.Praidingzone.value.length >= 1) {
-        for (var x = 0; x < autoTrimpSettings.Praidingzone.value.length; x++) {
+   // if (autoTrimpSettings.Praidingzone.value ) {
+        //for (var x = 0; x < autoTrimpSettings.Praidingzone.value.length; x++) {
 
-   	        if (game.global.world == autoTrimpSettings.Praidingzone.value[x] && !prestraid && !failpraid) {
+   	        if (game.global.world == autoTrimpSettings.Praidingzone.value/*[x]*/ && !prestraid && !failpraid) {
 	        prestraidon = true; 
                 
                 if (getPageSetting('AutoMaps') == 1 && !prestraid && !failpraid) {
@@ -229,14 +229,14 @@ function Praiding() {
 		prestraidon = false;
 		mapbought = false;
 	        }
-	      }
+	     // }
 	    
-	  }
+	 // }
     if (getPageSetting('AutoMaps') == 0 && game.global.preMapsActive && prestraid && !failpraid) {
              autoTrimpSettings["AutoMaps"].value = 1;
 	     debug("Turning AutoMaps back on");
     	     }
-    if (autoTrimpSettings.Praidingzone.value.every(isBelowThreshold) && prestraid && !failpraid) {
+    if (autoTrimpSettings.Praidingzone.value != game.global.world/*.every(isBelowThreshold)*/ && prestraid && !failpraid) {
              prestraid = false;
 	     prestraidon = false;
              mapbought = false;

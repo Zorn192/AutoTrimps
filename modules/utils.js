@@ -137,7 +137,7 @@ function getPageSetting(setting) {
     if (autoTrimpSettings[setting].type == 'boolean') {
         // debug('found a boolean');
         return autoTrimpSettings[setting].enabled;
- 	} else if (autoTrimpSettings[setting].type == 'multiValue') {
+ 	  } else if (autoTrimpSettings[setting].type == 'multiValue') {
 		// debug('found a multivalue');
         return autoTrimpSettings[setting].value.map(x => parseFloat(x));
     } else if (autoTrimpSettings[setting].type == 'value' || autoTrimpSettings[setting].type == 'valueNegative') {
@@ -164,6 +164,9 @@ function setPageSetting(setting, value) {
     } else if (autoTrimpSettings[setting].type == 'value' || autoTrimpSettings[setting].type == 'valueNegative') {
         // debug('found a value');
         autoTrimpSettings[setting].value = value;
+    } else if (autoTrimpSettings[setting].type == 'multiValue' || autoTrimpSettings[setting].type == 'valueNegative') {
+        // debug('found a multiValue');
+        autoTrimpSettings[setting].value.map = value;
     } else if (autoTrimpSettings[setting].type == 'multitoggle') {
         // debug('found a value');
         autoTrimpSettings[setting].value = value;

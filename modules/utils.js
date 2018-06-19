@@ -137,9 +137,9 @@ function getPageSetting(setting) {
     if (autoTrimpSettings[setting].type == 'boolean') {
         // debug('found a boolean');
         return autoTrimpSettings[setting].enabled;
-	} else if (autoTrimpSettings[setting].type == 'multiValue') {
+ 	  } else if (autoTrimpSettings[setting].type == 'multiValue') {
 		// debug('found a multivalue');
-        return parseInt(autoTrimpSettings[setting].value.map);
+        return autoTrimpSettings[setting].value.map(x => parseFloat(x));
     } else if (autoTrimpSettings[setting].type == 'value' || autoTrimpSettings[setting].type == 'valueNegative') {
         // debug('found a value');
         return parseFloat(autoTrimpSettings[setting].value);

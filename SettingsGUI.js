@@ -693,7 +693,6 @@ function settingChanged(id) {
 
 //Popup Tooltip - ask them to enter some numerical input. (STANDARDIZED)
 function autoSetValueToolTip(id, text, negative, multi) {
-
     ranstring = text;
     var elem = document.getElementById("tooltipDiv");
     var tooltipText = 'Type a number below. You can also use shorthand such as 2e5 or 200k.';
@@ -726,6 +725,7 @@ function onKeyPressSetting(event, id, negative, multi) {
     }
 }
 
+//Custom Number Box - Suffix handler for numerical to string values in the prompted popup
 function parseNum(num) {
     if (num.split('e')[1]) {
         num = num.split('e');

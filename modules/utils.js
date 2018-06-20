@@ -166,7 +166,8 @@ function setPageSetting(setting, value) {
         autoTrimpSettings[setting].value = value;
     } else if (autoTrimpSettings[setting].type == 'multiValue') {
         // debug('found a multiValue');
-        autoTrimpSettings[setting].value.map = value;
+        autoTrimpSettings[setting].value = value; 
+	// was autoTrimpSettings[setting].value.map = value - which seems wrong but might not be...;
     } else if (autoTrimpSettings[setting].type == 'multitoggle') {
         // debug('found a value');
         autoTrimpSettings[setting].value = value;

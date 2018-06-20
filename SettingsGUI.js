@@ -529,7 +529,7 @@ function createSetting(id, name, description, type, defaultValue, list, containe
         btnParent.appendChild(btn);
         if (container) document.getElementById(container).appendChild(btnParent);
         else document.getElementById("autoSettings").appendChild(btnParent);
-    } else if (type == 'value' || type == 'valueNegative') {
+    } else if (type == 'value' || type == 'multiValue' || type == 'valueNegative') {
         if (!(loaded && id == loaded.id))
             autoTrimpSettings[id] = {
                 id: id,
@@ -542,25 +542,6 @@ function createSetting(id, name, description, type, defaultValue, list, containe
         btn.setAttribute('class', 'noselect settingsBtn btn-info');
         btn.setAttribute("onclick", `autoSetValueToolTip("${id}", "${name}", ${type == 'valueNegative'}, ${type == 'multiValue'})`);
 
-        btn.setAttribute("onmouseover", 'tooltip(\"' + name + '\", \"customText\", event, \"' + description + '\")');
-        btn.setAttribute("onmouseout", 'tooltip("hide")');
-        btn.textContent = name;
-        btnParent.appendChild(btn);
-        if (container) document.getElementById(container).appendChild(btnParent);
-        else document.getElementById("autoSettings").appendChild(btnParent);
-//god help me
-    } else if (type == 'multiValue' || type == 'valueNegative') {
-        if (!(loaded && id == loaded.id))
-            autoTrimpSettings[id] = {
-                id: id,
-                name: name,
-                description: description,
-                type: type,
-                value: loaded === undefined ? defaultValue : loaded
-            };
-        btn.setAttribute("style", "font-size: 1.1vw;");
-        btn.setAttribute('class', 'noselect settingsBtn btn-info');
-        btn.setAttribute("onclick", `autoSetValueToolTip("${id}", "${name}", ${type == 'valueNegative'}, ${type == 'multiValue'})`);
         btn.setAttribute("onmouseover", 'tooltip(\"' + name + '\", \"customText\", event, \"' + description + '\")');
         btn.setAttribute("onmouseout", 'tooltip("hide")');
         btn.textContent = name;

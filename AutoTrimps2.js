@@ -15,7 +15,7 @@ var ATversion = '2.1.6.9b-genbtc-4-2-2018 + KFrowde + Zeker0';
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////
 var atscript = document.getElementById('AutoTrimps-script')
-  , basepath = 'https://spikenskab.github.io/AutoTrimps/'
+  , basepath = 'https://Zorn192.github.io/AutoTrimps/'
   , modulepath = 'modules/'
   ;
 //This should redirect the script to wherever its being mirrored from.
@@ -84,7 +84,7 @@ function printChangelog() {
     var footer =
         '<b>ZӘK Fork</b> - <u>Report any bugs/problems please</u>!\
         <br>Talk with the dev: <b>< ZӘK >#2509</b> @ <a target="#" href="https://discord.gg/0VbWe0dxB9kIfV2C">AutoTrimps Discord Channel</a>\
-        <br>See <a target="#" href="https://github.com/spikenskab/AutoTrimps/blob/gh-pages/README.md">ReadMe</a> Or check <a target="#" href="https://github.com/spikenskab/AutoTrimps/commits/gh-pages" target="#">the commit history</a> (if you want).'
+        <br>See <a target="#" href="https://github.com/Zorn192/AutoTrimps/blob/gh-pages/README.md">ReadMe</a> Or check <a target="#" href="https://github.com/Zorn192/AutoTrimps/commits/gh-pages" target="#">the commit history</a> (if you want).'
     ,   action = 'cancelTooltip()'
     ,   title = 'Script Update Notice<br>' + ATversion
     ,   acceptBtnText = "Thank you for playing AutoTrimps. Accept and Continue."

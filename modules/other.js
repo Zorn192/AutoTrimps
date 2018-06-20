@@ -182,7 +182,7 @@ function Praiding() {
    // if (autoTrimpSettings.Praidingzone.value ) {
         //for (var x = 0; x < autoTrimpSettings.Praidingzone.value.length; x++) {
 
-   	        if (game.global.world == autoTrimpSettings.Praidingzone.value.some(x => x == game.global.world) && !prestraid && !failpraid) {
+   	        if (autoTrimpSettings.Praidingzone.value.some(x => x == game.global.world) && !prestraid && !failpraid) {
 	        prestraidon = true; 
                 
                 if (getPageSetting('AutoMaps') == 1 && !prestraid && !failpraid) {

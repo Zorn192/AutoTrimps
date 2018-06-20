@@ -373,7 +373,7 @@ function initializeAllSettings() {
     createSetting('PreSpireNurseries', 'Nurseries pre-Spire', 'Set the maximum number of Nurseries to build for Spires. Overrides No Nurseries Until z and Max Nurseries so you can keep them seperate! Will build nurseries before z200 for Spire 1, but only on the zone of Spires 2+ to avoid unnecessary burning. Disable with -1.', 'value', -1, null, 'Spire');
 
     //Line 2
-    createSetting('Praidingzone', 'P Raiding Z', 'Raids Maps for prestiges at zone specified. Example: 495, will raid Maps at 501. Once all gear is obtained from the map, it will revert back to regular farming. Extremely helpful for spire. Best used in poison zones.', 'value', -1, null, 'Spire');
+    createSetting('Praidingzone', 'P Raiding Z', 'Raids Maps for prestiges at zone specified. Example: 495, will raid Maps at 501. Once all gear is obtained from the map, it will revert back to regular farming. Extremely helpful for spire. Best used in poison zones.', 'multiValue', -1, null, 'Spire');
     createSetting('BWraid', 'BW Raiding', 'Raids BW at zone specified in BW Raiding min/max.', 'boolean', false, null, 'Spire');
     createSetting('BWraidingz', 'Z to BW Raid', 'Raids BWs at zone specified. Example: 495, will raid all BWs for all gear starting from 495. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming.', 'value', -1, null, 'Spire');
     createSetting('BWraidingmax', 'Max BW to raid', 'Raids BWs until zone specified. Example: 515, will raid all BWs for all gear until 515. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming.', 'value', -1, null, 'Spire');
@@ -529,7 +529,7 @@ function createSetting(id, name, description, type, defaultValue, list, containe
         btnParent.appendChild(btn);
         if (container) document.getElementById(container).appendChild(btnParent);
         else document.getElementById("autoSettings").appendChild(btnParent);
-    } else if (type == 'value' || type == 'valueNegative') {
+    } else if (type == 'value' || type == 'multiValue' || type == 'valueNegative') {
         if (!(loaded && id == loaded.id))
             autoTrimpSettings[id] = {
                 id: id,
@@ -540,7 +540,8 @@ function createSetting(id, name, description, type, defaultValue, list, containe
             };
         btn.setAttribute("style", "font-size: 1.1vw;");
         btn.setAttribute('class', 'noselect settingsBtn btn-info');
-        btn.setAttribute("onclick", 'autoSetValueToolTip("' + id + '", "' + name + '",'+`${(type == 'valueNegative')}`+')');
+        btn.setAttribute("onclick", `autoSetValueToolTip("${id}", "${name}", ${type == 'valueNegative'}, ${type == 'multiValue'})`);
+
         btn.setAttribute("onmouseover", 'tooltip(\"' + name + '\", \"customText\", event, \"' + description + '\")');
         btn.setAttribute("onmouseout", 'tooltip("hide")');
         btn.textContent = name;
@@ -691,7 +692,7 @@ function settingChanged(id) {
 }
 
 //Popup Tooltip - ask them to enter some numerical input. (STANDARDIZED)
-function autoSetValueToolTip(id, text,negative) {
+function autoSetValueToolTip(id, text, negative, multi) {
     ranstring = text;
     var elem = document.getElementById("tooltipDiv");
     var tooltipText = 'Type a number below. You can also use shorthand such as 2e5 or 200k.';
@@ -699,8 +700,8 @@ function autoSetValueToolTip(id, text,negative) {
         tooltipText += ' Accepts negative numbers as validated inputs.';
     else
         tooltipText += ' Put -1 for Infinite.';
-    tooltipText += '<br/><br/><input id="customNumberBox" style="width: 50%" onkeypress="onKeyPressSetting(event, \'' + id + '\','+negative+')" value=' + autoTrimpSettings[id].value + '></input>';
-    var costText = '<div class="maxCenter"><div class="btn btn-info" onclick="autoSetValue(\'' + id + '\','+negative+')">Apply</div><div class="btn btn-info" onclick="cancelTooltip()">Cancel</div></div>';
+    tooltipText += `<br/><br/><input id="customNumberBox" style="width: 50%" onkeypress="onKeyPressSetting(event, '${id}', ${negative}, ${multi})" value="${autoTrimpSettings[id].value}"></input>`;
+    var costText = '<div class="maxCenter"><div class="btn btn-info" onclick="autoSetValue(\'' + id + '\','+negative+','+multi+')">Apply</div><div class="btn btn-info" onclick="cancelTooltip()">Cancel</div></div>';
     game.global.lockTooltip = true;
     elem.style.left = '32.5%';
     elem.style.top = '25%';
@@ -717,11 +718,13 @@ function autoSetValueToolTip(id, text,negative) {
     box.focus();
 }
 //Keyboard handler - Enter Key accepts popup
-function onKeyPressSetting(event, id,negative) {
+
+function onKeyPressSetting(event, id, negative, multi) {
     if (event.which == 13 || event.keyCode == 13) {
-        autoSetValue(id,negative);
+        autoSetValue(id, negative, multi);
     }
 }
+
 //Custom Number Box - Suffix handler for numerical to string values in the prompted popup
 function parseNum(num) {
     if (num.split('e')[1]) {
@@ -745,14 +748,15 @@ function parseNum(num) {
     return num;
 }
 
-function autoSetValue(id,negative) {
+function autoSetValue(id, negative, multi) {
+
     var num = 0;
     unlockTooltip();
     tooltip('hide');
     var numBox = document.getElementById('customNumberBox');
     if (numBox) {
         num = numBox.value.toLowerCase();
-        if (num.split(',')[1]) {
+        if (multi) {
             num = num.split(',').map(parseNum);
         } else {
             num = parseNum(num);

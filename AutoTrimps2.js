@@ -208,7 +208,7 @@ function mainLoop() {
     //EXECUTE CORE LOGIC
     if (getPageSetting('ExitSpireCell') > 0) exitSpireCell(); //"Exit Spire After Cell" (other.js)
     //if (getPageSetting('loomprotect') == true) protectloom(); //"Exit Spire After Cell" (other.js)
-    if (getPageSetting('Praidingzone') > 0) Praiding(); //Prestige Raiding (other.js)
+    if (autoTrimpSettings.Praidingzone.value.length > 0 && autoTrimpSettings.Praidingzone.value.some(x => x>0)) Praiding(); //Prestige Raiding (other.js)
     if (getPageSetting('BWraid')==true){setTimeout(BWraiding(), 3000);} //BW Raiding (other.js)
     if (getPageSetting('BWraid')==true && bwraidon) buyWeps();
     if (getPageSetting('VoidPraid')==true) Praidingvoid();

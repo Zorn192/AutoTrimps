@@ -236,7 +236,7 @@ function Praiding() {
              autoTrimpSettings["AutoMaps"].value = 1;
 	     debug("Turning AutoMaps back on");
     	     }
-    if (autoTrimpSettings.Praidingzone.value.some(x => x == game.global.world) && prestraid && !failpraid) {
+    if (!autoTrimpSettings.Praidingzone.value.some(x => x == game.global.world) && prestraid && !failpraid) {
              prestraid = false;
 	     prestraidon = false;
              mapbought = false;

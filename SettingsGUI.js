@@ -741,7 +741,7 @@ function autoSetValueToolTip(id, text, negative, multi) {
 
 function onKeyPressSetting(event, id, negative, multi) {
     if (event.which == 13 || event.keyCode == 13) {
-        autoSetValue(id, negative, multi); gh-pages
+        autoSetValue(id, negative, multi);
     }
 }
 

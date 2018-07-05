@@ -195,6 +195,7 @@ function findLastBionic() {
 //Praiding
 
 function Praiding() {
+    var pMap;
     if (getPageSetting('Praidingzone').length) {
    	if (getPageSetting('Praidingzone').includes(game.global.world) && !prestraid && !failpraid) {
             debug('World Zone matches a Praiding Zone!');
@@ -233,7 +234,8 @@ function Praiding() {
                 }
 	    }
 	    if (mapbought == true) {
-                selectMap(game.global.mapsOwnedArray[game.global.mapsOwnedArray.length-1].id);
+		pMap = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length-1].id;
+                selectMap(pMap);
 		runMap();
             }
             if (!prestraid && !failpraid && !game.global.repeatMap) {
@@ -249,7 +251,8 @@ function Praiding() {
 	
     if (getPageSetting('AutoMaps') == 0 && game.global.preMapsActive && prestraid && !failpraid) {
         autoTrimpSettings["AutoMaps"].value = 1;
-	debug("Prestige raiding successfull!");
+	debug("Prestige raiding successfull! - recycling Praid map");
+	recycleMap(pMap);
 	debug("Turning AutoMaps back on");
     }
     if (getPageSetting('Praidingzone').every(isBelowThreshold)) {
@@ -507,6 +510,7 @@ function helptrimpsnotdie () {
 //Daily stuff couldnt be bothered to add it to original
 
 function dailyPraiding() {
+    var dpMap;
     if (getPageSetting('dPraidingzone').length) {
    	if (getPageSetting('dPraidingzone').includes(game.global.world) && !dprestraid && !dfailpraid) {
             debug('World Zone matches a Daily Praiding Zone!');
@@ -545,7 +549,8 @@ function dailyPraiding() {
                 }
 	    }
 	    if (dmapbought == true) {
-                selectMap(game.global.mapsOwnedArray[game.global.mapsOwnedArray.length-1].id);
+		dpMap = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length-1].id;
+                selectMap(dpMap);
 		runMap();
             }
             if (!dprestraid && !dfailpraid && !game.global.repeatMap) {
@@ -561,7 +566,8 @@ function dailyPraiding() {
 	
     if (getPageSetting('AutoMaps') == 0 && game.global.preMapsActive && dprestraid && !dfailpraid) {
         autoTrimpSettings["AutoMaps"].value = 1;
-	debug("Daily Prestige Raiding successfull!");
+	debug("Daily Prestige Raiding successfull! - recycling Praid map");
+	recycleMap(dpMap);
 	debug("Turning AutoMaps back on");
     }
     if (getPageSetting('dPraidingzone').every(isBelowThreshold)) {

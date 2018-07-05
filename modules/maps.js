@@ -410,9 +410,11 @@ function autoMap() {
     });
     //if there are no non-unique maps, there will be nothing in keysSorted, so set to create a map
     var highestMap;
-    if (keysSorted[0])
+    var lowestMap;
+    if (keysSorted[0]) {
         highestMap = keysSorted[0];
-    else
+        lowestMap = keysSorted[keysSorted.length - 1];
+    } else
         selectedMap = "create";
 
     //Look through all the maps we have and figure out, find and Run Uniques if we need to
@@ -577,10 +579,14 @@ function autoMap() {
             //if preSpireFarming x minutes is true, switch over from wood maps to metal maps.
             if (preSpireFarming) {
                 var spiremaplvl = (game.talents.mapLoot.purchased && MODULES["maps"].SpireFarm199Maps) ? game.global.world - 1 : game.global.world;
-                if (game.global.mapsOwnedArray[highestMap].level >= spiremaplvl && game.global.mapsOwnedArray[highestMap].location == ((customVars.preferGardens && game.global.decayDone) ? 'Plentiful' : 'Mountain'))
-                    selectedMap = game.global.mapsOwnedArray[highestMap].id;
-                else
-                    selectedMap = "create";
+                selectedMap = "create";
+                for (var i = 0; i < keysSorted.length; i++) {
+                    if (game.global.mapsOwnedArray[keysSorted[i]].level >= spiremaplvl &&
+                            game.global.mapsOwnedArray[keysSorted[i]].location == ((customVars.preferGardens && game.global.decayDone) ? 'Plentiful' : 'Mountain')) {
+                        selectedMap = game.global.mapsOwnedArray[keysSorted[i]].id;
+                    break;
+                    }
+                }
                 //if needPrestige, TRY to find current level map as the highest level map we own.
             } else if (needPrestige || (extraMapLevels > 0)) {
                 if ((game.global.world + extraMapLevels) == game.global.mapsOwnedArray[highestMap].level)
@@ -783,7 +789,14 @@ function autoMap() {
                     debug("Too many maps, recycling now: ", "maps", 'th-large');
                     recycleBelow(true);
                     debug("Retrying, Buying a Map, level: #" + maplvlpicked, "maps", 'th-large');
-                    buyMap();
+                    result = buyMap();
+                    if (result == -2) {
+                        recycleMap(lowestMap);
+                        result = buyMap();
+                        if (result == -2) debug("AutoMaps unable to recycle to buy map!")
+                        else
+                          debug("Retrying map buy after recycling lowest level map");
+                    }
                 }
             }
             //if we already have a map picked, run it

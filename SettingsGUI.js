@@ -1016,6 +1016,8 @@ function updateCustomButtons() {
             if (elem != null) {
                 if (item.type == 'multitoggle')
                     elem.textContent = item.name[item.value];
+                else if (item.type == 'multiValue')
+                    elem.textContent == item.name + ': ' + item.value.toString();
                 else if (item.value > -1 || item.type == 'valueNegative')
                     elem.textContent = item.name + ': ' + prettify(item.value);
                 else

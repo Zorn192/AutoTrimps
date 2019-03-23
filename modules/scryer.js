@@ -1,7 +1,9 @@
 var wantToScry = false;
 function useScryerStance() {
 var scry = 4;
-if (game.global.uberNature == "Wind") {
+if (game.global.uberNature == "Wind" && getEmpowerment() == "Wind" && calcHDratio() < 16 && !game.global.mapsActive && (
+	(game.global.challengeActive != "Daily" && game.global.world >= getPageSetting('WindStackingMin')) ||
+        (game.global.challengeActive == "Daily" && game.global.world >= getPageSetting('dWindStackingMin')))) {
     scry = 5;
 }
   

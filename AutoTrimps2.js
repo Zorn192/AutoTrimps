@@ -169,7 +169,7 @@ function mainLoop() {
         setScienceNeeded();
         autoLevelEquipment();
     }
-    if (game.global.universe == 2 && !usingRealTimeOffline) {) {
+    if (game.global.universe == 2 && !usingRealTimeOffline) {
         RsetScienceNeeded();
         RautoLevelEquipment();
     }

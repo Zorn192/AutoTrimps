@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         AutoTrimps-Zek
+// @name         AutoTrimps-Zek-gentz
 // @version      1.0-Zek
 // @namespace    https://Zorn192.github.io/AutoTrimps
 // @updateURL    https://Zorn192.github.io/AutoTrimps/.user.js
@@ -14,9 +14,9 @@
 // ==/UserScript==
 
 var script = document.createElement('script');
-script.id = 'AutoTrimps-Zek';
+script.id = 'AutoTrimps-Zek-Gentz';
 //This can be edited to point to your own Github Repository URL.
-script.src = 'https://Zorn192.github.io/AutoTrimps/AutoTrimps2.js';
+script.src = 'https://github.com/ZeGentzy/AutoTrimps/raw/gh-pages/AutoTrimps2.js';
 //script.setAttribute('crossorigin',"use-credentials");
 script.setAttribute('crossorigin',"anonymous");
 document.head.appendChild(script);

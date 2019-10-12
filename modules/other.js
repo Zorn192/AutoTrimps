@@ -38,7 +38,7 @@ function autoGoldenUpgradesAT(setting) {
 
 //Praiding
 
-function plusMapToRun1() { 
+function plusMapToRun1() {
 var map = 1;
 if (game.global.world % 10 == 5)
 	map = 6;
@@ -53,7 +53,7 @@ if (game.global.world % 10 == 9)
 return map;
 }
 
-function plusMapToRun2() { 
+function plusMapToRun2() {
 var map = 2;
 if (game.global.world % 10 == 4)
 	map = 7;
@@ -70,7 +70,7 @@ if (game.global.world % 10 == 9)
 return map;
 }
 
-function plusMapToRun3() { 
+function plusMapToRun3() {
 var map = 3;
 if (game.global.world % 10 == 3)
 	map = 8;
@@ -89,7 +89,7 @@ if (game.global.world % 10 == 9)
 return map;
 }
 
-function plusMapToRun4() { 
+function plusMapToRun4() {
 var map = 4;
 if (game.global.world % 10 == 2)
 	map = 9;
@@ -110,7 +110,7 @@ if (game.global.world % 10 == 9)
 return map;
 }
 
-function plusMapToRun5() { 
+function plusMapToRun5() {
 var map = 5;
 if (game.global.world % 10 == 1)
 	map = 10;
@@ -985,8 +985,8 @@ function pcheckmap5() {
 
 var pMap1 = undefined;
 var pMap2 = undefined;
-var pMap3 = undefined;  
-var pMap4 = undefined; 
+var pMap3 = undefined;
+var pMap4 = undefined;
 var pMap5 = undefined;
 var repMap1 = undefined;
 var repMap2 = undefined;
@@ -1001,9 +1001,11 @@ var mapbought5 = false;
 
 function Praiding() {
     var cell;
-    cell = ((getPageSetting('Praidingcell') > 0) ? getPageSetting('Praidingcell') : 1);
+    var right_cell;
+    cell = getPageSetting('Praidingcell');
+    right_cell = cell == -1 || game.global.lastClearedCell + 1 >= cell;
     if (getPageSetting('Praidingzone').length) {
-        if (getPageSetting('Praidingzone').includes(game.global.world) && ((cell <=1 ) || (cell > 1 && (game.global.lastClearedCell+1) >= cell)) && !prestraid && !failpraid) {
+        if (getPageSetting('Praidingzone').includes(game.global.world) && right_cell && !prestraid && !failpraid) {
             prestraidon = true;
             if (getPageSetting('AutoMaps') == 1 && !prestraid && !failpraid) {
                 autoTrimpSettings["AutoMaps"].value = 0;
@@ -1210,6 +1212,7 @@ function PraidHarder() {
   var pRaidIndex;
   var maxPraidZSetting;
   var cell;
+  var right_cell;
 
   // Determine whether to use daily or normal run settings
   if (game.global.challengeActive == "Daily") {
@@ -1217,15 +1220,17 @@ function PraidHarder() {
     maxPraidZSetting = 'dMaxPraidZone';
     farmFragments = getPageSetting('dPraidFarmFragsZ').includes(game.global.world);
     praidBeforeFarm = getPageSetting('dPraidBeforeFarmZ').includes(game.global.world);
-    cell = ((getPageSetting('dPraidingcell') > 0) ? getPageSetting('dPraidingcell') : 1);
+    cell = getPageSetting('dPraidingcell');
   }
   else {
     praidSetting = 'Praidingzone';
     maxPraidZSetting = 'MaxPraidZone';
     farmFragments = getPageSetting('PraidFarmFragsZ').includes(game.global.world);
     praidBeforeFarm = getPageSetting('PraidBeforeFarmZ').includes(game.global.world);
-    cell = ((getPageSetting('Praidingcell') > 0) ? getPageSetting('Praidingcell') : 1);
+    cell = getPageSetting('Praidingcell');
   }
+
+  right_cell = cell == -1 || game.global.lastClearedCell + 1 >= cell;
 
   pRaidIndex = getPageSetting(praidSetting).indexOf(game.global.world);
   if (pRaidIndex == -1 || typeof(getPageSetting(maxPraidZSetting)[pRaidIndex]) === "undefined") maxPlusZones = plusMapToRun(game.global.world);
@@ -1242,7 +1247,7 @@ function PraidHarder() {
 
   // If we have any Praiding zones defined...
   if (getPageSetting(praidSetting).length) {
-    if (getPageSetting(praidSetting).includes(game.global.world) && ((game.global.lastClearedCell+1) >= cell) && !prestraid && !failpraid && !shouldFarmFrags) {
+    if (getPageSetting(praidSetting).includes(game.global.world) && right_cell && !prestraid && !failpraid && !shouldFarmFrags) {
       debug('Beginning Praiding');
       // Initialise shouldFarmFrags to false
       shouldFarmFrags = false;
@@ -1379,7 +1384,7 @@ function PraidHarder() {
     fMap = null;
     debug("Turning AutoMaps back on");
     game.options.menu.repeatUntil.enabled = 0;
-    autoTrimpSettings['AutoMaps'].value = 1;    
+    autoTrimpSettings['AutoMaps'].value = 1;
   }
 
   if (!getPageSetting(praidSetting).includes(game.global.world)) {
@@ -1415,21 +1420,23 @@ function BWraiding() {
   var targetBW;
   var bwIndex;
   var cell;
+  var right_cell;
 
   if (game.global.challengeActive == "Daily") {
     bwraidZ = 'dBWraidingz';
     bwraidSetting = 'Dailybwraid';
     bwraidMax = 'dBWraidingmax';
-    cell = ((getPageSetting('dbwraidcell') > 0) ? getPageSetting('dbwraidcell') : 1);
+    cell = getPageSetting('dbwraidcell');
   }
   else {
     bwraidZ = 'BWraidingz';
     bwraidSetting = 'BWraid';
     bwraidMax = 'BWraidingmax';
-    cell = ((getPageSetting('bwraidcell') > 0) ? getPageSetting('bwraidcell') : 1);
+    cell = getPageSetting('bwraidcell');
   }
 
-  isBWRaidZ = getPageSetting(bwraidZ).includes(game.global.world) && ((game.global.lastClearedCell+1) >= cell);
+  right_cell = cell == -1 || game.global.lastClearedCell + 1 >= cell;
+  isBWRaidZ = getPageSetting(bwraidZ).includes(game.global.world) && right_cell;
   bwIndex = getPageSetting(bwraidZ).indexOf(game.global.world);
   if (bwIndex == -1 || typeof(getPageSetting(bwraidMax)[bwIndex]) === "undefined") targetBW = -1;
   else targetBW = getPageSetting(bwraidMax)[bwIndex];
@@ -1507,9 +1514,13 @@ var dpraidDone = false;
 
 function dailyPraiding() {
     var cell;
-    cell = ((getPageSetting('dPraidingcell') > 0) ? getPageSetting('dPraidingcell') : 1);
+    var right_cell;
+
+    cell = getPageSetting('dPraidingcell');
+    right_cell = cell == -1 || game.global.lastClearedCell + 1 >= cell;
+
     if (getPageSetting('dPraidingzone').length) {
-        if (getPageSetting('dPraidingzone').includes(game.global.world) && ((cell <=1 ) || (cell > 1 && (game.global.lastClearedCell+1) >= cell)) && !dprestraid && !dfailpraid) {
+        if (getPageSetting('dPraidingzone').includes(game.global.world) && right_cell && !dprestraid && !dfailpraid) {
             dprestraidon = true;
             if (getPageSetting('AutoMaps') == 1 && !dprestraid && !dfailpraid) {
                 autoTrimpSettings["AutoMaps"].value = 0;
@@ -1709,9 +1720,12 @@ function dailyPraiding() {
 }
 
 function dailyBWraiding() {
-	var cell;
-	cell = ((getPageSetting('dbwraidcell') > 0) ? getPageSetting('dbwraidcell') : 1);
- 	 if (!dprestraidon && game.global.world == getPageSetting('dBWraidingz') && ((game.global.lastClearedCell+1) >= cell) && !dbwraided && !dfailbwraid && getPageSetting('Dailybwraid')) {
+  var cell;
+  var right_cell;
+
+  cell = getPageSetting('dbwraidcell');
+  right_cell = cell == -1 || game.global.lastClearedCell + 1 >= cell;
+ 	 if (!dprestraidon && game.global.world == getPageSetting('dBWraidingz') && cell && !dbwraided && !dfailbwraid && getPageSetting('Dailybwraid')) {
  	     if (getPageSetting('AutoMaps') == 1 && !dbwraided && !dfailbwraid) {
                  autoTrimpSettings["AutoMaps"].value = 0;
                  }
@@ -1860,7 +1874,7 @@ playerSpire.drawInfo = function() {
         infoHtml += "<div onclick='playerSpire.shrink()' id='shrinkSpireBox' class='spireControlBox'>Shrink Window</div>";
         infoHtml += "<div onclick='playerSpire.settingsTooltip()' id='spireSettingsBox' class='spireControlBox'>Settings</div>"
         infoHtml += "<div onclick='tooltip(\"confirm\", null, \"update\", \"Are you sure you want to sell all Traps and Towers? You will get back 100% of Runestones spent on them.<br/><br/>" + ((this.paused) ? "" : "<b>Protip:</b> Pause your Spire before selling your defenses if you want to avoid leaking!") + "\", \"playerSpire.resetTraps()\", \"Sell All?\")' class='spireControlBox'>Sell All</div>";
-        infoHtml += "<div onclick='playerSpire.togglePause()' id='pauseSpireBtn' class='spireControlBox spirePaused" + ((this.paused) ? "Yes'>Unpause" : "'>Pause Spire") + "</div>";      
+        infoHtml += "<div onclick='playerSpire.togglePause()' id='pauseSpireBtn' class='spireControlBox spirePaused" + ((this.paused) ? "Yes'>Unpause" : "'>Pause Spire") + "</div>";
         infoHtml += "<div class='spireControlBoxDbl'><div onclick='playerSpire.presetTooltip(1)'>Layout 1</div><div onclick='playerSpire.presetTooltip(2)'>Layout 2</div></div>"
         infoHtml += "<div onclick='playerSpire.selectTrap(\"shiftUp\")' onmouseout='tooltip(\"hide\")' onmouseover='playerSpire.trapTooltip(\"shiftUp\", event)' id='sellTrapBox' class='spireControlBox" + ((this.selectedTrap == "shiftUp") ? " selected" : "") + "'>Shift Up</div>";
         infoHtml += "<div onclick='playerSpire.selectTrap(\"shiftDown\")' onmouseout='tooltip(\"hide\")' onmouseover='playerSpire.trapTooltip(\"shiftDown\", event)' id='sellTrapBox' class='spireControlBox" + ((this.selectedTrap == "shiftDown") ? " selected" : "") + "'>Shift Down</div>";
@@ -2004,7 +2018,7 @@ function RPraidHarder() {
   var pRaidIndex;
   var maxPraidZSetting;
   var RisRbwraidZ;
-  var RpraidSetting;	
+  var RpraidSetting;
 
   // Determine whether to use daily or normal run settings
   if (game.global.challengeActive == "Daily") {
@@ -2190,7 +2204,7 @@ function RPraidHarder() {
     else {
       debug("Turning AutoMaps back on");
       game.options.menu.repeatUntil.enabled = 0;
-      autoTrimpSettings['AutoMaps'].value = 1;    
+      autoTrimpSettings['AutoMaps'].value = 1;
     }
   }
 
@@ -2459,18 +2473,18 @@ function questcheck() {
 		return 7;
 }
 
-function Rgetequipcost(equip, resource, amt) { 
+function Rgetequipcost(equip, resource, amt) {
 	var cost = Math.ceil(getBuildingItemPrice(game.equipment[equip], resource, true, amt) * (Math.pow(amt - game.portal.Artisanistry.modifier, game.portal.Artisanistry.radLevel)));
 	return cost;
                        }
-					   
+
 //smithylogic('Shield', 'wood', true)
 function smithylogic(name, resource, equip) {
 
 	var go = true;
-	
+
 	//Checks
-	
+
 	if (getPageSetting('Rsmithylogic') == false || getPageSetting('Rsmithynumber') <= 0 || getPageSetting('Rsmithypercent') <= 0 || getPageSetting('Rsmithyseconds') <= 0) {
 	    return go;
 	}
@@ -2480,9 +2494,9 @@ function smithylogic(name, resource, equip) {
 	if (name == undefined) {
 	    return go;
 	}
-	
+
 	//Vars
-	
+
 	var amt = (getPageSetting('Rgearamounttobuy') > 0) ? getPageSetting('Rgearamounttobuy') : 1;
 	var percent = (getPageSetting('Rsmithypercent') / 100);
 	var seconds = getPageSetting('Rsmithyseconds');
@@ -2502,7 +2516,7 @@ function smithylogic(name, resource, equip) {
 	var itemwood = null;
 	var itemmetal = null;
 	var itemgems = null;
-	
+
 	if (!equip) {
 		if (name == "Hut") {
 		    itemwood = getBuildingItemPrice(game.buildings[name], "wood", false, amt);
@@ -2540,34 +2554,34 @@ function smithylogic(name, resource, equip) {
 	else if (equip && name != "Shield") {
 		itemmetal = Rgetequipcost(name, resource, amt);
 	}
-	
+
 	if (itemwood == null && itemmetal == null && itemgems == null) {
 	    return go;
 	}
 	if (!smithyclosewood && !smithyclosemetal && !smithyclosegems) {
 	    return go;
 	}
-	else if (smithyclosewood && itemwood > smithypercentwood && (name == "Shield" || name == "Hut" || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort")) { 
+	else if (smithyclosewood && itemwood > smithypercentwood && (name == "Shield" || name == "Hut" || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort")) {
 	    go = false;
 	    return go;
 	}
-	else if (smithyclosemetal && itemmetal > smithypercentmetal && ((equip && name != "Shield") || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway")) { 
+	else if (smithyclosemetal && itemmetal > smithypercentmetal && ((equip && name != "Shield") || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway")) {
 	    go = false;
 	    return go;
 	}
-	else if (smithyclosegems && itemgems > smithypercentgems && (name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway" || name == "Collector")) { 
+	else if (smithyclosegems && itemgems > smithypercentgems && (name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway" || name == "Collector")) {
 	    go = false;
 	    return go;
 	}
-	else if (smithyclosewood && itemwood <= smithypercentwood && (name == "Shield" || name == "Hut" || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort")) { 
+	else if (smithyclosewood && itemwood <= smithypercentwood && (name == "Shield" || name == "Hut" || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort")) {
 	    go = true;
 	    return go;
 	}
-	else if (smithyclosemetal && itemmetal <= smithypercentmetal && ((equip && name != "Shield") || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway")) { 
+	else if (smithyclosemetal && itemmetal <= smithypercentmetal && ((equip && name != "Shield") || name == "House" || name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway")) {
 	    go = true;
 	    return go;
 	}
-	else if (smithyclosegems && itemgems <= smithypercentgems && (name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway" || name == "Collector")) { 
+	else if (smithyclosegems && itemgems <= smithypercentgems && (name == "Mansion" || name == "Hotel" || name == "Resort" || name == "Gateway" || name == "Collector")) {
 	    go = true;
 	    return go;
 	}

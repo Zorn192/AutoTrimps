@@ -108,9 +108,9 @@ function dailyAutoPortal() {
                             abandonDaily();
                             document.getElementById('finishDailyBtnContainer').style.display = 'none';
                         }
-                        if (autoTrimpSettings.dHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') == false)
+                        if (autoTrimpSettings.dHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') == 0)
                             doPortal(autoTrimpSettings.dHeliumHourChallenge.selected);
-			else if (autoTrimpSettings.RdHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') == true)
+			else if (autoTrimpSettings.RdHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') > 0)
                             doPortal(autoTrimpSettings.RdHeliumHourChallenge.selected);
                         else
                             doPortal();
@@ -124,9 +124,9 @@ function dailyAutoPortal() {
         if (game.global.world > portalzone) {
             abandonDaily();
             document.getElementById('finishDailyBtnContainer').style.display = 'none';
-            if (autoTrimpSettings.dHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') == false)
+            if (autoTrimpSettings.dHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') == 0)
                 doPortal(autoTrimpSettings.dHeliumHourChallenge.selected);
-	    else if (autoTrimpSettings.RdHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') == true)
+	    else if (autoTrimpSettings.RdHeliumHourChallenge.selected != 'None' && getPageSetting('u1daily') > 0)
                 doPortal(autoTrimpSettings.RdHeliumHourChallenge.selected);
             else
                 doPortal();
@@ -261,7 +261,7 @@ function doPortal(challenge) {
         }
         if (lastUndone == 1) {
             debug("All available Dailies already completed.", "portal");
-	    if ((getPageSetting('u1daily') == true && portalUniverse == 1 && challenge == autoTrimpSettings.RdHeliumHourChallenge.selected) || (getPageSetting('u2daily') == true && portalUniverse == 2)) {
+	    if ((getPageSetting('u1daily') > 1 && portalUniverse == 1 && challenge == autoTrimpSettings.RdHeliumHourChallenge.selected) || (getPageSetting('u2daily') == true && portalUniverse == 2)) {
 	        swapPortalUniverse();
 	    }
             selectChallenge(challenge || 0);
@@ -271,7 +271,7 @@ function doPortal(challenge) {
         }
     }
     else if(portalWindowOpen && challenge && c2done) {
-	if (getPageSetting('u1daily') == true && portalUniverse == 1 && challenge == autoTrimpSettings.RdHeliumHourChallenge.selected) {
+	if (getPageSetting('u1daily') > 1 && portalUniverse == 1 && challenge == autoTrimpSettings.RdHeliumHourChallenge.selected) {
 	    swapPortalUniverse();
 	}
         selectChallenge(challenge);
@@ -452,7 +452,7 @@ function RdoPortal(challenge) {
         RAutoPerks.clickAllocate();
     }
     if (portalWindowOpen && getPageSetting('RAutoStartDaily') == true) {
-        if (getPageSetting('u1daily') == true && portalUniverse == 2) {
+        if ((getPageSetting('u1daily') == 1 && portalUniverse == 2) || (getPageSetting('u1daily') == 2 && isNextU1DailyWind() == true && portalUniverse == 2)) {
 	    swapPortalUniverse();
 	}
 	selectChallenge('Daily');
@@ -465,7 +465,7 @@ function RdoPortal(challenge) {
         }
         if (lastUndone == 1) {
             debug("All available Dailies already completed.", "portal");
-	    if ((getPageSetting('u2daily') == true && portalUniverse == 2 && challenge == autoTrimpSettings.dHeliumHourChallenge.selected) || (getPageSetting('u1daily') == true && portalUniverse == 1)) {
+	    if ((getPageSetting('u2daily') == true && portalUniverse == 2 && challenge == autoTrimpSettings.dHeliumHourChallenge.selected) || (getPageSetting('u1daily') > 0 && portalUniverse == 1)) {
 	        swapPortalUniverse();
 	    }
             selectChallenge(challenge || 0);
@@ -495,4 +495,60 @@ function RdoPortal(challenge) {
     pushData();
     activatePortal();
     lastRadonZone = 0; RzonePostpone = 0;
+}
+
+function isNextU1DailyWind() {
+    var currWindCost = game.empowerments.Wind.nextUberCost;
+    var windCostChange = Math.max(currWindCost*.33,50);
+    var nextWindCost = currWindCost - (windCostChange < 100 ? windCostChange : 100);
+    
+    var currPoisonCost = game.empowerments.Poison.nextUberCost;
+    var poisonCostChange = Math.max(currPoisonCost*.33,50);
+    var nextPoisonCost = currPoisonCost - (poisonCostChange < 100 ? poisonCostChange : 100);
+        
+    var currIceCost = game.empowerments.Ice.nextUberCost;
+    var iceCostChange = Math.max(currIceCost*.33,50);
+    var nextIceCost = currIceCost - (iceCostChange < 100 ? iceCostChange : 100);
+        
+    var dnature = "None";
+    var dailynature = [], dpoison, dpoisondiff, dwind, dwinddiff, dice, dicediff;
+        
+        if (getPageSetting('pdailyenlightthresh') >= 0) {
+	    dpoison = (nextPoisonCost <= getPageSetting('pdailyenlightthresh') && nextPoisonCost <= game.empowerments.Poison.tokens);
+	    if (dpoison) {
+		dpoisondiff = (getPageSetting('pdailyenlightthresh') - nextPoisonCost);
+	    }
+	    else dpoisondiff = -999999;
+	}
+	else dpoisondiff = -999999;
+
+	if (getPageSetting('wdailyenlightthresh') >= 0) {
+	    dwind = (nextWindCost <= getPageSetting('wdailyenlightthresh') && nextWindCost <= game.empowerments.Wind.tokens);
+	    if (dwind) {
+		dwinddiff = (getPageSetting('wdailyenlightthresh') - nextWindCost);
+	    }
+	    else dwinddiff = -999999;
+	}
+	else dwinddiff = -999999;
+
+	if (getPageSetting('idailyenlightthresh') >= 0) {
+	    dice = (nextIceCost <= getPageSetting('idailyenlightthresh') && nextIceCost <= game.empowerments.Ice.tokens);
+	    if (dice) {
+		dicediff = (getPageSetting('idailyenlightthresh') - nextIceCost);
+	    }
+	    else dicediff = -999999;
+	}
+	else dicediff = -999999;
+
+	dailynature = [{nature:'Poison', cost:dpoisondiff}, {nature:'Wind', cost:dwinddiff}, {nature:'Ice', cost:dicediff}].sort(function(a, b) {return a.cost > b.cost ? -1 : a.cost < b.cost ? 1 : 0;});
+
+	if (dailynature[0].cost > 0) {
+	    dnature = dailynature[0].nature;
+	}
+	else { dnature = "None"; }
+
+        if(dnature=="Wind")
+            return true;
+        else
+            return false;
 }

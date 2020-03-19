@@ -14,7 +14,7 @@
 // ==/UserScript==
 
 var script = document.createElement('script');
-script.id = 'AutoTrimps-Zek';
+script.id = 'AutoTrimps-Ray';
 //This can be edited to point to your own Github Repository URL.
 script.src = 'https://Psycho-Ray.github.io/AutoTrimps/AutoTrimps2.js';
 //script.setAttribute('crossorigin',"use-credentials");

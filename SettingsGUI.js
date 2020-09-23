@@ -1927,7 +1927,7 @@ function updateCustomButtons() {
     radonon ? turnOn('Rhs') : turnOff('Rhs');
     var hson = (getPageSetting('Rhs') == true);
     radonon && hson ? turnOn('Rhssh') : turnOff('Rhssh');
-    var hsshon = (getPageSetting('Rhsst') == true);
+    var hsshon = (getPageSetting('Rhssh') == true);
     radonon && hson ? turnOn('Rhsst') : turnOff('Rhsst');
     var hsston = (getPageSetting('Rhsst') == true);
     radonon && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');

@@ -1936,11 +1936,11 @@ function updateCustomButtons() {
     var hsshon = (getPageSetting('Rhssh') == true);
     radonon && hson ? turnOn('Rhsst') : turnOff('Rhsst');
     var hsston = (getPageSetting('Rhsst') == true);
-    radonon && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');
-    radonon && hsshon ? turnOn('Rhsh1') : turnOff('Rhsh1');
-    radonon && hsshon ? turnOn('Rhsh2') : turnOff('Rhsh2');
-    radonon && hsston ? turnOn('Rhst1') : turnOff('Rhst1');
-    radonon && hsston ? turnOn('Rhst2') : turnOff('Rhst2');
+    radonon && hson && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');
+    radonon && hson && hsshon ? turnOn('Rhsh1') : turnOff('Rhsh1');
+    radonon && hson && hsshon ? turnOn('Rhsh2') : turnOff('Rhsh2');
+    radonon && hson && hsston ? turnOn('Rhst1') : turnOff('Rhst1');
+    radonon && hson && hsston ? turnOn('Rhst2') : turnOff('Rhst2');
 
 
     var autoheirloomenable = (getPageSetting('autoheirlooms') == true);

@@ -819,7 +819,7 @@ function initializeAllSettings() {
     createSetting('Rhsh2', 'HS: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhst1', 'XP Shield', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhst2', 'Stat Shield', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
-    
+
     /*//Nu Line disabled due to being annoying
     document.getElementById('lowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('autonu', 'Auto Nu', '<b>ONLY WORKS ON 6 SLOT HEIRLOOMS</b><br>Autospend Nu on an Heirloom you select. Works on Portal. You can either use an Automated Ratio (Not mathmatically tested currently) or a Manual Ratio (Recommended, plenty of tools to help with this). ', 'boolean', false, null, 'Heirlooms');
@@ -1926,15 +1926,9 @@ function updateCustomButtons() {
     
     radonon ? turnOn('Rhs') : turnOff('Rhs');
     var hson = (getPageSetting('Rhs') == true);
-    radonon && hson ? turnOn('Rhssh') : turnOff('Rhssh');
-    var hsshon = (getPageSetting('Rhssh') == true);
-    radonon && hson ? turnOn('Rhsst') : turnOff('Rhsst');
-    var hsston = (getPageSetting('Rhsst') == true);
-    radonon && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');
-    radonon && hsshon ? turnOn('Rhsh1') : turnOff('Rhsh1');
-    radonon && hsshon ? turnOn('Rhsh2') : turnOff('Rhsh2');
-    radonon && hsston ? turnOn('Rhst1') : turnOff('Rhst1');
-    radonon && hsston ? turnOn('Rhst2') : turnOff('Rhst2');
+    radonon && hson ? turnOn('Rhsz') : turnOff('Rhsz');
+    radonon && hson ? turnOn('Rhs1') : turnOff('Rhs1');
+    radonon && hson ? turnOn('Rhs2') : turnOff('Rhs2');
 
     var autoheirloomenable = (getPageSetting('autoheirlooms') == true);
     var keepshieldenable = (autoheirloomenable && getPageSetting('keepshields') == true);

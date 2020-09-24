@@ -812,11 +812,16 @@ function initializeAllSettings() {
     //Heirloom Swapping
     document.getElementById('lowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhs', 'Heirloom Swapping', 'Heirloom swapping master button. Turn this on to allow heirloom swapping and its associated settings. ', 'boolean', false, null, 'Heirlooms');
+    
+    //Shields	
+    document.getElementById('Rhs').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhssh', 'Shields', 'Toggle to swap Shields', 'boolean', false, null, 'Heirlooms');
-    createSetting('Rhsst', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
     createSetting('Rhshz', 'HS: Zone', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Heirlooms');
     createSetting('Rhsh1', 'HS: First', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhsh2', 'HS: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
+    //Staffs
+    document.getElementById('Rhsh2').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rhsst', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
     createSetting('Rhst1', 'XP Shield', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhst2', 'Stat Shield', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
 

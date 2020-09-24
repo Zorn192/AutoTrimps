@@ -440,29 +440,30 @@ function Rhsshield2(){for(loom of game.global.heirloomsCarried)if(loom.name==get
 function Rhsstaff1(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhst1'))return loom;}
 function Rhsstaff2(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhst2'))return loom;}
 
-function Rhshieldequip1() {
+function Rhsequip1() {
 	if (Rhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhsh1')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
 }
 
-function Rhshieldequip2() {
+function Rhsequip2() {
 	if (Rhsshield2() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhsh2')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
 }
 
-function Rhstaffequip1() {
-	if (Rhsstaff1() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhst1')) {
+function Rhsequip3() {
+	if (Rhsstaff1() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhst2')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
 }
 
-function Rhstaffequip2() {
-	if ((Rhsstaff2() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhst2')) {
+
+function Rhsequip4() {
+	if (Rhsstaff2() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhst1')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
@@ -470,15 +471,15 @@ function Rhstaffequip2() {
 
 function Rheirloomswap() {
 	if (getPageSetting('Rhshz') > 0 && game.global.world < getPageSetting('Rhshz')) {
-	    Rhshieldequip1();
+	    Rhsequip1();
 	}
 	if (getPageSetting('Rhshz') > 0 && game.global.world >= getPageSetting('Rhshz')) {
-	    Rhshieldequip2();
+	    Rhsequip2();
 	}
-	if game.global.mapsActive == false {
-	    Rhstaffequip1();
+	if (getPageSetting('Rhst1') != "undefined" && game.global.mapsActive == false) {
+	    Rhsequip3();
 	}
-	if game.global.mapsActive == true {
-	    Rhstaffequip2();
+	if (getPageSetting('Rhst2') != "undefined" && game.global.mapsActive == false) {
+	    Rhsequip4();
 	}
-}
+}1

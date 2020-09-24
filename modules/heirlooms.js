@@ -482,4 +482,4 @@ function Rheirloomswap() {
 	if (getPageSetting('Rhst2') != "undefined" && game.global.mapsActive == false) {
 	    Rhsequip4();
 	}
-}1
+}

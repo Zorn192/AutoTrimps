@@ -806,24 +806,21 @@ function initializeAllSettings() {
 
     //Heirloom
 
-    createSetting('highdmg', 'WS: High Damage', '<b>HIGH DAMAGE HEIRLOOM</b><br><br>Enter the name of your high damage heirloom. This is your heirloom that you will use normally. ', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('lowdmg', 'WS: Low Damage', '<b>LOW DAMAGE HEIRLOOM</b><br><br>Enter the name of your low damage heirloom. This is the heirloom that you will use for windstacking. ', 'textValue', 'undefined', null, 'Heirlooms');
-
     //Heirloom Swapping
-    document.getElementById('lowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhs', 'Heirloom Swapping', 'Heirloom swapping master button. Turn this on to allow heirloom swapping and its associated settings. ', 'boolean', false, null, 'Heirlooms');
     
-    //Shields	
+    //Shield swapping
     document.getElementById('Rhs').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhssh', 'Shields', 'Toggle to swap Shields', 'boolean', false, null, 'Heirlooms');
     createSetting('Rhshz', 'HS: Zone', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Heirlooms');
     createSetting('Rhsh1', 'HS: First', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhsh2', 'HS: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
-    //Staffs
+    
+    //Staff swapping
     document.getElementById('Rhsh2').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhsst', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
-    createSetting('Rhst1', 'XP Shield', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhst2', 'Stat Shield', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhst1', 'World Staff', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhst2', 'Map Staff', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
 
     /*//Nu Line disabled due to being annoying
     document.getElementById('lowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -1929,24 +1926,20 @@ function updateCustomButtons() {
     (nuratio) ? turnOn('slot5nu') : turnOff('slot5nu');
     (nuratio) ? turnOn('slot6nu') : turnOff('slot6nu');*/
     
+    //Heirloom Swapping
     radonon ? turnOn('Rhs') : turnOff('Rhs');
     var hson = (getPageSetting('Rhs') == true);
-    radonon && hson ? turnOn('Rhsz') : turnOff('Rhsz');
-    radonon && hson ? turnOn('Rhs1') : turnOff('Rhs1');
-    radonon && hson ? turnOn('Rhs2') : turnOff('Rhs2');
-
-    radonon ? turnOn('Rhs') : turnOff('Rhs');
-     var hson = (getPageSetting('Rhs') == true);
+	//Shields
     radonon && hson ? turnOn('Rhssh') : turnOff('Rhssh');
     var hsshon = (getPageSetting('Rhssh') == true);
-    radonon && hson ? turnOn('Rhsst') : turnOff('Rhsst');
-    var hsston = (getPageSetting('Rhsst') == true);
     radonon && hson && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');
     radonon && hson && hsshon ? turnOn('Rhsh1') : turnOff('Rhsh1');
     radonon && hson && hsshon ? turnOn('Rhsh2') : turnOff('Rhsh2');
+	//Staffs
+    radonon && hson ? turnOn('Rhsst') : turnOff('Rhsst');
+    var hsston = (getPageSetting('Rhsst') == true);
     radonon && hson && hsston ? turnOn('Rhst1') : turnOff('Rhst1');
     radonon && hson && hsston ? turnOn('Rhst2') : turnOff('Rhst2');
-
 
     var autoheirloomenable = (getPageSetting('autoheirlooms') == true);
     var keepshieldenable = (autoheirloomenable && getPageSetting('keepshields') == true);

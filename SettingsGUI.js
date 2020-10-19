@@ -569,17 +569,17 @@ function initializeAllSettings() {
     createSetting('Rblackbogzone', 'BB: Zone', 'What zones to run Black Bogs at. Can use 40,50,60. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rblackbogamount', 'BB: Amount', 'How many Black Bogs to at specified zones. Can use 8,9,10. I.e if BB: Zone had 40,50 and this setting had 8,10, It would run 8 Black Bogs at z40 and 10 Black Bogs at z50. ', 'multiValue', [-1], null, 'Maps');
 
-    //Alantrimp
+    //Melting Points
     document.getElementById('Rblackbogamount').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Melting Point', 'Melting Point', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Maps');
+    createSetting('MeltingPoint', 'Melting Point', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Maps');
     createSetting('MPZone', 'MP Zone', 'Which zone to run Melting Point', 'value', '-1', null, 'Maps');
     createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Maps');
-	
+
+    //Atlantrimp
     document.getElementById('MPCell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Atlantrimp', 'Atlantrimp', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Maps');
-    createSetting('AtlantrimpZone', 'Atlantrimp: Zone', 'Which zone to run alantrimp', 'value', -1, null, 'Maps');
-    createSetting('AtlantrimpCell', 'Atlantrimp: Cell', 'Which cell to run alantrimp', 'value', '-1', null, 'Maps');
-    
+    createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Maps');
+    createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Maps');
 
     //TF
     document.getElementById('Rblackbogamount').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -1670,6 +1670,18 @@ function updateCustomButtons() {
     radonon ? turnOn("Rmapcuntoff"): turnOff("Rmapcuntoff");
     radonon ? turnOn("RDisableFarm"): turnOff("RDisableFarm");
     radonon ? turnOn("Rtimefarm"): turnOff("Rtimefarm");
+    
+    //Melting Points
+    var hsshon = (getPageSetting('MeltingPoint') == true);
+    radonon && hson && hsshon ? turnOn('MPZone') : turnOff('MPZone');
+    radonon && hson && hsshon ? turnOn('MPCell') : turnOff('MPCell');
+
+    //Atlantrimp
+    var hsston = (getPageSetting('Atlantrimp') == true);
+    radonon && hson && hsston ? turnOn('ATZone') : turnOff('ATZone');
+    radonon && hson && hsston ? turnOn('ATCell') : turnOff('ATCell');
+	
+    //Time Farming
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmzone"): turnOff("Rtimefarmzone");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmcell"): turnOff("Rtimefarmcell");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmtribute"): turnOff("Rtimefarmtribute");

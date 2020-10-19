@@ -1672,14 +1672,14 @@ function updateCustomButtons() {
     radonon ? turnOn("Rtimefarm"): turnOff("Rtimefarm");
     
     //Melting Points
-    var hsshon = (getPageSetting('MeltingPoint') == true);
-    radonon && hson && hsshon ? turnOn('MPZone') : turnOff('MPZone');
-    radonon && hson && hsshon ? turnOn('MPCell') : turnOff('MPCell');
+    var mpon = (getPageSetting('MeltingPoint') == true);
+    radonon && mpon ? turnOn('MPZone') : turnOff('MPZone');
+    radonon && mpon ? turnOn('MPCell') : turnOff('MPCell');
 
     //Atlantrimp
-    var hsston = (getPageSetting('Atlantrimp') == true);
-    radonon && hson && hsston ? turnOn('ATZone') : turnOff('ATZone');
-    radonon && hson && hsston ? turnOn('ATCell') : turnOff('ATCell');
+    var aton = (getPageSetting('Atlantrimp') == true);
+    radonon && aton ? turnOn('ATZone') : turnOff('ATZone');
+    radonon && aton ? turnOn('ATCell') : turnOff('ATCell');
 	
     //Time Farming
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmzone"): turnOff("Rtimefarmzone");

@@ -1393,8 +1393,8 @@ function RautoMap() {
                 }
                 
 		var atlantrimp = [10000, 10000];
-                if ((getPageSetting('Atlantrimp') == true) && (getPageSetting('ATZone') >= 0) && (getPageSetting('ATZone') >= 0)) atlantrimp[0] = getPageSetting('ATZone');
-                if ((getPageSetting('Atlantrimp') == true) && (getPageSetting('ATCell') >= 0) && (getPageSetting('ATCell') >= 0)) atlantrimp[1] = getPageSetting('ATCell');
+                if (getPageSetting('Atlantrimp') == true && (getPageSetting('ATZone') >= 0) && (getPageSetting('ATZone') >= 0)) atlantrimp[0] = getPageSetting('ATZone');
+                if (getPageSetting('Atlantrimp') == true && (getPageSetting('ATCell') >= 0) && (getPageSetting('ATCell') >= 0)) atlantrimp[1] = getPageSetting('ATCell');
                 if (theMap.name == 'Atlantrimp' && (game.global.challengeActive != "Insanity" && game.global.world >= atlantrimp[0] && ((game.global.lastClearedCell + 1) >= atlantrimp[1]) && game.mapUnlocks.AncientTreasure.canRunOnce))) {
                     if (game.global.world < 33 || (game.global.world == 33 && game.global.lastClearedCell < 50)) continue;
                     selectedMap = theMap.id;

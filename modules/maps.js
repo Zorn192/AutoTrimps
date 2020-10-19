@@ -1391,13 +1391,26 @@ function RautoMap() {
                     selectedMap = theMap.id;
                     break;
                 }
-                var meltingpoint = [10000, 10000];
-                if (getPageSetting('Rmeltpoint')[0] > 0 && getPageSetting('Rmeltpoint')[1] >= 0) meltingpoint = getPageSetting('Rmeltpoint');
-                if (theMap.name == 'Melting Point' && ((game.global.challengeActive == "Trappapalooza" && game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1])) || (game.global.challengeActive == "Melt" && game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1])) || (getPageSetting('Rmeltsmithy') > 0 && getPageSetting('Rmeltsmithy') <= game.buildings.Smithy.owned && game.mapUnlocks.SmithFree.canRunOnce))) {
-                    if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 55)) continue;
+                
+		var atlantrimp = [10000, 10000];
+                if (getPageSetting('Atlantrimp') == true && getPageSetting('ATZone') >= 0) && getPageSetting('ATZone') >= 0) atlantrimp[0] = getPageSetting('MPZone');
+                if (getPageSetting('Atlantrimp') == true && getPageSetting('ATCell') >= 0) && getPageSetting('ATCell') >= 0) atlantrimp[1] = getPageSetting('MPCell');
+                if (theMap.name == 'Atlantrimp' && (game.global.challengeActive != "Insanity" && game.global.world >= atlantrimp[0] && ((game.global.lastClearedCell + 1) >= atlantrimp[1]) && game.mapUnlocks.AncientTreasure.canRunOnce))) {
+                    if (game.global.world < 33 || (game.global.world == 33 && game.global.lastClearedCell < 50)) continue;
                     selectedMap = theMap.id;
                     break;
                 }
+		
+		var meltingpoint = [10000, 10000];
+                if (getPageSetting('MeltingPoint') == true && getPageSetting('MPZone') >= 0) && getPageSetting('MPZone') >= 0) meltingpoint[0] = getPageSetting('MPZone');
+                if (getPageSetting('MeltingPoint') == true && getPageSetting('MPCell') >= 0) && getPageSetting('MPCell') >= 0) meltingpoint[1] = getPageSetting('MPCell');
+                if (theMap.name == 'Melting Point' && (game.global.challengeActive != "Insanity" && game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1]) && game.mapUnlocks.SmithFree.canRunOnce))) {
+                    if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50)) continue;
+                    selectedMap = theMap.id;
+                    break;
+                }
+		    
+		
             }
         }
     }

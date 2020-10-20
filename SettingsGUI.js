@@ -1734,9 +1734,6 @@ function updateCustomButtons() {
     radonon && getPageSetting('RPraidHarder') ? turnOn('RPraidFarmFragsZ') : turnOff('RPraidFarmFragsZ');
     radonon && getPageSetting('RPraidHarder') ? turnOn('RPraidBeforeFarmZ') : turnOff('RPraidBeforeFarmZ');
     radonon && getPageSetting('RPraidHarder') ? turnOn('RMaxPraidZone') : turnOff('RMaxPraidZone');
-    radonon ? turnOn("RBWraid"): turnOff("RBWraid");
-    radonon && getPageSetting('RBWraid')==true ? turnOn("RBWraidingz"): turnOff("RBWraidingz");
-    radonon && getPageSetting('RBWraid')==true ? turnOn("RBWraidingmax"): turnOff("RBWraidingmax");
     
     //RPR
     radonon ? turnOn("RAMPraid"): turnOff("RAMPraid");

@@ -11,7 +11,7 @@ function initializeAutoTrimps() {
     for (var m in ATmoduleList) {
         ATscriptLoad(modulepath, ATmoduleList[m]);
     }
-    debug('AutoTrimps - Zek Fork Loaded!', '*spinner3');
+    debug('AutoTrimps - SadAugust Fork Loaded!', '*spinner3');
 }
 
 var changelogList = [];
@@ -44,13 +44,12 @@ function printChangelog() {
 }
 
 var runInterval = 100;
-var startupDelay = 4000;
+var startupDelay = 1000;
 
 setTimeout(delayStart, startupDelay);
 
 function delayStart() {
     initializeAutoTrimps();
-    printChangelog();
     setTimeout(delayStartAgain, startupDelay);
 }
 

@@ -1321,11 +1321,10 @@ function PraidHarder() {
         prestraidon = false;
         praidDone = true;
         debug("Failed to prestige raid. Looks like you can't afford to.");
-      } else {
-          debug("Turning AutoMaps back on");
-          autoTrimpSettings['AutoMaps'].value = 1;
-          game.options.menu.repeatUntil.enabled = 0;
-        }
+        debug("Turning AutoMaps back on");
+        autoTrimpSettings['AutoMaps'].value = 1;
+        game.options.menu.repeatUntil.enabled = 0;
+	
         return;
       }
     }
@@ -2161,7 +2160,6 @@ function RPraidHarder() {
     game.options.menu.repeatUntil.enabled = 0;
     autoTrimpSettings['RAutoMaps'].value = 1;    
     }
-  }
 
   if (!RpraidSetting.includes(game.global.world)) {
     Rprestraid = false;

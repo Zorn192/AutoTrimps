@@ -1395,8 +1395,8 @@ function RautoMap() {
 		var atlantrimp = [10000, 10000];
                 if (getPageSetting('Atlantrimp') == true && getPageSetting('ATZone') >= 0) atlantrimp[0] = getPageSetting('ATZone');
                 if (getPageSetting('Atlantrimp') == true && getPageSetting('ATCell') >= 0) atlantrimp[1] = getPageSetting('ATCell');
-                if (theMap.name == 'Atlantrimp' && (game.global.challengeActive != "Insanity" && game.global.world >= atlantrimp[0] && ((game.global.lastClearedCell + 1) >= atlantrimp[1]) && game.mapUnlocks.AncientTreasure.canRunOnce)) {
-		if (game.global.world < 33 || (game.global.world == 33 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.challengeActive == "Daily") || (game.global.runningChallengeSquared == true)) continue;
+                if (theMap.name == 'Atlantrimp' && (game.global.world >= atlantrimp[0] && ((game.global.lastClearedCell + 1) >= atlantrimp[1]) && game.mapUnlocks.AncientTreasure.canRunOnce)) {
+                if (game.global.world < 33 || (game.global.world == 33 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.challengeActive == "Daily") || (game.global.runningChallengeSquared == true)) continue;
                     selectedMap = theMap.id;
                     break;
                 }
@@ -1405,7 +1405,7 @@ function RautoMap() {
                 if (getPageSetting('MeltingPoint') == true && getPageSetting('MPZone') >= 0) meltingpoint[0] = getPageSetting('MPZone');
                 if (getPageSetting('MeltingPoint') == true && getPageSetting('MPCell') >= 0) meltingpoint[1] = getPageSetting('MPCell');
                 if (theMap.name == 'Melting Point' && (game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1]) || (getPageSetting('Rmeltsmithy') > 0 && getPageSetting('Rmeltsmithy') <= game.buildings.Smithy.owned && game.mapUnlocks.SmithFree.canRunOnce))) {
-		if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.challengeActive == "Daily") || (game.global.runningChallengeSquared == true)) continue;
+                if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.challengeActive == "Daily") || (game.global.runningChallengeSquared == true)) continue;
                     selectedMap = theMap.id;
                     break;
                 }

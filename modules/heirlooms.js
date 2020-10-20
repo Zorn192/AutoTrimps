@@ -435,10 +435,18 @@ function generateHeirloomIcon(heirloom, location, number){
 }
 
 //Radon
+function Rhsshieldinitial(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhsradname'))return loom;}
 function Rhsshield1(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhsh1'))return loom;}
 function Rhsshield2(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhsh2'))return loom;}
 function Rhsstaff1(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhst1'))return loom;}
 function Rhsstaff2(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhst2'))return loom;}
+
+function Rhsequipinit() {
+	if (Rhsshieldinitial() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhsradname')) {
+            selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
+            equipHeirloom();
+	}
+}
 function Rhsequip1() {
 	if (Rhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhsh1')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
@@ -465,7 +473,10 @@ function Rhsequip4() {
 }
 
 function Rheirloomswap() {
-	if (getPageSetting('Rhsh1') !== "undefined" && getPageSetting('Rhshz') > 0 && getPageSetting('Rhssh') != false && game.global.world < getPageSetting('Rhshz')) {
+	if (getPageSetting('Rhsradname') !== "undefined" && getPageSetting('Rhsradzone') > 0 && getPageSetting('Rhssh') != false && game.global.world < getPageSetting('Rhsradzone')) {
+	    Rhsequipinit();
+	}
+	if (getPageSetting('Rhsh1') !== "undefined" && getPageSetting('Rhshz') > 0 && getPageSetting('Rhssh') != false && (game.global.world < getPageSetting('Rhshz') && game.global.world > getPageSetting('Rhsradzone'))) {
 	    Rhsequip1();
 	}
 	if (getPageSetting('Rhsh2') !== "undefined" && getPageSetting('Rhshz') > 0 && getPageSetting('Rhssh') != false && game.global.world >= getPageSetting('Rhshz')) {

@@ -549,7 +549,7 @@ function RbuyJobs() {
     // Calculate how much of each worker we should have
     // If focused farming go all in for caches
     var allIn = "";
-    if (Rshouldtimefarmbogs || Rshouldtimefarm || Rshouldinsanityfarm) {
+    if (Rshouldtimefarmbogs || Rshouldtimefarm) {
         if (autoTrimpSettings.Rtimespecialselection.selected.includes('wc')) {
             allIn = "Lumberjack";
         } else if (autoTrimpSettings.Rtimespecialselection.selected.includes('sc')) {

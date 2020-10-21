@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         AutoTrimps-SA
-// @version      1.0-Zek
+// @version      1.0-SA
 // @namespace    https://SadAugust.github.io/AutoTrimps_Test
 // @updateURL    https://SadAugust.github.io/AutoTrimps_Test/.user.js
 // @description  Automate all the trimps!

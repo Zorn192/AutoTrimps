@@ -562,12 +562,7 @@ function RbuyJobs() {
     }
     if (Rshouldshipfarm) {
 	allIn = "Farmer";
-    }
-
-    if (Rshoulddopraid) {
-	allIn = "Miner";
-    }
-	
+    }	
 	
     var desiredRatios = [0,0,0,0];
     if (allIn != "") {

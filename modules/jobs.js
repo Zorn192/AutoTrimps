@@ -570,10 +570,6 @@ function RbuyJobs() {
 	
 	
     var desiredRatios = [0,0,0,0];
-	if (getPageSetting('NoFarmersAbove') = true && game.global.world >= getPageSetting('NoFarmerZone')) 
-	{
-	 var desiredRatios = [0,1,1,0];
-	}
     if (allIn != "") {
         desiredRatios[ratioWorkers.indexOf(allIn)] = 1;
     } else {

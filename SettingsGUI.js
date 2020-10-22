@@ -464,7 +464,12 @@ function initializeAllSettings() {
     createSetting('RLumberjackRatio', 'Lumberjack Ratio', '', 'value', '1', null, "Jobs");
     createSetting('RMinerRatio', 'Miner Ratio', '', 'value', '1', null, "Jobs");
     createSetting('RMaxExplorers', 'Max Explorers', 'Advanced. Cap your explorers (This is an absolute number not a ratio). recommend: -1', 'value', '-1', null, "Jobs");
-	
+    
+    //Maintaining ships
+    //document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('NoFarmersAbove', 'No Farmers Above zone', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');
+    createSetting('NoFarmerZone', 'NFA: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75','value', '-1', null, 'Jobs');
+    
     //Ships
     document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rshipfarmon', 'Ship Farming', 'Turn Ship Farming off or on. ', 'boolean', 'false', null, "Jobs");
@@ -1599,6 +1604,9 @@ function updateCustomButtons() {
     radonon ? turnOn("RMinerRatio") : turnOff("RMinerRatio");
     radonon ? turnOn("RMaxExplorers") : turnOff("RMaxExplorers");
     radonon ? turnOn("Rshipfarmon"): turnOff("Rshipfarmon");
+    radonon ? turnOn('NoFarmersAbove') : turnOff('NoFarmersAbove');
+    (radonon && getPageSetting('NoFarmersAbove') == true) ? turnOn("NoFarmerZone"): turnOff("NoFarmerZone");
+    //Ships
     (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmzone"): turnOff("Rshipfarmzone");
     (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmcell"): turnOff("Rshipfarmcell");
     (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmamount"): turnOff("Rshipfarmamount");

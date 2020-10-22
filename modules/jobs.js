@@ -595,6 +595,9 @@ function RbuyJobs() {
 
                 // get ratio from AT
                 desiredRatios[ratioWorkers.indexOf(worker)] = scientistMod * parseFloat(getPageSetting('R' + worker + 'Ratio'));
+                if (getPageSetting('NoFarmersAbove') == true && game.global.world >= getPageSetting('NoFarmerZone')) {
+	            desiredRatios[ratioWorkers.indexOf("Farmer")] = 0;
+	        }
             }
         }
     }

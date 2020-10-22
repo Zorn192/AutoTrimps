@@ -1962,6 +1962,8 @@ function updateCustomButtons() {
 	//Shields
     radonon && hson ? turnOn('Rhssh') : turnOff('Rhssh');
     var hsshon = (getPageSetting('Rhssh') == true);
+    radonon && hson && hsshon ? turnOn('Rhsradzone') : turnOff('Rhsradzone');
+    radonon && hson && hsshon ? turnOn('Rhsradname') : turnOff('Rhsradname');
     radonon && hson && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');
     radonon && hson && hsshon ? turnOn('Rhsh1') : turnOff('Rhsh1');
     radonon && hson && hsshon ? turnOn('Rhsh2') : turnOff('Rhsh2');

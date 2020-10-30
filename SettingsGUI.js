@@ -471,7 +471,7 @@ function initializeAllSettings() {
     createSetting('NoFarmerZone', 'NFA: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75','value', '-1', null, 'Jobs');
     
     //Ships
-    document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('NoFarmerZone').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rshipfarmon', 'Ship Farming', 'Turn Ship Farming off or on. ', 'boolean', 'false', null, "Jobs");
     createSetting('Rshipfarmzone', 'SF: Zone', 'Farms for specified worshippers in SF: Amount at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Jobs');
     createSetting('Rshipfarmcell', 'SF: Cell', 'Ship Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Jobs');

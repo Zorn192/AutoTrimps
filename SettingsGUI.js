@@ -466,7 +466,7 @@ function initializeAllSettings() {
     createSetting('RMaxExplorers', 'Max Explorers', 'Advanced. Cap your explorers (This is an absolute number not a ratio). recommend: -1', 'value', '-1', null, "Jobs");
     
     //Maintaining ships
-    //document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('NoFarmersAbove', 'No Farmers Above zone', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');
     createSetting('NoFarmerZone', 'NFA: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75','value', '-1', null, 'Jobs');
     

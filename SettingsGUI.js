@@ -432,6 +432,7 @@ function initializeAllSettings() {
     //Line 2
     createSetting('RMaxCollector', 'Max Collectors', 'recommend: -1', 'value', '-1', null, "Buildings");
     createSetting('RMaxTribute', 'Max Tributes', 'Advanced. recommend: -1 ', 'value', '-1', null, "Buildings");
+    createSetting('RSpendTribute', 'Tribute spending percent', 'Advanced. recommend: -1 ', 'value', '-1', null, "Buildings");
     createSetting('Rmeltsmithy', 'Melt Smithy', 'Run the Melting Point Map to gain one extra Smithy when at or above this value. ', 'value', '-1', null, "Buildings");
     createSetting('Rsmithylogic', 'Smithy Savings', '<b>ABSOLUTELY WILL NOT WORK IN TESTING!</b><br>Uses Smithy Saving logic when this is turned on. Make sure every SS setting is set above 0 or it wont work. This feature will stop using resources on items needed for Smithy when you have reached the targets you have selected.', 'boolean', 'false', null, "Buildings");
     createSetting('Rsmithynumber', 'SS: Number', 'Start SS at this number of Smithys. I.e 9, will buy anything regardless of Smithy before having 9 Smithys. After 9 has been reached will start to save up for them. ', 'value', '-1', null, "Buildings");
@@ -464,7 +465,7 @@ function initializeAllSettings() {
     createSetting('RLumberjackRatio', 'Lumberjack Ratio', '', 'value', '1', null, "Jobs");
     createSetting('RMinerRatio', 'Miner Ratio', '', 'value', '1', null, "Jobs");
     createSetting('RMaxExplorers', 'Max Explorers', 'Advanced. Cap your explorers (This is an absolute number not a ratio). recommend: -1', 'value', '-1', null, "Jobs");
-    
+    createSetting('Rshipspending', 'Ship percentage', 'What percentage of owned food to spend on Worshippers. -1 for infinite or value between 1-100 for lower.', 'value', '-1', null, "Jobs");
     //Maintaining ships
     document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('NoFarmersAbove', 'No Farmers Above zone', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');
@@ -1576,6 +1577,7 @@ function updateCustomButtons() {
     radonon ? turnOn("RMaxGateway") : turnOff("RMaxGateway");
     radonon ? turnOn("RMaxCollector") : turnOff("RMaxCollector");
     radonon ? turnOn("RMaxTribute") : turnOff("RMaxTribute");
+    radonon ? turnOn("RSpendTribute") : turnOff("RSpendTribute");
     radonon ? turnOn("Rmeltsmithy") : turnOff("Rmeltsmithy");
     radonon ? turnOn("Rsmithylogic") : turnOff("Rsmithylogic");
     (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithynumber") : turnOff("Rsmithynumber");
@@ -1603,6 +1605,7 @@ function updateCustomButtons() {
     radonon ? turnOn("RLumberjackRatio") : turnOff("RLumberjackRatio");
     radonon ? turnOn("RMinerRatio") : turnOff("RMinerRatio");
     radonon ? turnOn("RMaxExplorers") : turnOff("RMaxExplorers");
+    radonon ? turnOn("Rshipspending") : turnOff("Rshipspending");
     radonon ? turnOn("Rshipfarmon"): turnOff("Rshipfarmon");
     radonon ? turnOn('NoFarmersAbove') : turnOff('NoFarmersAbove');
     (radonon && getPageSetting('NoFarmersAbove') == true) ? turnOn("NoFarmerZone"): turnOff("NoFarmerZone");

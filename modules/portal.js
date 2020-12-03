@@ -349,6 +349,7 @@ function RautoPortal() {
 	case "Quagmire":
 	case "Archaeology":
 	case "Insanity":
+	case "Nurture":
             if (!game.global.challengeActive) {
                 RdoPortal(autoTrimpSettings.RAutoPortal.selected);
             }

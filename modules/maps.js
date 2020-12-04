@@ -1035,12 +1035,12 @@ function RautoMap() {
     timefarmcell2 = ((getPageSetting('Rtimefarmcell2') > 0) ? getPageSetting('Rtimefarmcell2') : 1);
     Rtimefarm2 = (getPageSetting('Rtimefarm2') == true && ((timefarmcell2 <= 1) || (timefarmcell2 > 1 && (game.global.lastClearedCell + 1) >= timefarmcell2)) && game.global.world > 5 && (game.global.challengeActive != "Daily" && getPageSetting('Rtimefarmzone2')[0] > 0 && getPageSetting('Rtimefarmtime2')[0] > 0));
     if (Rtimefarm2) {
-        var timefarmzone;
-        var timefarmtime;
-        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
+        var timefarmzone2;
+        var timefarmtime2;
+        var time2 = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
 
-        timefarmzone = getPageSetting('Rtimefarmzone2');
-        timefarmtime = getPageSetting('Rtimefarmtime2');
+        timefarmzone2 = getPageSetting('Rtimefarmzone2');
+        timefarmtime2 = getPageSetting('Rtimefarmtime2');
 
         var timefarmindex2 = timefarmzone2.indexOf(game.global.world);
         var timezones2 = timefarmtime2[timefarmindex2];
@@ -1051,7 +1051,7 @@ function RautoMap() {
 
         if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog2') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones > time) {
             Rshouldtimefarmbogs = true;
-        } else if (timefarmzone.includes(game.global.world) && timezones > time) {
+        } else if (timefarmzone2.includes(game.global.world) && timezones > time) {
             Rshouldtimefarm = true;
         }
 

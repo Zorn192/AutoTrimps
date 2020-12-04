@@ -750,7 +750,9 @@ var RvanillaMapatZone = !1;
 var Rtimefarm = !1;
 var RadditionalCritMulti = 2 < getPlayerCritChance() ? 25 : 5;
 var Rshouldtimefarm = !1;
+var Rshouldtimefarm2 = !1;
 var Rshouldtimefarmbogs = !1;
+var Rshouldtimefarmbogs2 = !1;
 var Rshoulddobogs = false;
 var Rshoulddopraid = false;
 var Rshoulddoquest = false;
@@ -815,6 +817,7 @@ function RupdateAutoMapsStatus(get) {
     else if (Rshouldtimefarm) status = 'Time Farming';
     else if (Rshouldtimefarm2) status = 'Time Farming2';
     else if (Rshouldtimefarmbogs) status = 'Time Farming Bogs';
+    else if (Rshouldtimefarmbogs2) status = 'Time Farming Bogs';
     else if (Rshoulddobogs) status = 'Black Bogs';
     else if (RdoMaxMapBonus) status = 'Max Map Bonus After Zone';
     else if (!game.global.mapsUnlocked) status = '&nbsp;';
@@ -962,7 +965,9 @@ function RautoMap() {
     var selectedMap = "world";
     RshouldDoMaps = false;
     Rshouldtimefarm = false;
+    Rshouldtimefarm2 = false;
     Rshouldtimefarmbogs = false;
+    Rshouldtimefarmbogs2 = false;
     Rshouldinsanityfarm = false;
     Rshouldstormfarm = false;
     Rshouldequipfarm = false;
@@ -1015,6 +1020,36 @@ function RautoMap() {
         }
 
         if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones > time) {
+            Rshouldtimefarmbogs = true;
+        } else if (timefarmzone.includes(game.global.world) && timezones > time) {
+            Rshouldtimefarm = true;
+        }
+
+        if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog') == true && timefarmzone.includes(70) && game.global.world == 70 && game.global.mapsActive && game.global.mapsOwnedArray[getMapIndex(game.global.currentMapId)].name == "The Black Bog" && (Rshouldtimefarmbogs && game.global.lastClearedMapCell >= 140 || timezones <= time)) {
+            mapsClicked(true);
+        }
+    }
+	
+    //Time Farm2
+    var timefarmcell;
+    timefarmcell = ((getPageSetting('Rtimefarmcell2') > 0) ? getPageSetting('Rtimefarmcell2') : 1);
+    Rtimefarm2 = (getPageSetting('Rtimefarm2') == true && ((timefarmcell2 <= 1) || (timefarmcell2 > 1 && (game.global.lastClearedCell + 1) >= timefarmcell2)) && game.global.world > 5 && (game.global.challengeActive != "Daily" && getPageSetting('Rtimefarmzone2')[0] > 0 && getPageSetting('Rtimefarmtime2')[0] > 0));
+    if (Rtimefarm2) {
+        var timefarmzone;
+        var timefarmtime;
+        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
+
+        timefarmzone = getPageSetting('Rtimefarmzone2');
+        timefarmtime = getPageSetting('Rtimefarmtime2');
+
+        var timefarmindex2 = timefarmzone2.indexOf(game.global.world);
+        var timezones2 = timefarmtime2[timefarmindex2];
+
+        if (getPageSetting('Rtimefarmtribute2') == true) {
+            time = game.buildings.Tribute.owned
+        }
+
+        if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog2') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones > time) {
             Rshouldtimefarmbogs = true;
         } else if (timefarmzone.includes(game.global.world) && timezones > time) {
             Rshouldtimefarm = true;

@@ -1699,6 +1699,7 @@ function updateCustomButtons() {
     radonon ? turnOn("Rmapcuntoff"): turnOff("Rmapcuntoff");
     radonon ? turnOn("RDisableFarm"): turnOff("RDisableFarm");
     radonon ? turnOn("Rtimefarm"): turnOff("Rtimefarm");
+    radonon ? turnOn("Rtimefarm2"): turnOff("Rtimefarm2");
     
     //Melting Points
     var mpon = (getPageSetting('MeltingPoint') == true);
@@ -1720,6 +1721,18 @@ function updateCustomButtons() {
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimemapselection"): turnOff("Rtimemapselection");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimespecialselection"): turnOff("Rtimespecialselection");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimegatherselection"): turnOff("Rtimegatherselection");
+    //Time Farming 2
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmzone2"): turnOff("Rtimefarmzone2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmcell2"): turnOff("Rtimefarmcell2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmtribute2"): turnOff("Rtimefarmtribute2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmbog2"): turnOff("Rtimefarmbog2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmtime2"): turnOff("Rtimefarmtime2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimemaplevel2"): turnOff("Rtimemaplevel2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimemapselection2"): turnOff("Rtimemapselection2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimespecialselection2"): turnOff("Rtimespecialselection2");
+    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimegatherselection2"): turnOff("Rtimegatherselection2");
+	
+
     radonon ? turnOn("RVoidMaps"): turnOff("RVoidMaps");
     radonon ? turnOn("Rvoidscell"): turnOff("Rvoidscell");
     radonon ? turnOn("RRunNewVoidsUntilNew"): turnOff("RRunNewVoidsUntilNew");

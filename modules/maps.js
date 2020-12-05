@@ -2236,7 +2236,7 @@ function RautoMap() {
             if (Rshouldtimefarm2 && !Rshouldtimefarm && !Rshoulddoquest) {
                 if (getPageSetting('Rtimemaplevel2') != 0) {
 
-                    var timefarmlevel = getPageSetting('Rtimemaplevel2');
+                    var timefarmlevel2 = getPageSetting('Rtimemaplevel2');
 
                     var timefarmlevelindex2 = timefarmzone2.indexOf(game.global.world);
                     var levelzones2 = timefarmlevel2[timefarmlevelindex2];

@@ -1038,7 +1038,7 @@ function RautoMap() {
     if (Rtimefarm2) {
         var timefarmzone2;
         var timefarmtime2;
-        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
+        var time2 = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
 
         timefarmzone2 = getPageSetting('Rtimefarmzone2');
         timefarmtime2 = getPageSetting('Rtimefarmtime2');
@@ -1052,7 +1052,7 @@ function RautoMap() {
 
         if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog2') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones2 > time) {
             Rshouldtimefarmbogs = true;
-        } else if (timefarmzone2.includes(game.global.world) && timezones2 > time) {
+        } else if (timefarmzone2.includes(game.global.world) && timezones2 > time2) {
             Rshouldtimefarm = true;
         }
 

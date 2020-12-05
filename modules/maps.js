@@ -2238,8 +2238,8 @@ function RautoMap() {
 
                     var timefarmlevel = getPageSetting('Rtimemaplevel2');
 
-                    var timefarmlevelindex = timefarmzone2.indexOf(game.global.world);
-                    var levelzones = timefarmlevel2[timefarmlevelindex2];
+                    var timefarmlevelindex2 = timefarmzone2.indexOf(game.global.world);
+                    var levelzones2 = timefarmlevel2[timefarmlevelindex2];
 
                     if (timefarmzone2.includes(game.global.world)) {
                         if (levelzones2 > 0) {

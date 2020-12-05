@@ -2242,10 +2242,10 @@ function RautoMap() {
                     var levelzones = timefarmlevel2[timefarmlevelindex2];
 
                     if (timefarmzone2.includes(game.global.world)) {
-                        if (levelzones > 0) {
+                        if (levelzones2 > 0) {
                             $mapLevelInput.value = game.global.world;
-                            document.getElementById("advExtraLevelSelect").value = levelzones;
-                        } else if (levelzones < 0) {
+                            document.getElementById("advExtraLevelSelect").value = levelzones2;
+                        } else if (levelzones2 < 0) {
                             $mapLevelInput.value = (game.global.world - 1);
                         }
                     }

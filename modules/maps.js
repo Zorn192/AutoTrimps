@@ -1053,7 +1053,7 @@ function RautoMap() {
         if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog2') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones2 > time) {
             Rshouldtimefarmbogs = true;
         } else if (timefarmzone2.includes(game.global.world) && timezones2 > time2) {
-            Rshouldtimefarm = true;
+            Rshouldtimefarm2 = true;
         }
 
         if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog') == true && timefarmzone.includes(70) && game.global.world == 70 && game.global.mapsActive && game.global.mapsOwnedArray[getMapIndex(game.global.currentMapId)].name == "The Black Bog" && (Rshouldtimefarmbogs && game.global.lastClearedMapCell >= 140 || timezones2 <= time)) {

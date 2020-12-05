@@ -192,6 +192,9 @@ function RmanualLabor2() {
     }
     else if (Rshouldshipfarm) {
 	     setGather('food');
+    }    
+    else if (Rshouldtimefarm2) {
+	     setGather('metal');
     }
     else if ((Rshouldtimefarm || Rshouldtimefarmbogs || Rshouldinsanityfarm) && autoTrimpSettings.Rtimegatherselection.selected == "Food") {
 	     setGather('food');

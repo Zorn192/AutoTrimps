@@ -1037,7 +1037,7 @@ function RautoMap() {
     if (Rtimefarm2) {
         var timefarmzone2;
         var timefarmtime2;
-        var time2 = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
+        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
 
         timefarmzone2 = getPageSetting('Rtimefarmzone2');
         timefarmtime2 = getPageSetting('Rtimefarmtime2');
@@ -1049,13 +1049,13 @@ function RautoMap() {
             time = game.buildings.Tribute.owned
         }
 
-        if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog2') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones > time) {
+        if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog2') == true && timefarmzone.includes(70) && game.global.world == 70 && timezones2 > time) {
             Rshouldtimefarmbogs = true;
-        } else if (timefarmzone2.includes(game.global.world) && timezones > time) {
+        } else if (timefarmzone2.includes(game.global.world) && timezones2 > time) {
             Rshouldtimefarm = true;
         }
 
-        if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog') == true && timefarmzone.includes(70) && game.global.world == 70 && game.global.mapsActive && game.global.mapsOwnedArray[getMapIndex(game.global.currentMapId)].name == "The Black Bog" && (Rshouldtimefarmbogs && game.global.lastClearedMapCell >= 140 || timezones <= time)) {
+        if (game.global.challengeActive == "Quagmire" && getPageSetting('Rtimefarmbog') == true && timefarmzone.includes(70) && game.global.world == 70 && game.global.mapsActive && game.global.mapsOwnedArray[getMapIndex(game.global.currentMapId)].name == "The Black Bog" && (Rshouldtimefarmbogs && game.global.lastClearedMapCell >= 140 || timezones2 <= time)) {
             mapsClicked(true);
         }
     }
@@ -1688,17 +1688,17 @@ function RautoMap() {
                 } else if (getPageSetting('Rtimemaplevel2') != 0) {
                     var timefarmlevel2 = getPageSetting('Rtimemaplevel2');
                     var timefarmlevelindex2 = timefarmzone2.indexOf(game.global.world);
-                    var levelzones = timefarmlevel2[timefarmlevelindex2];
-                    if (levelzones > 0) {
+                    var levelzones2 = timefarmlevel2[timefarmlevelindex2];
+                    if (levelzones2 > 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + levelzones) == game.global.mapsOwnedArray[map].level)) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + levelzones2) == game.global.mapsOwnedArray[map].level)) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
                                 selectedMap = "create";
                             }
                         }
-                    } else if (levelzones == 0) {
+                    } else if (levelzones2 == 0) {
                         for (var map in game.global.mapsOwnedArray) {
                             if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
@@ -1707,7 +1707,7 @@ function RautoMap() {
                                 selectedMap = "create";
                             }
                         }
-                    } else if (levelzones < 0) {
+                    } else if (levelzones2 < 0) {
                         for (var map in game.global.mapsOwnedArray) {
                             if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world - 1) == game.global.mapsOwnedArray[map].level)) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;

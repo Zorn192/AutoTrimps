@@ -748,6 +748,7 @@ var RlastMapWeWereIn = null;
 var RdoMaxMapBonus = !1;
 var RvanillaMapatZone = !1;
 var Rtimefarm = !1;
+var Rtimefarm2 = !1;
 var RadditionalCritMulti = 2 < getPlayerCritChance() ? 25 : 5;
 var Rshouldtimefarm = !1;
 var Rshouldtimefarm2 = !1;

@@ -1034,7 +1034,7 @@ function RautoMap() {
     //Time Farm2
     var timefarmcell2;
     timefarmcell2 = ((getPageSetting('Rtimefarmcell2') > 0) ? getPageSetting('Rtimefarmcell2') : 1);
-    Rtimefarm2 = (getPageSetting('Rtimefarm2') == true && ((timefarmcell2 <= 1) || (timefarmcell2 > 1 && (game.global.lastClearedCell + 1) >= timefarmcell2)) && game.global.world > 5 && (game.global.challengeActive != "Daily" && getPageSetting('Rtimefarmzone2')[0] > 0 && getPageSetting('Rtimefarmtime2')[0] > 0));
+    Rtimefarm2 = (getPageSetting('Rtimefarm2') == true && ((timefarmcell2 <= 1) || (timefarmcell2 > 1 && (game.global.lastClearedCell + 1) >= timefarmcell2)) && game.global.world > 5 && (getPageSetting('Rtimefarmzone2')[0] > 0 && getPageSetting('Rtimefarmtime2')[0] > 0));
     if (Rtimefarm2) {
         var timefarmzone2;
         var timefarmtime2;

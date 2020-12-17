@@ -465,7 +465,7 @@ function initializeAllSettings() {
     createSetting('RLumberjackRatio', 'Lumberjack Ratio', '', 'value', '1', null, "Jobs");
     createSetting('RMinerRatio', 'Miner Ratio', '', 'value', '1', null, "Jobs");
     createSetting('RMaxExplorers', 'Max Explorers', 'Advanced. Cap your explorers (This is an absolute number not a ratio). recommend: -1', 'value', '-1', null, "Jobs");
-    createSetting('Rshipspending', 'Ship percentage', 'What percentage of owned food to spend on Worshippers. -1 for infinite or value between 1-100 for lower.', 'value', '-1', null, "Jobs");
+    createSetting('Rshipspending', 'Ship percentage', 'What percentage of owned food to spend on Worshippers. -1 for 100% or value between 1-100 for lower.', 'value', '-1', null, "Jobs");
     //Maintaining ships
     document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('NoFarmersAbove', 'No Farmers Above zone', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');

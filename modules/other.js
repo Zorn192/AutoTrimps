@@ -3599,7 +3599,7 @@ var fastimps =
 	"Cthulimp",
 	"Omnipotrimp",
 	"Mutimp",
-	"Hulking Mutimp",
+	"Hulking_Mutimp",
 	"Liquimp",
 	"Poseidimp",
 	"Horrimp",
@@ -3612,20 +3612,20 @@ var fastimps =
 function Rmanageequality() {
 
     if (!(game.global.challengeActive == "Exterminate" && getPageSetting('Rexterminateon') == true && getPageSetting('Rexterminateeq') == true && !game.global.mapsActive)) {
-        if (fastimps.includes(getCurrentEnemy().name) || (game.global.mapsActive && getCurrentMapObject().location == "Void")) {
+        if (fastimps.includes(getCurrentEnemy().name) || (game.global.mapsActive && getCurrentMapObject().location == "Void") || (game.portal.Frenzy.frenzyStarted == "-1")) {
             if (!game.portal.Equality.scalingActive) {
                 game.portal.Equality.scalingActive = true;
                 manageEqualityStacks();
                 updateEqualityScaling();
             }
         } else {
-            if (game.portal.Equality.scalingActive) {
+            if ((game.portal.Equality.scalingActive) && (game.portal.Frenzy.frenzyStarted != "-1")) {
                 game.portal.Equality.scalingActive = false;
                 game.portal.Equality.disabledStackCount = "0";
                 manageEqualityStacks();
                 updateEqualityScaling();
             }
-        }
+        } 
     }
 
     else if (game.global.challengeActive == "Exterminate" && getPageSetting('Rexterminateon') == true && getPageSetting('Rexterminateeq') == true && !game.global.mapsActive) {

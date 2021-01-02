@@ -830,19 +830,19 @@ function initializeAllSettings() {
     
     //Shield swapping
     document.getElementById('Rhs').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rhssh', 'Shields', 'Toggle to swap Shields', 'boolean', false, null, 'Heirlooms');
-    //createSetting('Rhsradzone', 'HS: Initial zone', '-1 to disable. When to swap from high VMDC to the heirloom defined in HS: Zone. Use it like this: 50,91. The first number is what zone to swap shields at, the second number is what Cell to swap them at. In this example AT would swap shields at z50 cell 91. Must define both values.', 'multiValue', [-1], null, 'Heirlooms');
-    createSetting('Rhsradzone', 'HS: Initial zone', 'When to swap from high VMDC to the heirloom defined in HS: Zone', 'value', '-1', null, 'Heirlooms');
-    createSetting('Rhsradname', 'HS: Initial name', '<b>Initial Heirloom to use</b><br><br>Enter the name of your initial high VMDC heirloom. This is the heirloom that you will use before swapping to the heirloom at the zone you have defined in HS: Initial zone.', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhshz', 'HS: Zone', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Heirlooms');
-    createSetting('Rhsh1', 'HS: First', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhsh2', 'HS: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhsshield', 'Shields', 'Toggle to swap Shields', 'boolean', false, null, 'Heirlooms');
+    createSetting('Rhshighvmdc', 'HS: Initial name', '<b>Initial Heirloom to use</b><br><br>Enter the name of your initial high VMDC heirloom. This is the heirloom that you will use before swapping to the heirloom at the zone you have defined in HS: Initial zone.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhshighvmdczone', 'HS: Initial zone', 'When to swap from high VMDC to the heirloom defined in HS: Zone', 'value', '-1', null, 'Heirlooms');
+    createSetting('Rhslowvmdc', 'HS: First', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhsnovmdc', 'HS: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhshzone', 'HS: Zone', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Heirlooms');
     
     //Staff swapping
-    document.getElementById('Rhsh2').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rhsst', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
-    createSetting('Rhst1', 'World Staff', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhst2', 'Map Staff', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
+    document.getElementById('Rhshzone').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rhsstaff', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
+    createSetting('Rhsworldstaff', 'World Staff', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhsmapstaff', 'Map Staff', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhstributestaff', 'Tribute Staff', '<b>Tribute farming staff</b><br><br>Enter the name of the staff you would like to equip during tribute farming.', 'textValue', 'undefined', null, 'Heirlooms');
 
     /*//Nu Line disabled due to being annoying
     document.getElementById('lowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -857,7 +857,7 @@ function initializeAllSettings() {
     createSetting('slot6nu', 'Slot 6', 'Slot 6 of your Heirloom', 'value', '-1', null, 'Heirlooms');
 */
     //Heirloom Line
-    document.getElementById('Rhst2').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rhstributestaff').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('autoheirlooms', 'Auto Heirlooms', 'Auto Heirlooms master button. Turn this on to enable all Auto Heirloom settings. <br><br><b>The Modifier points will be explained here.</b> The more points an heirloom has, the better chance it has of being kept. If empty is selected, it will muliplty the score by 4. If any is selected, it will multiply the score of the heirloom by 2. <br><br>E.g Mod 1 = CC (+6 if dropped, 1st modifier) <br>Mod 2 = CD (+5 if dropped, 2nd modifier) <br>Mod 3 = PB (+4 if dropped, 3rd modifier) <br>Mod 4 = Empty (x4 if dropped, +0 if not) <br>Mod 5 = Empty (x4 if dropped, +0 if not) <br><br>If an heirloom dropped with these exact modifiers, it would get a score of 192 (6+5+4*4*4=240). The highest point heirlooms will be kept. ', 'boolean', false, null, 'Heirlooms');
     createSetting('typetokeep', ['None', 'Shields', 'Staffs', 'Cores', 'All'], '<b>Shields: </b>Keeps Shields and nothing else.<br><b>Staffs: </b>Keeps Staffs and nothing else.<br><b>Cores: </b>Keeps Cores and nothing else.<br><b>All: </b>Keeps 4 Shields and 3 Staffs and 3 Cores. If you have protected heirlooms in your inventory it will overrite one slot. E.g if one heirloom is protected, you will keep 4 Shields and 3 Staffs and 2 Cores. ', 'multitoggle', 0, null, 'Heirlooms');
     createSetting('raretokeep', 'Rarity to Keep', 'Auto Heirlooms. Keeps the selected rarity of heirloom, recycles all others. ', 'dropdown', 'Any', ["Any", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Magnificent", "Ethereal", "Magmatic", "Plagued", "Radiating", "Hazardous"], 'Heirlooms');
@@ -1970,18 +1970,19 @@ function updateCustomButtons() {
     radonon ? turnOn('Rhs') : turnOff('Rhs');
     var hson = (getPageSetting('Rhs') == true);
 	//Shields
-    radonon && hson ? turnOn('Rhssh') : turnOff('Rhssh');
-    var hsshon = (getPageSetting('Rhssh') == true);
-    radonon && hson && hsshon ? turnOn('Rhsradzone') : turnOff('Rhsradzone');
-    radonon && hson && hsshon ? turnOn('Rhsradname') : turnOff('Rhsradname');
-    radonon && hson && hsshon ? turnOn('Rhshz') : turnOff('Rhshz');
-    radonon && hson && hsshon ? turnOn('Rhsh1') : turnOff('Rhsh1');
-    radonon && hson && hsshon ? turnOn('Rhsh2') : turnOff('Rhsh2');
+    radonon && hson ? turnOn('Rhsshield') : turnOff('Rhsshield');
+    var hsshieldon = (getPageSetting('Rhsshield') == true);
+    radonon && hson && hsshieldon ? turnOn('Rhshighvmdc') : turnOff('Rhshighvmdc');
+    radonon && hson && hsshieldon ? turnOn('Rhshighvmdczone') : turnOff('Rhshighvmdczone');
+    radonon && hson && hsshieldon ? turnOn('Rhslowvmdc') : turnOff('Rhslowvmdc');
+    radonon && hson && hsshieldon ? turnOn('Rhsnovmdc') : turnOff('Rhsnovmdc');
+    radonon && hson && hsshieldon ? turnOn('Rhshzone') : turnOff('Rhshzone');
 	//Staffs
-    radonon && hson ? turnOn('Rhsst') : turnOff('Rhsst');
-    var hsston = (getPageSetting('Rhsst') == true);
-    radonon && hson && hsston ? turnOn('Rhst1') : turnOff('Rhst1');
-    radonon && hson && hsston ? turnOn('Rhst2') : turnOff('Rhst2');
+    radonon && hson ? turnOn('Rhsstaff') : turnOff('Rhsstaff');
+    var hsstaffon = (getPageSetting('Rhsstaff') == true);
+    radonon && hson && hsstaffon ? turnOn('Rhsworldstaff') : turnOff('Rhsworldstaff');
+    radonon && hson && hsstaffon ? turnOn('Rhsmapstaff') : turnOff('Rhsmapstaff');
+    radonon && hson && hsstaffon ? turnOn('Rhstributestaff') : turnOff('Rhstributestaff');
 
     var autoheirloomenable = (getPageSetting('autoheirlooms') == true);
     var keepshieldenable = (autoheirloomenable && getPageSetting('keepshields') == true);

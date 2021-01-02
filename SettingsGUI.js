@@ -2020,7 +2020,6 @@ function updateCustomButtons() {
     document.getElementById('mapselection').value = autoTrimpSettings.mapselection.selected;
     document.getElementById('Rmapselection').value = autoTrimpSettings.Rmapselection.selected;
     document.getElementById('Rtributespecialselection').value = autoTrimpSettings.Rtributespecialselection.selected;
-    document.getElementById('Rtimemapselection').value = autoTrimpSettings.Rtimemapselection.selected;
     document.getElementById('Rtimespecialselection').value = autoTrimpSettings.Rtimespecialselection.selected;
     document.getElementById('Rtimegatherselection').value = autoTrimpSettings.Rtimegatherselection.selected;
     document.getElementById('Prestige').value = autoTrimpSettings.Prestige.selected;

@@ -493,10 +493,10 @@ function Rheirloomswap() {
 	if (getPageSetting('Rhsworldstaff') != "undefined" && getPageSetting('Rhsstaff') != false && game.global.mapsActive == false) {
 	    Rhsworldstaffequip();
 	}
-	if (getPageSetting('Rhsmapstaff') != "undefined" && getPageSetting('Rhsstaff') != false && game.global.mapsActive == true && Rshouldtributefarm = false) {
+	if (getPageSetting('Rhsmapstaff') != "undefined" && getPageSetting('Rhsstaff') != false && Rshouldtributefarm == false && game.global.mapsActive == true) {
 	    Rhsmapstaffequip();
 	}
-	if (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') != false && Rshouldtributefarm = true && game.global.mapsActive == true) {
+	if (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') != false && Rshouldtributefarm == true && game.global.mapsActive == true) {
 	    Rhstributestaffequip();
 	}
 }

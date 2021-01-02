@@ -304,12 +304,7 @@ function mainLoop() {
             if (getPageSetting('RPraidingzone').length && game.global.challengeActive != "Daily") RPraiding();
             if (getPageSetting('RdPraidingzone').length && game.global.challengeActive == "Daily") RdailyPraiding();
         }
-        if (((getPageSetting('RBWraid') && game.global.challengeActive != "Daily") || (getPageSetting('RDailybwraid') && game.global.challengeActive == "Daily"))) {
-        RBWraiding()
-        }
-        if ((getPageSetting('RBWraid') == true || getPageSetting('RDailyBWraid') == true) && Rbwraidon) RbuyWeps();
-        if (game.global.mapsActive && getPageSetting('RBWraid') == true && game.global.world == getPageSetting('RBWraidingz') && getCurrentMapObject().level <= getPageSetting('RBWraidingmax')) RbuyWeps();
-    
+        
 	//RHeirlooms
 	if (getPageSetting('Rhs') == true) {
 	    Rheirloomswap();

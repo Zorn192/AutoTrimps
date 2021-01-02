@@ -1996,8 +1996,6 @@ function RPraidHarder() {
   if (game.global.challengeActive == "Daily") {
     RpraidSetting = getPageSetting('RdPraidingzone');
     maxPraidZSetting = getPageSetting('RdMaxPraidZone');
-    farmFragments = getPageSetting('RdPraidFarmFragsZ').includes(game.global.world);
-    praidBeforeFarm = getPageSetting('RdPraidBeforeFarmZ').includes(game.global.world);
   }
   else {
     RpraidSetting = getPageSetting('RPraidingzone');

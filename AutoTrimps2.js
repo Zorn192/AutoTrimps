@@ -1,4 +1,4 @@
-var ATversion='SA v4.4.0',atscript=document.getElementById('AutoTrimps-script'),basepath='https://SadAugust.github.io/AutoTrimps_Test/',modulepath='modules/';null!==atscript&&(basepath=atscript.src.replace(/AutoTrimps2\.js$/,''));
+var ATversion='Zek v4.4.0',atscript=document.getElementById('AutoTrimps-script'),basepath='https://SadAugust.github.io/AutoTrimps_Test/',modulepath='modules/';null!==atscript&&(basepath=atscript.src.replace(/AutoTrimps2\.js$/,''));
 function ATscriptLoad(a,b){null==b&&debug('Wrong Syntax. Script could not be loaded. Try ATscriptLoad(modulepath, \'example.js\'); ');var c=document.createElement('script');null==a&&(a=''),c.src=basepath+a+b+'.js',c.id=b+'_MODULE',document.head.appendChild(c)}
 function ATscriptUnload(a){var b=document.getElementById(a+"_MODULE");b&&(document.head.removeChild(b),debug("Removing "+a+"_MODULE","other"))}
 ATscriptLoad(modulepath, 'utils');
@@ -299,7 +299,7 @@ function mainLoop() {
 	if (getPageSetting('Rmanageequality') == true && game.global.fighting) Rmanageequality();
     
         //RRaiding
-        if ((getPageSetting('RPraidHarder') == true && getPageSetting('RPraidingzone').length > 0 && game.global.challengeActive != "Daily") || (getPageSetting('RdPraidingzone').length > 0) && (game.global.challengeActive == "Daily") RPraidHarder();
+        if ((getPageSetting('RPraidHarder') == true && getPageSetting('RPraidingzone').length > 0 && game.global.challengeActive != "Daily") || (getPageSetting('RdPraidingzone').length > 0 && game.global.challengeActive == "Daily") RPraidHarder();
         else {
             if (getPageSetting('RPraidingzone').length && game.global.challengeActive != "Daily") RPraiding();
             if (getPageSetting('RdPraidingzone').length && game.global.challengeActive == "Daily") RdailyPraiding();

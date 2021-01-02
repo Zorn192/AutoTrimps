@@ -2212,22 +2212,22 @@ function RautoMap() {
             if (Rshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest) {
                 if (getPageSetting('Rtimemaplevel') != 0) {
 
-                    var timefarmlevel2 = getPageSetting('Rtimemaplevel2');
+                    var timefarmlevel = getPageSetting('Rtimemaplevel');
 
-                    var timefarmlevelindex2 = timefarmzone2.indexOf(game.global.world);
-                    var levelzones2 = timefarmlevel2[timefarmlevelindex2];
+                    var timefarmlevelindex = timefarmzone.indexOf(game.global.world);
+                    var levelzones = timefarmlevel[timefarmlevelindex];
 
-                    if (timefarmzone2.includes(game.global.world)) {
-                        if (levelzones2 > 0) {
+                    if (timefarmzone.includes(game.global.world)) {
+                        if (levelzones > 0) {
                             $mapLevelInput.value = game.global.world;
-                            document.getElementById("advExtraLevelSelect").value = levelzones2;
-                        } else if (levelzones2 < 0) {
+                            document.getElementById("advExtraLevelSelect").value = levelzones;
+                        } else if (levelzones < 0) {
                             $mapLevelInput.value = (game.global.world - 1);
                         }
                     }
                 }
-                biomeAdvMapsSelect.value = autoTrimpSettings.Rtimemapselection2.selected;
-                document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rtimespecialselection2.selected;
+                biomeAdvMapsSelect.value = autoTrimpSettings.Rtimemapselection.selected;
+                document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rtimespecialselection.selected;
                 updateMapCost();
             }
             if (Rshoulddoquest) {

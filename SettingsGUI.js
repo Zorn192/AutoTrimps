@@ -1516,7 +1516,7 @@ function updateCustomButtons() {
 
     //RDRaid
     radonon ? turnOn("RdPraidingzone"): turnOff("RdPraidingzone");
-    radonon ? turnOn("RdMaxPraidZone") : turnOff("RdMaxPraidZone");
+    radonon ? turnOn("RdMaxPraidZone"): turnOff("RdMaxPraidZone");
     
     //RDPortal
     radonon ? turnOn("RAutoStartDaily"): turnOff("RAutoStartDaily");

@@ -2205,7 +2205,7 @@ function RautoMap() {
                         }
                     }
                 }
-                biomeAdvMapsSelect.value = autoTrimpSettings.Rtributemapselection.selected;
+                biomeAdvMapsSelect.value = "Plentiful";
                 document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rtributespecialselection.selected;
                 updateMapCost();
             }
@@ -2226,7 +2226,7 @@ function RautoMap() {
                         }
                     }
                 }
-                biomeAdvMapsSelect.value = autoTrimpSettings.Rtimemapselection.selected;
+                biomeAdvMapsSelect.value = "Plentiful";
                 document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rtimespecialselection.selected;
                 updateMapCost();
             }

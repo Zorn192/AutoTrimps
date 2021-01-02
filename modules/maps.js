@@ -998,7 +998,7 @@ function RautoMap() {
     //Tribute Farm
     var tributefarmcell;
     tributefarmcell = ((getPageSetting('Rtributefarmcell') > 0) ? getPageSetting('Rtributefarmcell') : 1);
-    Rtributefarm = (getPageSetting('Rtributefarm') == true && ((Rtributefarmcell <= 1) || (Rtributefarmcell > 1 && (game.global.lastClearedCell + 1) >= Rtributefarmcell)) && game.global.world > 5 && (getPageSetting('Rtributefarmzone')[0] > 0 && getPageSetting('Rtributefarmvalue')[0] > 0));
+    Rtributefarm = (getPageSetting('Rtributefarm') == true && ((tributefarmcell <= 1) || (tributefarmcell > 1 && (game.global.lastClearedCell + 1) >= tributefarmcell)) && game.global.world > 5 && (getPageSetting('Rtributefarmzone')[0] > 0 && getPageSetting('Rtributefarmvalue')[0] > 0));
     if (Rtributefarm) {
         var tributefarmzone;
         var tributefarmvalue;

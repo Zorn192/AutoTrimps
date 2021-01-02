@@ -840,9 +840,9 @@ function initializeAllSettings() {
     //Staff swapping
     document.getElementById('Rhshzone').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhsstaff', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
-    createSetting('Rhsworldstaff', 'World Staff', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhsmapstaff', 'Map Staff', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhstributestaff', 'Tribute Staff', '<b>Tribute farming staff</b><br><br>Enter the name of the staff you would like to equip during tribute farming.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhsworldstaff', 'World', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhsmapstaff', 'Map', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('Rhstributestaff', 'Tribute', '<b>Tribute farming staff</b><br><br>Enter the name of the staff you would like to equip during tribute farming.', 'textValue', 'undefined', null, 'Heirlooms');
 
     /*//Nu Line disabled due to being annoying
     document.getElementById('lowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');

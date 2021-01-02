@@ -1382,10 +1382,10 @@ function RautoMap() {
 
     //Uniques
     var runUniques = (getPageSetting('RAutoMaps') == 1);
-    if (runUniques || Rshoulddobogs || Rshouldtimefarmbogs) {
+    if (runUniques || Rshoulddobogs) {
         for (var map in game.global.mapsOwnedArray) {
             var theMap = game.global.mapsOwnedArray[map];
-            if ((Rshoulddobogs || Rshouldtimefarmbogs) && theMap.name == 'The Black Bog') {
+            if (Rshoulddobogs && theMap.name == 'The Black Bog') {
                 selectedMap = theMap.id;
                 break;
             } else if (runUniques && theMap.noRecycle) {

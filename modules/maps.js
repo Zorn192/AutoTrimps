@@ -1023,7 +1023,7 @@ function RautoMap() {
     if (Rtimefarm) {
         var timefarmzone;
         var timefarmtime;
-        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000 / 60);
+        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000);
 
         timefarmzone = getPageSetting('Rtimefarmzone');
         timefarmtime = getPageSetting('Rtimefarmtime');

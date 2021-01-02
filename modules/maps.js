@@ -1008,7 +1008,7 @@ function RautoMap() {
         tributefarmvalue = getPageSetting('Rtributefarmvalue');
 
         var tributefarmindex = tributefarmzone.indexOf(game.global.world);
-        var tributezones = tributefarmvalue[timefarmindex2];
+        var tributezones = tributefarmvalue[tributefarmindex];
 
         if (tributefarmzone.includes(game.global.world) && tributezones > tributes) {
             Rshouldtributefarm = true;
@@ -1030,10 +1030,6 @@ function RautoMap() {
 
         var timefarmindex = timefarmzone.indexOf(game.global.world);
         var timezones = timefarmtime[timefarmindex];
-
-        if (getPageSetting('Rtimefarmtribute') == true) {
-            time = game.buildings.Tribute.owned
-        }
 
         if (timefarmzone.includes(game.global.world) && timezones > time) {
             Rshouldtimefarm = true;

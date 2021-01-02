@@ -579,30 +579,28 @@ function initializeAllSettings() {
     createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Maps');
     createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Maps');
 
-    //TF
+    //Tribute Farming
     document.getElementById('ATCell').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Maps');
+    createSetting('Rtributefarmzone', 'Tribute Farming', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
+    createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
+    createSetting('Rtributefarmvalue', 'TF: Value', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Maps');
+    createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
+    createSetting('Rtributemapselection', 'TF: Map Selection', 'Select which map you prefer to use.', 'dropdown', 'Sea', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful"], 'Maps');
+    createSetting('Rtributespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
+    createSetting('Rtributegatherselection', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
+
+    //Time Farming
+    document.getElementById('Rtributegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time or Tribute Farming. ', 'boolean', false, null, 'Maps');
     createSetting('Rtimefarmzone', 'Time Farming', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
     createSetting('Rtimefarmtribute', 'TF: Tribute', 'Turn this on if you want to turn TF: Time into Tribute Farming. If this is set to true TF: Time will work as A tribute setting. I.e if TF: Time is set to 750 tributes, it will farm at TF zone till that many tributes as been built. Uses TF Settings. ', 'boolean', false, null, 'Maps');
-    createSetting('Rtimefarmbog', 'TF: Black Bog', 'Turn this on if you want to use Black Bogs for farming instead of your map selection. Only works at z70. Will abandon Black Bog before completing to preserve stacks. ', 'boolean', false, null, 'Maps');
     createSetting('Rtimefarmtime', 'TF: Time', 'How many minutes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. If using TF and TF: Times examples (59 and 2) it will farm at z59 for 2 minutes. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
     createSetting('Rtimemapselection', 'TF: Map Selection', 'Select which map you prefer to use.', 'dropdown', 'Sea', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful"], 'Maps');
     createSetting('Rtimespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
     createSetting('Rtimegatherselection', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
-
-    //TF2
-    document.getElementById('Rtimegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rtimefarm2', 'Time Farm', 'Turn this on if you want to use Time or Tribute Farming. ', 'boolean', false, null, 'Maps');
-    createSetting('Rtimefarmzone2', 'Time Farming', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtimefarmcell2', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
-    createSetting('Rtimefarmtribute2', 'TF: Tribute', 'Turn this on if you want to turn TF: Time into Tribute Farming. If this is set to true TF: Time will work as A tribute setting. I.e if TF: Time is set to 750 tributes, it will farm at TF zone till that many tributes as been built. Uses TF Settings. ', 'boolean', false, null, 'Maps');
-    createSetting('Rtimefarmtime2', 'TF: Time', 'How many minutes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. If using TF and TF: Times examples (59 and 2) it will farm at z59 for 2 minutes. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtimemaplevel2', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
-    createSetting('Rtimemapselection2', 'TF: Map Selection', 'Select which map you prefer to use.', 'dropdown', 'Sea', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful"], 'Maps');
-    createSetting('Rtimespecialselection2', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
-    createSetting('Rtimegatherselection2', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
 
     //Spire
     
@@ -1685,8 +1683,8 @@ function updateCustomButtons() {
     radonon ? turnOn("Rhitssurvived"): turnOff("Rhitssurvived");
     radonon ? turnOn("Rmapcuntoff"): turnOff("Rmapcuntoff");
     radonon ? turnOn("RDisableFarm"): turnOff("RDisableFarm");
+    radonon ? turnOn("Rtributefarm"): turnOff("Rtributefarm");
     radonon ? turnOn("Rtimefarm"): turnOff("Rtimefarm");
-    radonon ? turnOn("Rtimefarm2"): turnOff("Rtimefarm2");
     
     //Melting Points
     var mpon = (getPageSetting('MeltingPoint') == true);
@@ -1698,26 +1696,23 @@ function updateCustomButtons() {
     radonon && aton ? turnOn('ATZone') : turnOff('ATZone');
     radonon && aton ? turnOn('ATCell') : turnOff('ATCell');
 	
+    //Tribute Farming
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmzone"): turnOff("Rtributefarmzone");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmcell"): turnOff("Rtributefarmcell");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmvalue"): turnOff("Rtributefarmvalue");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributemaplevel"): turnOff("Rtributemaplevel");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributemapselection"): turnOff("Rtributemapselection");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributespecialselection"): turnOff("Rtributespecialselection");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributegatherselection"): turnOff("Rtributegatherselection");
     //Time Farming
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmzone"): turnOff("Rtimefarmzone");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmcell"): turnOff("Rtimefarmcell");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmtribute"): turnOff("Rtimefarmtribute");
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmbog"): turnOff("Rtimefarmbog");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmtime"): turnOff("Rtimefarmtime");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimemaplevel"): turnOff("Rtimemaplevel");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimemapselection"): turnOff("Rtimemapselection");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimespecialselection"): turnOff("Rtimespecialselection");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimegatherselection"): turnOff("Rtimegatherselection");
-    //Time Farming 2
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmzone2"): turnOff("Rtimefarmzone2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmcell2"): turnOff("Rtimefarmcell2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmtribute2"): turnOff("Rtimefarmtribute2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmbog2"): turnOff("Rtimefarmbog2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimefarmtime2"): turnOff("Rtimefarmtime2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimemaplevel2"): turnOff("Rtimemaplevel2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimemapselection2"): turnOff("Rtimemapselection2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimespecialselection2"): turnOff("Rtimespecialselection2");
-    (radonon && getPageSetting('Rtimefarm2') == true) ? turnOn("Rtimegatherselection2"): turnOff("Rtimegatherselection2");
 	
 
     radonon ? turnOn("RVoidMaps"): turnOff("RVoidMaps");

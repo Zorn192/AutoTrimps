@@ -590,7 +590,7 @@ function initializeAllSettings() {
     createSetting('Rtributespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
     
     //Time Farming
-    document.getElementById('Rtributegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rtributespecialselection').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Maps');
     createSetting('Rtimefarmzone', 'Time Farming', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
@@ -2026,6 +2026,8 @@ function updateCustomButtons() {
     document.getElementById('RdHeliumHourChallenge').value = autoTrimpSettings.RdHeliumHourChallenge.selected;
     document.getElementById('mapselection').value = autoTrimpSettings.mapselection.selected;
     document.getElementById('Rmapselection').value = autoTrimpSettings.Rmapselection.selected;
+    document.getElementById('Rtributemapselection').value = autoTrimpSettings.Rtributemapselection.selected;
+    document.getElementById('Rtributespecialselection').value = autoTrimpSettings.Rtributespecialselection.selected;
     document.getElementById('Rtimemapselection').value = autoTrimpSettings.Rtimemapselection.selected;
     document.getElementById('Rtimespecialselection').value = autoTrimpSettings.Rtimespecialselection.selected;
     document.getElementById('Rtimegatherselection').value = autoTrimpSettings.Rtimegatherselection.selected;

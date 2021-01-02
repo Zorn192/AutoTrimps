@@ -2092,6 +2092,11 @@ function RPraidHarder() {
         RpraidDone = true;
         debug("Failed to prestige raid. Looks like you can't afford to.");
         
+        	
+          debug("Turning AutoMaps back on");	
+          autoTrimpSettings['RAutoMaps'].value = 1;	
+          game.options.menu.repeatUntil.enabled = 0;	
+        
         return;
       }
     }
@@ -2153,6 +2158,10 @@ function RPraidHarder() {
     if (RfMap) recycleMap(getMapIndex(RfMap));
     RpMap = null;
     RfMap = null;
+    
+      debug("Turning AutoMaps back on");
+      game.options.menu.repeatUntil.enabled = 0;
+      autoTrimpSettings['RAutoMaps'].value = 1;    
     
   }
 

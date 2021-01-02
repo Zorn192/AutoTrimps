@@ -550,7 +550,7 @@ function RbuyJobs() {
     // Calculate how much of each worker we should have
     // If focused farming go all in for caches
     var allIn = "";
-    if (Rshouldtimefarmbogs || Rshouldtimefarm || Rshouldtimefarm2) {
+    if (Rshouldtimefarm) {
         if (autoTrimpSettings.Rtimespecialselection.selected.includes('wc')) {
             allIn = "Lumberjack";
         } else if (autoTrimpSettings.Rtimespecialselection.selected.includes('sc')) {
@@ -561,25 +561,15 @@ function RbuyJobs() {
             allIn = "Scientist";
         }
     }
-        if (Rshouldtimefarm2) {
-        if (autoTrimpSettings.Rtimespecialselection2.selected.includes('wc')) {
-            allIn = "Lumberjack";
-        } else if (autoTrimpSettings.Rtimespecialselection2.selected.includes('sc')) {
-            allIn = "Farmer";
-        } else if (autoTrimpSettings.Rtimespecialselection2.selected.includes('mc')) {
-            allIn = "Miner";
-        } else if (autoTrimpSettings.Rtimespecialselection2.selected.includes('rc')) {
-            allIn = "Scientist";
-        }
-    }
-    if (Rshouldshipfarm) {
+
+    if (Rshouldshipfarm || Rshouldtributefarm) {
 	allIn = "Farmer";
     }	
 	
     var desiredRatios = [0,0,0,0];
     if (allIn != "") {
         desiredRatios[ratioWorkers.indexOf(allIn)] = 1;
-	    if(Rshouldtimefarm2) { desiredRatios[ratioWorkers.indexOf("Lumberjack")] =0.3;}
+	    if(Rshouldtimefarm) { desiredRatios[ratioWorkers.indexOf("Lumberjack")] =0.3;}
     } else {
         // Weird scientist ratio hack. Based on previous AJ, I don't know why it's like this.
         var scientistMod = MODULES["jobs"].RscientistRatio;

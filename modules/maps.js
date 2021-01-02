@@ -746,6 +746,7 @@ var RshouldDoMaps = !1;
 var RmapTimeEstimate = 0;
 var RlastMapWeWereIn = null;
 var RdoMaxMapBonus = !1;
+var RdodMaxMapBonus = !1;
 var RvanillaMapatZone = !1;
 var Rtributefarm = !1;
 var Rtimefarm = !1;
@@ -985,7 +986,7 @@ function RautoMap() {
     RdoMaxMapBonus = (maxMapBonusZ >= 0 && game.global.mapBonus < getPageSetting("RdMaxMapBonuslimit") && game.global.world >= maxMapBonusZ);
     if (RdoMaxMapBonus) {
         RshouldDoMaps = true;
-    }}
+    }
     
     //Daily map bonus
     if (game.global.challengeActive == 'Daily') {

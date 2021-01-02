@@ -818,6 +818,7 @@ function RupdateAutoMapsStatus(get) {
     else if (Rshouldtimefarm) status = 'Time Farming';
     else if (Rshoulddobogs) status = 'Black Bogs';
     else if (RdoMaxMapBonus) status = 'Max Map Bonus After Zone';
+    else if (RdodMaxMapBonus) status = 'Max Map Bonus After Zone';
     else if (!game.global.mapsUnlocked) status = '&nbsp;';
     else if (RneedPrestige && !RdoVoids) status = 'Prestige';
     else if (RdoVoids) {
@@ -987,6 +988,7 @@ function RautoMap() {
     if (RdoMaxMapBonus) {
         RshouldDoMaps = true;
     }
+    }
     
     //Daily map bonus
     if (game.global.challengeActive == 'Daily') {
@@ -994,6 +996,7 @@ function RautoMap() {
     RdodMaxMapBonus = (dmaxMapBonusZ >= 0 && game.global.mapBonus < getPageSetting("RdMaxMapBonuslimit") && game.global.world >= dmaxMapBonusZ);
     if (RdodMaxMapBonus) {
         RshouldDoMaps = true;
+    }
     }
 
     //Maps

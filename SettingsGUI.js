@@ -426,15 +426,16 @@ function initializeAllSettings() {
     //Line 2
     createSetting('RMaxCollector', 'Max Collectors', 'recommend: -1', 'value', '-1', null, "Buildings");
     createSetting('RMaxTribute', 'Max Tributes', 'Advanced. recommend: -1 ', 'value', '-1', null, "Buildings");
-    createSetting('RSpendTribute', 'Tribute spending percent', 'Advanced. recommend: -1 ', 'value', '-1', null, "Buildings");
+    createSetting('RTributeSpend', 'Tribute spending %', 'What percentage of your food you would like to spend on tributes. recommend: -1 ', 'value', '-1', null, "Buildings");
     createSetting('Rmeltsmithy', 'Melt Smithy', 'Run the Melting Point Map to gain one extra Smithy when at or above this value. ', 'value', '-1', null, "Buildings");
+    
+    //Smithy Savings
+    document.getElementById('Rmeltsmithy').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rsmithylogic', 'Smithy Savings', '<b>ABSOLUTELY WILL NOT WORK IN TESTING!</b><br>Uses Smithy Saving logic when this is turned on. Make sure every SS setting is set above 0 or it wont work. This feature will stop using resources on items needed for Smithy when you have reached the targets you have selected.', 'boolean', 'false', null, "Buildings");
     createSetting('Rsmithynumber', 'SS: Number', 'Start SS at this number of Smithys. I.e 9, will buy anything regardless of Smithy before having 9 Smithys. After 9 has been reached will start to save up for them. ', 'value', '-1', null, "Buildings");
     createSetting('Rsmithypercent', 'SS: Percent', 'If you have SS enabled this value will allow items below this value to be purchased. I.e if this is set to 1, it will only buy items if that item is 1% of Smithys cost or lower. ', 'value', '-1', null, "Buildings");
     createSetting('Rsmithyseconds', 'SS: Seconds', 'How many seconds SS starts activating at. I.e 120, if your Smithy is 120 seconds away from being purchased SS will kick in. ', 'value', '-1', null, "Buildings");
 
-
-    
     //Jobs
 
     //Line 1
@@ -1445,8 +1446,6 @@ function updateCustomButtons() {
     radonon && (rnHr || autoTrimpSettings.RAutoPortal.selected == "Custom") ? turnOn("RadonHourChallenge") : turnOff("RadonHourChallenge");
     radonon && (rnHr) ? turnOn("RnHrDontPortalBefore") : turnOff("RnHrDontPortalBefore");
     radonon && (rnHr) ? turnOn("RadonHrBuffer") : turnOff("RadonHrBuffer");
-
-
 
     //Daily
     !radonon ? turnOn("buyheliumy"): turnOff("buyheliumy");

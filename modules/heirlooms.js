@@ -438,8 +438,8 @@ function generateHeirloomIcon(heirloom, location, number){
 function Rhshighvmdc(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhshighvmdc'))return loom;}
 function Rhslowvmdc(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhslowvmdc'))return loom;}
 function Rhsnovmdc(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhsnovmdc'))return loom;}
-function Rhsworldstaff(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rworldstaff'))return loom;}
-function Rhsmapstaff(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rmapstaff'))return loom;}
+function Rhsworldstaff(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhsworldstaff'))return loom;}
+function Rhsmapstaff(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhsmapstaff'))return loom;}
 function Rhstributestaff(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhstributestaff'))return loom;}
 
 function Rhshighvmdcequip() {

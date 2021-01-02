@@ -325,6 +325,8 @@ function initializeAllSettings() {
     createSetting('Ravoidempower', 'Avoid Empower', 'Tries to avoid Empower stacks in Empower Dailies. No harm in this being on, so default is On. ', 'boolean', true, null, 'Daily');
     createSetting('Rdarmormagic', ['Daily Armor Magic Off', 'DAM: Above 80%', 'DAM: H:D', 'DAM: Always'], 'Will buy Armor to try and prevent death on Bleed/Plague/Bogged Dailies under the 3 conditions. <br><b>Above 80%:</b> Will activate at and above 80% of your HZE. <br><b>H:D:</b> Will activate at and above the H:D you have defined in maps. <br><b>Always</b> Will activate always. <br>All options will activate at or <b>below 25% of your health.</b> ', 'multitoggle', 0, null, "Daily");
     createSetting('Rdscryvoidmaps', 'Daily VM Scryer', 'Only use in Dailies if you have Scryhard II, for er, obvious reasons. Works without the scryer options. ', 'boolean', false, null, 'Daily');
+    createSetting('Rdmeltsmithy', 'Melt Smithy', 'Run the Melting Point Map to gain one extra Smithy when at or above this value. ', 'value', '-1', null, "Buildings");
+    
 
     //Raiding
     document.getElementById('Rdscryvoidmaps').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -333,11 +335,7 @@ function initializeAllSettings() {
     createSetting('RdMaxPraidZone', 'Daily Max P Raid Z', 'List of maximum zones to Praid on Dailies corresponding to the list specified in Daily Praiding Z.  e.g. if Daily P raiding Z setting is 491,495 and this setting is 495,505, AT will P raid up to 495 from 491, and 505 from 495.  Set to -1 to always buy highest available prestige map.  If no corrsponding value, or value is invalid, defaults to max available (up to +10)', 'multiValue', [-1], null, 'Daily');
     createSetting('RdPraidFarmFragsZ', 'Daily Farm Frags Z', 'P Raiding harder: List of zones where we should farm fragments until we can afford the highest or target prestige map for P raiding. Set to -1 to never farm fragments.', 'multiValue', [-1], null, 'Daily');
     createSetting('RdPraidBeforeFarmZ', 'Dy Raid bef farm Z', 'P Raiding harder: List of zones where we should P Raid as far as we can afford before trying to farm fragments to Praid the highest or target prestige map.  Only occasionally useful, e.g. if it picks up a Speedexplorer or farming fragments is slow due to low damage. Set to -1 to never raid prestiges before farming fragents.', 'multiValue', [-1], null, 'Daily');
-    createSetting('RDailybwraid', 'Daily BW Raid', 'Toggle for Daily BW Raid settings. ', 'boolean', false, null, 'Daily');
-    createSetting('RdBWraidingz', 'Daily Z to BW Raid', 'Raids BWs at zone specified in dailys. Example: 495, will raid all BWs for all gear starting from 495. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming. Accepts comma separated lists, and raids up to the value in the corrsponding position in the Max BW to raid setting. So if this is set to 480,495 and Daily Max BW to Raid is set to 500,515 AT will BW raid up to 500 from 480, and 515 from 495. Make sure these lists are the same length or BW raiding may fail.', 'multiValue', [-1], null, 'Daily');
-    createSetting('RdBWraidingmax', 'Daily Max BW to raid', 'Raids BWs until zone specified in dailys. Example: 515, will raid all BWs for all gear until 515. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming. Now accepts comma separated lists - see description of Daily Z to BW raid setting for details.', 'multiValue', [-1], null, 'Daily');
-
-    
+        
     //Heirloom
     createSetting('dhighdmg', 'DHS: High Damage', '<b>HIGH DAMAGE HEIRLOOM</b><br><br>Enter the name of your high damage heirloom. This is your heirloom that you will use normally in dailies. ', 'textValue', 'undefined', null, 'Daily');
     createSetting('dlowdmg', 'DHS: Low Damage', '<b>LOW DAMAGE HEIRLOOM</b><br><br>Enter the name of your low damage heirloom. This is the heirloom that you will use for windstacking in dailies. ', 'textValue', 'undefined', null, 'Daily');
@@ -1512,13 +1510,13 @@ function updateCustomButtons() {
     
     //RDaily
     radonon ? turnOn("buyradony"): turnOff("buyradony");
-    radonon ? turnOn("Rdscryvoidmaps"): turnOff("Rdscryvoidmaps");
     radonon ? turnOn("RdIgnoreSpiresUntil"): turnOff("RdIgnoreSpiresUntil");
     radonon ? turnOn("RDailyVoidMod"): turnOff("RDailyVoidMod");
     radonon ? turnOn("RdRunNewVoidsUntilNew"): turnOff("RdRunNewVoidsUntilNew");
     radonon ? turnOn("Ravoidempower"): turnOff("Ravoidempower");
     radonon ? turnOn("Rdfightforever"): turnOff("Rdfightforever");
     radonon ? turnOn("Rdarmormagic"): turnOff("Rdarmormagic");
+    radonon ? turnOn("Rdmeltsmithy"): turnOff("Rdmeltsmithy");
 
     //RDRaid
     radonon ? turnOn("RdPraidingzone"): turnOff("RdPraidingzone");
@@ -1526,10 +1524,7 @@ function updateCustomButtons() {
     radonon && getPageSetting('RdPraidHarder') ? turnOn('RdPraidFarmFragsZ') : turnOff('RdPraidFarmFragsZ');
     radonon && getPageSetting('RdPraidHarder') ? turnOn('RdPraidBeforeFarmZ') : turnOff('RdPraidBeforeFarmZ');
     radonon && getPageSetting('RdPraidHarder') ? turnOn('RdMaxPraidZone') : turnOff('RdMaxPraidZone');
-    radonon ? turnOn("RDailybwraid"): turnOff("RDailybwraid");
-    radonon && getPageSetting('RDailybwraid')==true ? turnOn("RdBWraidingz"): turnOff("RdBWraidingz");
-    radonon && getPageSetting('RDailybwraid')==true ? turnOn("RdBWraidingmax"): turnOff("RdBWraidingmax");
-
+    
     //RDPortal
     radonon ? turnOn("RAutoStartDaily"): turnOff("RAutoStartDaily");
     radonon ? turnOn("u1daily"): turnOff("u1daily");

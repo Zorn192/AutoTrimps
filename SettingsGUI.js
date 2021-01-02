@@ -584,17 +584,17 @@ function initializeAllSettings() {
     createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Maps');
     createSetting('Rtributefarmzone', 'Tribute Farming', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rtributefarmvalue', 'TF: Value', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
     createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
+    createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
     createSetting('Rtributespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>hc = Huge Cache<br>lsc = Large Savory Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "hc", "lsc"], 'Maps');
     
     //Time Farming
     document.getElementById('Rtributespecialselection').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Maps');
     createSetting('Rtimefarmzone', 'Time Farming', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
     createSetting('Rtimefarmtime', 'TF: Time', 'How many minutes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. If using TF and TF: Times examples (59 and 2) it will farm at z59 for 2 minutes. ', 'multiValue', [-1], null, 'Maps');
     createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
+    createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
     createSetting('Rtimespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
     createSetting('Rtimegatherselection', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
 
@@ -1694,22 +1694,17 @@ function updateCustomButtons() {
 	
     //Tribute Farming
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmzone"): turnOff("Rtributefarmzone");
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmcell"): turnOff("Rtributefarmcell");
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmvalue"): turnOff("Rtributefarmvalue");
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributemaplevel"): turnOff("Rtributemaplevel");
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributemapselection"): turnOff("Rtributemapselection");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmcell"): turnOff("Rtributefarmcell");
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributespecialselection"): turnOff("Rtributespecialselection");
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributegatherselection"): turnOff("Rtributegatherselection");
     //Time Farming
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmzone"): turnOff("Rtimefarmzone");
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmcell"): turnOff("Rtimefarmcell");
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmtribute"): turnOff("Rtimefarmtribute");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmtime"): turnOff("Rtimefarmtime");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimemaplevel"): turnOff("Rtimemaplevel");
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimemapselection"): turnOff("Rtimemapselection");
+    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmcell"): turnOff("Rtimefarmcell");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimespecialselection"): turnOff("Rtimespecialselection");
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimegatherselection"): turnOff("Rtimegatherselection");
-	
 
     radonon ? turnOn("RVoidMaps"): turnOff("RVoidMaps");
     radonon ? turnOn("Rvoidscell"): turnOff("Rvoidscell");

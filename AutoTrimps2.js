@@ -299,7 +299,7 @@ function mainLoop() {
 	if (getPageSetting('Rmanageequality') == true && game.global.fighting) Rmanageequality();
     
         //RRaiding
-        if ((getPageSetting('RPraidHarder') == true && getPageSetting('RPraidingzone').length > 0 && game.global.challengeActive != "Daily") || (getPageSetting('RdPraidingzone').length > 0 && game.global.challengeActive == "Daily")) RPraidHarder();
+        if ((getPageSetting('RPraidHarder') == true && getPageSetting('RPraidingzone').length > 0 && game.global.challengeActive != "Daily") || (getPageSetting('RdPraidingzone').length > 0) && (game.global.challengeActive == "Daily") RPraidHarder();
         else {
             if (getPageSetting('RPraidingzone').length && game.global.challengeActive != "Daily") RPraiding();
             if (getPageSetting('RdPraidingzone').length && game.global.challengeActive == "Daily") RdailyPraiding();

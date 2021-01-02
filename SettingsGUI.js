@@ -2019,7 +2019,6 @@ function updateCustomButtons() {
     document.getElementById('RdHeliumHourChallenge').value = autoTrimpSettings.RdHeliumHourChallenge.selected;
     document.getElementById('mapselection').value = autoTrimpSettings.mapselection.selected;
     document.getElementById('Rmapselection').value = autoTrimpSettings.Rmapselection.selected;
-    document.getElementById('Rtributemapselection').value = autoTrimpSettings.Rtributemapselection.selected;
     document.getElementById('Rtributespecialselection').value = autoTrimpSettings.Rtributespecialselection.selected;
     document.getElementById('Rtimemapselection').value = autoTrimpSettings.Rtimemapselection.selected;
     document.getElementById('Rtimespecialselection').value = autoTrimpSettings.Rtimespecialselection.selected;

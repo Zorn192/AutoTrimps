@@ -443,19 +443,19 @@ function Rhsmapstaff(){for(loom of game.global.heirloomsCarried)if(loom.name==ge
 function Rhstributestaff(){for(loom of game.global.heirloomsCarried)if(loom.name==getPageSetting('Rhstributestaff'))return loom;}
 
 function Rhshighvmdcequip() {
-	if (Rhshighvmdc() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhighvmdc')) {
+	if (Rhshighvmdc() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhshighvmdc')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
 }
 function Rhslowvmdcequip() {
-	if (Rhslowvmdc() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rlowvmdc')) {
+	if (Rhslowvmdc() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhslowvmdc')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
 }
 function Rhsnovmdcequip() {
-	if (Rhsnovmdc() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rnovmdc')) {
+	if (Rhsnovmdc() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhsnovmdc')) {
             selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
             equipHeirloom();
 	}
@@ -481,13 +481,13 @@ function Rhstributestaffequip() {
 }
 
 function Rheirloomswap() {
-	if (getPageSetting('Rhighvmdc') !== "undefined" && getPageSetting('Rhshighvmdczone') > 0 && getPageSetting('Rhsshield') != false && game.global.world < getPageSetting('Rhsradzone')) {
+	if (getPageSetting('Rhshighvmdc') !== "undefined" && getPageSetting('Rhshighvmdczone') > 0 && getPageSetting('Rhsshield') != false && game.global.world < getPageSetting('Rhsradzone')) {
 	    Rhshighvmdcequip();
 	}
-	if (getPageSetting('Rlowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone') && game.global.world >= getPageSetting('Rhsradzone'))) {
+	if (getPageSetting('Rhslowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone') && game.global.world >= getPageSetting('Rhsradzone'))) {
 	    Rhslowvmdcequip();
 	}
-	if (getPageSetting('Rnovmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && game.global.world >= getPageSetting('Rhshzone')) {
+	if (getPageSetting('Rhsnovmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && game.global.world >= getPageSetting('Rhshzone')) {
 	    Rhsnovmdcequip();
 	}
 	if (getPageSetting('Rhsworldstaff') != "undefined" && getPageSetting('Rhsstaff') != false && game.global.mapsActive == false) {

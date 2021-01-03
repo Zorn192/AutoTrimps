@@ -484,7 +484,7 @@ function Rheirloomswap() {
 	if (getPageSetting('Rhshighvmdc') !== "undefined" && getPageSetting('Rhshighvmdczone') > 0 && getPageSetting('Rhsshield') != false && game.global.world < getPageSetting('Rhsradzone')) {
 	    Rhshighvmdcequip();
 	}
-	if (getPageSetting('Rhslowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone') && game.global.world >= getPageSetting('Rhsradzone'))) {
+	if (getPageSetting('Rhslowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone') && game.global.world >= getPageSetting('Rhshighvmdczone'))) {
 	    Rhslowvmdcequip();
 	}
 	if (getPageSetting('Rhsnovmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && game.global.world >= getPageSetting('Rhshzone')) {

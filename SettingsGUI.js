@@ -316,6 +316,19 @@ function initializeAllSettings() {
     createSetting('dBWraidingz', 'Daily Z to BW Raid', 'Raids BWs at zone specified in dailys. Example: 495, will raid all BWs for all gear starting from 495. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming. Accepts comma separated lists, and raids up to the value in the corrsponding position in the Max BW to raid setting. So if this is set to 480,495 and Daily Max BW to Raid is set to 500,515 AT will BW raid up to 500 from 480, and 515 from 495. Make sure these lists are the same length or BW raiding may fail.', 'multiValue', [-1], null, 'Daily');
     createSetting('dBWraidingmax', 'Daily Max BW to raid', 'Raids BWs until zone specified in dailys. Example: 515, will raid all BWs for all gear until 515. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming. Now accepts comma separated lists - see description of Daily Z to BW raid setting for details.', 'multiValue', [-1], null, 'Daily');
 
+    //Portal Line
+    document.getElementById('dlowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('AutoStartDaily', 'Auto Start Daily', 'Starts Dailies for you. When you portal with this on, it will select the oldest Daily and run it. Use the settings in this tab to decide whats next. ', 'boolean', false, null, 'Daily');
+    createSetting('u2daily', 'Daily in U2', 'If this is on, you will do your daily in U2. ', 'boolean', false, null, 'Daily');
+    createSetting('AutoPortalDaily', ['Daily Portal Off', 'DP: He/Hr', 'DP: Custom'], '<b>DP: He/Hr:</b> Portals when your world zone is above the minium you set (if applicable) and the buffer falls below the % you have defined. <br><b>DP: Custom:</b> Portals after clearing the zone you have defined in Daily Custom Portal. ', 'multitoggle', '0', null, "Daily");
+    createSetting('dHeliumHourChallenge', 'DP: Challenge', 'Automatically portal into this challenge when using helium per hour or custom autoportal in dailies when there are none left. Custom portals after cell 100 of the zone specified. Do not choose a challenge if you havent unlocked it. ', 'dropdown', 'None', ['None', 'Balance', 'Decay', 'Electricity', 'Life', 'Crushed', 'Nom', 'Toxicity', 'Watch', 'Lead', 'Corrupted', 'Domination'], "Daily");
+    createSetting('dCustomAutoPortal', 'Daily Custom Portal', 'Automatically portal AFTER clearing this level in dailies. (ie: setting to 200 would portal when you first reach level 201)', 'value', '999', null, "Daily");
+    createSetting('dHeHrDontPortalBefore', 'D: Don\'t Portal Before', 'Do NOT allow Helium per Hour Daily AutoPortal setting to portal BEFORE this level is reached in dailies. It is an additional check that prevents drops in helium/hr from triggering autoportal in dailies. Set to 0 or -1 to completely disable this check. (only shows up with Helium per Hour set in dailies)', 'value', '999', null, "Daily");
+    createSetting('dHeliumHrBuffer', 'D: He/Hr Portal Buffer %', 'IMPORTANT SETTING. When using the Daily He/Hr Autoportal, it will portal if your He/Hr drops by this amount of % lower than your best for current run in dailies, default is 0% (ie: set to 5 to portal at 95% of your best in dailies). Now with stuck protection - Allows portaling midzone if we exceed set buffer amount by 5x. (ie a normal 2% buffer setting would now portal mid-zone you fall below 10% buffer).', 'value', '0', null, 'Daily');
+    createSetting('DailyVoidMod', 'Daily Void Zone', 'What zone to do void maps in dailies. Disable with -1', 'value', -1, null, 'Daily');
+    createSetting('dvoidscell', 'Daily Voids Cell', 'Run Voids at this Cell. -1 to run them at the default value, which is 70. ', 'value', '-1', null, 'Daily');
+    createSetting('dRunNewVoidsUntilNew', 'Daily New Voids Mod', '<b>0 to disable. Positive numbers are added to your Void Map zone. -1 for no cap.</b> This allows you to run new Void Maps in Dailies obtained after your Void Map zone by adding this number to your Void Map zone. <br> <b>Example</b> Void map zone=187 and This setting=10. New Voids run until 197).<br>This means that any new void maps gained until Z197. CAUTION: May severely slow you down by trying to do too-high level void maps. Default 0 (OFF).', 'value', '0', null, 'Daily');
+    createSetting('drunnewvoidspoison', 'New Voids Poison', 'Only run new voids in poison zones.', 'boolean', false, null, 'Daily');
 
     //RDaily
 
@@ -334,21 +347,6 @@ function initializeAllSettings() {
     createSetting('dhighdmg', 'DHS: High Damage', '<b>HIGH DAMAGE HEIRLOOM</b><br><br>Enter the name of your high damage heirloom. This is your heirloom that you will use normally in dailies. ', 'textValue', 'undefined', null, 'Daily');
     createSetting('dlowdmg', 'DHS: Low Damage', '<b>LOW DAMAGE HEIRLOOM</b><br><br>Enter the name of your low damage heirloom. This is the heirloom that you will use for windstacking in dailies. ', 'textValue', 'undefined', null, 'Daily');
     
-    
-    //Portal Line
-    document.getElementById('dlowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('AutoStartDaily', 'Auto Start Daily', 'Starts Dailies for you. When you portal with this on, it will select the oldest Daily and run it. Use the settings in this tab to decide whats next. ', 'boolean', false, null, 'Daily');
-    createSetting('u2daily', 'Daily in U2', 'If this is on, you will do your daily in U2. ', 'boolean', false, null, 'Daily');
-    createSetting('AutoPortalDaily', ['Daily Portal Off', 'DP: He/Hr', 'DP: Custom'], '<b>DP: He/Hr:</b> Portals when your world zone is above the minium you set (if applicable) and the buffer falls below the % you have defined. <br><b>DP: Custom:</b> Portals after clearing the zone you have defined in Daily Custom Portal. ', 'multitoggle', '0', null, "Daily");
-    createSetting('dHeliumHourChallenge', 'DP: Challenge', 'Automatically portal into this challenge when using helium per hour or custom autoportal in dailies when there are none left. Custom portals after cell 100 of the zone specified. Do not choose a challenge if you havent unlocked it. ', 'dropdown', 'None', ['None', 'Balance', 'Decay', 'Electricity', 'Life', 'Crushed', 'Nom', 'Toxicity', 'Watch', 'Lead', 'Corrupted', 'Domination'], "Daily");
-    createSetting('dCustomAutoPortal', 'Daily Custom Portal', 'Automatically portal AFTER clearing this level in dailies. (ie: setting to 200 would portal when you first reach level 201)', 'value', '999', null, "Daily");
-    createSetting('dHeHrDontPortalBefore', 'D: Don\'t Portal Before', 'Do NOT allow Helium per Hour Daily AutoPortal setting to portal BEFORE this level is reached in dailies. It is an additional check that prevents drops in helium/hr from triggering autoportal in dailies. Set to 0 or -1 to completely disable this check. (only shows up with Helium per Hour set in dailies)', 'value', '999', null, "Daily");
-    createSetting('dHeliumHrBuffer', 'D: He/Hr Portal Buffer %', 'IMPORTANT SETTING. When using the Daily He/Hr Autoportal, it will portal if your He/Hr drops by this amount of % lower than your best for current run in dailies, default is 0% (ie: set to 5 to portal at 95% of your best in dailies). Now with stuck protection - Allows portaling midzone if we exceed set buffer amount by 5x. (ie a normal 2% buffer setting would now portal mid-zone you fall below 10% buffer).', 'value', '0', null, 'Daily');
-    createSetting('DailyVoidMod', 'Daily Void Zone', 'What zone to do void maps in dailies. Disable with -1', 'value', -1, null, 'Daily');
-    createSetting('dvoidscell', 'Daily Voids Cell', 'Run Voids at this Cell. -1 to run them at the default value, which is 70. ', 'value', '-1', null, 'Daily');
-    createSetting('dRunNewVoidsUntilNew', 'Daily New Voids Mod', '<b>0 to disable. Positive numbers are added to your Void Map zone. -1 for no cap.</b> This allows you to run new Void Maps in Dailies obtained after your Void Map zone by adding this number to your Void Map zone. <br> <b>Example</b> Void map zone=187 and This setting=10. New Voids run until 197).<br>This means that any new void maps gained until Z197. CAUTION: May severely slow you down by trying to do too-high level void maps. Default 0 (OFF).', 'value', '0', null, 'Daily');
-    createSetting('drunnewvoidspoison', 'New Voids Poison', 'Only run new voids in poison zones.', 'boolean', false, null, 'Daily');
-
     //RPortal Line
     document.getElementById('dlowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('RAutoStartDaily', 'Auto Start Daily', 'Starts Dailies for you. When you portal with this on, it will select the oldest Daily and run it. Use the settings in this tab to decide whats next. ', 'boolean', false, null, 'Daily');
@@ -1438,60 +1436,56 @@ function updateCustomButtons() {
 
     //Daily
     !radonon ? turnOn("buyheliumy"): turnOff("buyheliumy");
+    !radonon ? turnOn("dfightforever"): turnOff("dfightforever");
+    !radonon ? turnOn("avoidempower"): turnOff("avoidempower");
+    !radonon ? turnOn("darmormagic"): turnOff("darmormagic");
     !radonon ? turnOn("dscryvoidmaps"): turnOff("dscryvoidmaps");
+
     !radonon ? turnOn("dIgnoreSpiresUntil"): turnOff("dIgnoreSpiresUntil");
     !radonon ? turnOn("dExitSpireCell"): turnOff("dExitSpireCell");
     !radonon ? turnOn("dPreSpireNurseries"): turnOff("dPreSpireNurseries");
-    !radonon ? turnOn("DailyVoidMod"): turnOff("DailyVoidMod");
-    !radonon ? turnOn("dvoidscell"): turnOff("dvoidscell");
-    !radonon ? turnOn("dRunNewVoidsUntilNew"): turnOff("dRunNewVoidsUntilNew");
-    !radonon ? turnOn("drunnewvoidspoison"): turnOff("drunnewvoidspoison");
-    !radonon ? turnOn("avoidempower"): turnOff("avoidempower");
-    !radonon ? turnOn("dfightforever"): turnOff("dfightforever");
-    !radonon ? turnOn("darmormagic"): turnOff("darmormagic");
-    !radonon ? turnOn("dPraidingP"): turnOff("dPraidingP");
-    !radonon ? turnOn("dPraidingI"): turnOff("dPraidingI");
-    !radonon ? turnOn("dPraidingHD"): turnOff("dPraidingHD");
-    !radonon ? turnOn("dhighdmg"): turnOff("dhighdmg");
-    !radonon ? turnOn("dlowdmg"): turnOff("dlowdmg");
-
-    //DRaid
-    !radonon ? turnOn("dPraidingzone") : turnOff("dPraidingzone");
-    !radonon ? turnOn("dPraidingcell") : turnOff("dPraidingcell");
-    !radonon && getPageSetting('dPraidingzone') != -1 ? turnOn('dPraidHarder') : turnOff('dPraidHarder');
-    !radonon && getPageSetting('dPraidHarder') ? turnOn('dPraidFarmFragsZ') : turnOff('dPraidFarmFragsZ');
-    !radonon && getPageSetting('dPraidHarder') ? turnOn('dPraidBeforeFarmZ') : turnOff('dPraidBeforeFarmZ');
-    !radonon && getPageSetting('dPraidHarder') ? turnOn('dMaxPraidZone') : turnOff('dMaxPraidZone');
-    !radonon ? turnOn("Dailybwraid"): turnOff("Dailybwraid");
-    !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dbwraidcell"): turnOff("dbwraidcell");
-    !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dBWraidingz"): turnOff("dBWraidingz");
-    !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dBWraidingmax"): turnOff("dBWraidingmax");
 
     //DWind
     !radonon ? turnOn("use3daily"): turnOff("use3daily");
-    !radonon ? turnOn("liqstack"): turnOff("liqstack");
-    !radonon && getPageSetting('use3daily')==true ? turnOn("dwindhealthy"): turnOff("dwindhealthy");
-    !radonon && getPageSetting('use3daily')==true ? turnOn("dusebstance"): turnOff("dusebstance");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dWindStackingMin"): turnOff("dWindStackingMin");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dWindStackingMinHD"): turnOff("dWindStackingMinHD");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dWindStackingMax"): turnOff("dWindStackingMax");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dwindcutoff"): turnOff("dwindcutoff");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dwindcutoffmap"): turnOff("dwindcutoffmap");
+    !radonon && getPageSetting('use3daily')==true ? turnOn("liqstack"): turnOff("liqstack");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dwsmax"): turnOff("dwsmax");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dwsmaxhd"): turnOff("dwsmaxhd");
 
-    //DLoom
-    !radonon && getPageSetting('dloomswap') > 0 ? turnOn('dloomswaphd') : turnOff('dloomswaphd');
+
+    //DRaid
+    !radonon ? turnOn("dPraidingzone") : turnOff("dPraidingzone");
+    !radonon ? turnOn("dPraidingcell") : turnOff("dPraidingcell");
+    !radonon ? turnOn("dPraidingHD"): turnOff("dPraidingHD");
+    !radonon ? turnOn("dPraidingP"): turnOff("dPraidingP");
+    !radonon ? turnOn("dPraidingI"): turnOff("dPraidingI");
+    !radonon ? turnOn("dhighdmg"): turnOff("dhighdmg");
+    !radonon ? turnOn("dlowdmg"): turnOff("dlowdmg");
+    !radonon && getPageSetting('dPraidingzone') != -1 ? turnOn('dPraidHarder') : turnOff('dPraidHarder');
+    !radonon && getPageSetting('dPraidHarder') ? turnOn('dMaxPraidZone') : turnOff('dMaxPraidZone');
+    !radonon && getPageSetting('dPraidHarder') ? turnOn('dPraidFarmFragsZ') : turnOff('dPraidFarmFragsZ');
+    !radonon && getPageSetting('dPraidHarder') ? turnOn('dPraidBeforeFarmZ') : turnOff('dPraidBeforeFarmZ');
+    !radonon ? turnOn("Dailybwraid"): turnOff("Dailybwraid");
+    !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dbwraidcell"): turnOff("dbwraidcell");
+    !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dBWraidingz"): turnOff("dBWraidingz");
+    !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dBWraidingmax"): turnOff("dBWraidingmax");
 
     //DPortal
     !radonon ? turnOn("AutoStartDaily"): turnOff("AutoStartDaily");
     !radonon ? turnOn("u2daily"): turnOff("u2daily");
     !radonon ? turnOn("AutoPortalDaily"): turnOff("AutoPortalDaily");
+    !radonon && getPageSetting('AutoPortalDaily')>0 ? turnOn("dHeliumHourChallenge") : turnOff("dHeliumHourChallenge");
     !radonon && getPageSetting('AutoPortalDaily')==2 ? turnOn("dCustomAutoPortal") : turnOff("dCustomAutoPortal");
     !radonon && getPageSetting('AutoPortalDaily')==1 ? turnOn("dHeHrDontPortalBefore") : turnOff("dHeHrDontPortalBefore");
     !radonon && getPageSetting('AutoPortalDaily')==1 ? turnOn("dHeliumHrBuffer") : turnOff("dHeliumHrBuffer");
-    !radonon && getPageSetting('AutoPortalDaily')>0 ? turnOn("dHeliumHourChallenge") : turnOff("dHeliumHourChallenge");
-    
+    !radonon ? turnOn("DailyVoidMod"): turnOff("DailyVoidMod");
+    !radonon ? turnOn("dvoidscell"): turnOff("dvoidscell");
+    !radonon ? turnOn("dRunNewVoidsUntilNew"): turnOff("dRunNewVoidsUntilNew");
+    !radonon ? turnOn("drunnewvoidspoison"): turnOff("drunnewvoidspoison");
     
     //RDaily
     radonon ? turnOn("buyradony"): turnOff("buyradony");
@@ -1513,8 +1507,6 @@ function updateCustomButtons() {
     radonon && getPageSetting('RAutoPortalDaily')==1 ? turnOn("RdHeHrDontPortalBefore") : turnOff("RdHeHrDontPortalBefore");
     radonon && getPageSetting('RAutoPortalDaily')==1 ? turnOn("RdHeliumHrBuffer") : turnOff("RdHeliumHrBuffer");
     radonon && getPageSetting('RAutoPortalDaily')>0 ? turnOn("RdHeliumHourChallenge") : turnOff("RdHeliumHourChallenge");
-    
-
     
     //C2
     !radonon ? turnOn("FinishC2"): turnOff("FinishC2");

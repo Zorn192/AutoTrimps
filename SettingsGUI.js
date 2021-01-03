@@ -19,6 +19,7 @@ function automationMenuInit() {
     newContainer.setAttribute("onmouseover", 'tooltip(\"Toggle Automapping\", \"customText\", event, \"Toggle automapping on and off.\")');
     newContainer.setAttribute("onmouseout", 'tooltip("hide")');
     var abutton = document.createElement("SPAN");
+    //DHeirlooms
     abutton.appendChild(document.createTextNode("Auto Maps"));    
     abutton.setAttribute("id", "autoMapLabel");
     var fightButtonCol = document.getElementById("battleBtnsColumn");
@@ -1465,8 +1466,6 @@ function updateCustomButtons() {
     !radonon ? turnOn("dPraidingHD"): turnOff("dPraidingHD");
     !radonon ? turnOn("dPraidingP"): turnOff("dPraidingP");
     !radonon ? turnOn("dPraidingI"): turnOff("dPraidingI");
-    !radonon ? turnOn("dhighdmg"): turnOff("dhighdmg");
-    !radonon ? turnOn("dlowdmg"): turnOff("dlowdmg");
     !radonon && getPageSetting('dPraidingzone') != -1 ? turnOn('dPraidHarder') : turnOff('dPraidHarder');
     !radonon && getPageSetting('dPraidHarder') ? turnOn('dMaxPraidZone') : turnOff('dMaxPraidZone');
     !radonon && getPageSetting('dPraidHarder') ? turnOn('dPraidFarmFragsZ') : turnOff('dPraidFarmFragsZ');

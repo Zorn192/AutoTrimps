@@ -1448,6 +1448,8 @@ function updateCustomButtons() {
 
     //DWind
     !radonon ? turnOn("use3daily"): turnOff("use3daily");
+    !radonon && getPageSetting('use3daily')==true ? turnOn("dwindhealthy"): turnOff("dwindhealthy");
+    !radonon && getPageSetting('use3daily')==true ? turnOn("dusebstance"): turnOff("dusebstance");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dWindStackingMin"): turnOff("dWindStackingMin");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dWindStackingMinHD"): turnOff("dWindStackingMinHD");
     !radonon && getPageSetting('use3daily')==true ? turnOn("dWindStackingMax"): turnOff("dWindStackingMax");
@@ -1476,6 +1478,7 @@ function updateCustomButtons() {
     !radonon && getPageSetting('Dailybwraid')==true ? turnOn("dBWraidingmax"): turnOff("dBWraidingmax");
 
     //DHeirlooms
+    !radonon && getPageSetting('dloomswap') > 0 ? turnOn('dloomswaphd') : turnOff('dloomswaphd');
     !radonon ? turnOn("dhighdmg"): turnOff("dhighdmg");
     !radonon ? turnOn("dlowdmg"): turnOff("dlowdmg");
 	

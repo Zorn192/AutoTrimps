@@ -688,6 +688,9 @@ function RcalcOurDmg(minMaxAvg, equality) {
     
     // Hunger
     number *= game.portal.Hunger.getMult();
+	
+    // Ob
+    number *= game.portal.Observation.getMult();
 
     // Robotrimp
     number *= 1 + (0.2 * game.global.roboTrimpLevel);
@@ -735,7 +738,8 @@ function RcalcOurDmg(minMaxAvg, equality) {
     if (game.global.challengeActive == "Revenge") {number *= game.challenges.Revenge.getMult();}
     if (game.global.challengeActive == "Quest") {number *= game.challenges.Quest.getAttackMult();}
     if (game.global.challengeActive == "Archaeology") {number *= game.challenges.Archaeology.getStatMult("attack");}
-    if (game.global.challengeActive == "Berserk") {number *= game.challenges.Berserk.getAttackMult();}   
+    if (game.global.challengeActive == "Berserk") {number *= game.challenges.Berserk.getAttackMult();}
+    if (game.challenges.Nurture.boostsActive() == true) {number *= game.challenges.Nurture.getStatBoost();}   
 
     // Dailies
     var minDailyMod = 1;
@@ -822,6 +826,9 @@ function RcalcOurHealth() {
     if (game.portal.Resilience.radLevel > 0) {
         health *= (Math.pow(game.portal.Resilience.modifier + 1, game.portal.Resilience.radLevel));
     }
+    if (game.portal.Observation.radLevel > 0) {
+    	health *= game.portal.Observation.getMult();
+    }
     if (Fluffy.isRewardActive("healthy")) {
 		health *= 1.5;
     }
@@ -851,6 +858,9 @@ function RcalcOurHealth() {
 	if (game.challenges.Berserk.frenzyStacks <= 0) {
 	    health *= game.challenges.Berserk.getHealthMult(true);
 	}
+    }
+    if (game.challenges.Nurture.boostsActive() == true) {
+	health *= game.challenges.Nurture.getStatBoost();
     }
     if (typeof game.global.dailyChallenge.pressure !== 'undefined') {
         health *= (dailyModifiers.pressure.getMult(game.global.dailyChallenge.pressure.strength, game.global.dailyChallenge.pressure.stacks));
@@ -918,6 +928,12 @@ function RcalcBadGuyDmg(enemy, attack, equality) {
     if (game.global.challengeActive == "Exterminate") {
 	number *= game.challenges.Exterminate.getSwarmMult();
     }
+    if (game.global.challengeActive == "Nurture") {
+	number *= 2;
+	if (game.buildings.Laboratory.owned > 0) {
+	    number *= game.buildings.Laboratory.getEnemyMult();
+	}
+    }
     if (!enemy && game.global.usingShriek) {
         number *= game.mapUnlocks.roboTrimp.getShriekValue();
     }
@@ -983,6 +999,12 @@ function RcalcEnemyHealth(world) {
     if (game.global.challengeActive == "Exterminate") {
 	health *= game.challenges.Exterminate.getSwarmMult();
     }
+    if (game.global.challengeActive == "Nurture") {
+	health *= 2;
+	if (game.buildings.Laboratory.owned > 0) {
+	    health *= game.buildings.Laboratory.getEnemyMult();
+	}
+    }
     return health;
 }
 
@@ -1011,6 +1033,15 @@ function RcalcEnemyHealthMod(world, cell, name) {
     if (game.global.challengeActive == "Berserk") {
 	health *= 1.5;
     }
+    if (game.global.challengeActive == "Exterminate") {
+	health *= game.challenges.Exterminate.getSwarmMult();
+    }
+    if (game.global.challengeActive == "Nurture") {
+	number *= 2;
+	if (game.buildings.Laboratory.owned > 0) {
+	    number *= game.buildings.Laboratory.getEnemyMult();
+	}
+    }
     return health;
 }
 
@@ -1031,6 +1062,7 @@ function getTotalHealthMod() {
     // Perks
     healthMulti *= 1 + (game.portal.Toughness.radLevel * game.portal.Toughness.modifier);
     healthMulti *= Math.pow(1 + game.portal.Resilience.modifier, game.portal.Resilience.radLevel);
+    healthMulti *= game.portal.Observation.getMult();
  
     // Scruffy's +50% health bonus
     healthMulti *= (Fluffy.isRewardActive("healthy") ? 1.5 : 1);
@@ -1051,9 +1083,10 @@ function getTotalHealthMod() {
     healthMulti *= (game.global.challengeActive == 'Berserk') ?
         (game.challenges.Berserk.frenzyStacks > 0) ? 0.5 : game.challenges.Berserk.getHealthMult(true)
         : 1;
- 
-        // Daily mod
-        healthMulti *= (typeof game.global.dailyChallenge.pressure !== 'undefined') ? dailyModifiers.pressure.getMult(game.global.dailyChallenge.pressure.strength, game.global.dailyChallenge.pressure.stacks) : 1;
+    healthMulti *= (game.challenges.Nurture.boostsActive() == true) ? game.challenges.Nurture.getStatBoost() : 1;
+
+    // Daily mod
+    healthMulti *= (typeof game.global.dailyChallenge.pressure !== 'undefined') ? dailyModifiers.pressure.getMult(game.global.dailyChallenge.pressure.strength, game.global.dailyChallenge.pressure.stacks) : 1;
  
     // Mayhem
     healthMulti *= game.challenges.Mayhem.getTrimpMult();

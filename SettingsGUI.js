@@ -1971,6 +1971,7 @@ function updateCustomButtons() {
     radonon && hson && hsshieldon ? turnOn('Rhshighvmdczone') : turnOff('Rhshighvmdczone');
     radonon && hson && hsshieldon ? turnOn('Rhslowvmdc') : turnOff('Rhslowvmdc');
     radonon && hson && hsshieldon ? turnOn('Rhsnovmdc') : turnOff('Rhsnovmdc');
+    radonon && hson && hsshieldon ? turnOn('Rhshz') : turnOff('Rhshz');
     radonon && hson && hsshieldon ? turnOn('Rhshzone') : turnOff('Rhshzone');
 	//Staffs
     radonon && hson ? turnOn('Rhsstaff') : turnOff('Rhsstaff');

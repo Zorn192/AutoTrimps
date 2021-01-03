@@ -984,7 +984,7 @@ function RautoMap() {
     //Map Bonus
     if (game.global.challengeActive != 'Daily') {
     var maxMapBonusZ = getPageSetting('RMaxMapBonusAfterZone');
-    RdoMaxMapBonus = (maxMapBonusZ >= 0 && game.global.mapBonus < getPageSetting("RdMaxMapBonuslimit") && game.global.world >= maxMapBonusZ);
+    RdoMaxMapBonus = (maxMapBonusZ >= 0 && game.global.mapBonus < getPageSetting("RMaxMapBonuslimit") && game.global.world >= maxMapBonusZ);
     if (RdoMaxMapBonus) {
         RshouldDoMaps = true;
     }

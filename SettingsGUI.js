@@ -321,9 +321,6 @@ function initializeAllSettings() {
 
     //Line 1
     createSetting('buyradony', 'Buy Radonculous %', 'Buys the Radonculous bonus for <b>100 bones</b> when Daily bonus is above the value set in this setting. Recommend anything above 475. Will not buy if you cant afford to, or value is -1. ', 'value', -1, null, 'Daily');
-    createSetting('Rdfightforever', ['DFA: Off', 'DFA: Non-Empowered', 'DFA: All Dailies'], 'Daily Fight Always. Sends trimps to fight if they\'re not fighting in Daily challenges similar to Toxicity/Nom but not on Bloodthirst/Plagued/Bogged Dailies, regardless of BAF. Non-Empowered will only send to fight if the Daily is not Empowered. Essenitally the same as the one in combat, can use either if you wish, except this will only activate in these daily challenges (duh) ', 'multitoggle', '0', null, 'Daily');
-    createSetting('Ravoidempower', 'Avoid Empower', 'Tries to avoid Empower stacks in Empower Dailies. No harm in this being on, so default is On. ', 'boolean', true, null, 'Daily');
-    createSetting('Rdarmormagic', ['Daily Armor Magic Off', 'DAM: Above 80%', 'DAM: H:D', 'DAM: Always'], 'Will buy Armor to try and prevent death on Bleed/Plague/Bogged Dailies under the 3 conditions. <br><b>Above 80%:</b> Will activate at and above 80% of your HZE. <br><b>H:D:</b> Will activate at and above the H:D you have defined in maps. <br><b>Always</b> Will activate always. <br>All options will activate at or <b>below 25% of your health.</b> ', 'multitoggle', 0, null, "Daily");
     createSetting('RdMaxMapBonusAfterZone', 'Max MapBonus After', 'Always gets Max Map Bonus from this zone on. (inclusive and after).<br><b>NOTE:</b> Set -1 to disable entirely (default). Set 0 to use it always. ', 'value', '-1', null, 'Daily');
     createSetting('RdMaxMapBonuslimit', 'Max MapBonus Limit', 'Limit the amount of Map Bonuses you get. Default is 10. ', 'value', '10', null, 'Daily');
     createSetting('Rdmeltsmithy', 'Melt Smithy', 'Run the Melting Point Map to gain one extra Smithy when at or above this value. ', 'value', '-1', null, "Daily");
@@ -1454,6 +1451,7 @@ function updateCustomButtons() {
     !radonon ? turnOn("darmormagic"): turnOff("darmormagic");
     !radonon ? turnOn("dPraidingP"): turnOff("dPraidingP");
     !radonon ? turnOn("dPraidingI"): turnOff("dPraidingI");
+    !radonon ? turnOn("dPraidingHD"): turnOff("dPraidingHD");
     !radonon ? turnOn("dhighdmg"): turnOff("dhighdmg");
     !radonon ? turnOn("dlowdmg"): turnOff("dlowdmg");
 
@@ -1497,15 +1495,11 @@ function updateCustomButtons() {
     
     //RDaily
     radonon ? turnOn("buyradony"): turnOff("buyradony");
-    radonon ? turnOn("RdIgnoreSpiresUntil"): turnOff("RdIgnoreSpiresUntil");
-    radonon ? turnOn("RDailyVoidMod"): turnOff("RDailyVoidMod");
-    radonon ? turnOn("RdRunNewVoidsUntilNew"): turnOff("RdRunNewVoidsUntilNew");
-    radonon ? turnOn("Ravoidempower"): turnOff("Ravoidempower");
-    radonon ? turnOn("Rdfightforever"): turnOff("Rdfightforever");
-    radonon ? turnOn("Rdarmormagic"): turnOff("Rdarmormagic");
     radonon ? turnOn("RdMaxMapBonusAfterZone"): turnOff("RdMaxMapBonusAfterZone");
     radonon ? turnOn("RdMaxMapBonuslimit"): turnOff("RdMaxMapBonuslimit");
     radonon ? turnOn("Rdmeltsmithy"): turnOff("Rdmeltsmithy");
+    radonon ? turnOn("RDailyVoidMod"): turnOff("RDailyVoidMod");
+    radonon ? turnOn("RdRunNewVoidsUntilNew"): turnOff("RdRunNewVoidsUntilNew");
 
     //RDRaid
     radonon ? turnOn("RdPraidingzone"): turnOff("RdPraidingzone");

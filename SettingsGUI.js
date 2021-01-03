@@ -832,7 +832,6 @@ function initializeAllSettings() {
     createSetting('Rhshighvmdczone', 'HS: Initial zone', 'When to swap from high VMDC to the heirloom defined in HS: Zone', 'value', '-1', null, 'Heirlooms');
     createSetting('Rhslowvmdc', 'HS: First', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhsnovmdc', 'HS: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Heirlooms');
-    createSetting('Rhshz', 'HS: Z', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Heirlooms');
     createSetting('Rhshzone', 'HS: Zone', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Heirlooms');
     
     //Staff swapping
@@ -1971,7 +1970,6 @@ function updateCustomButtons() {
     radonon && hson && hsshieldon ? turnOn('Rhshighvmdczone') : turnOff('Rhshighvmdczone');
     radonon && hson && hsshieldon ? turnOn('Rhslowvmdc') : turnOff('Rhslowvmdc');
     radonon && hson && hsshieldon ? turnOn('Rhsnovmdc') : turnOff('Rhsnovmdc');
-    radonon && hson && hsshieldon ? turnOn('Rhshz') : turnOff('Rhshz');
     radonon && hson && hsshieldon ? turnOn('Rhshzone') : turnOff('Rhshzone');
 	//Staffs
     radonon && hson ? turnOn('Rhsstaff') : turnOff('Rhsstaff');

@@ -349,7 +349,7 @@ function initializeAllSettings() {
     createSetting('RdMaxPraidZone', 'Daily Max P Raid Z', 'List of maximum zones to Praid on Dailies corresponding to the list specified in Daily Praiding Z.  e.g. if Daily P raiding Z setting is 491,495 and this setting is 495,505, AT will P raid up to 495 from 491, and 505 from 495.  Set to -1 to always buy highest available prestige map.  If no corrsponding value, or value is invalid, defaults to max available (up to +10)', 'multiValue', [-1], null, 'Daily');
        
     //RPortal Line
-    document.getElementById('dlowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('RdMaxPraidZone').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('RAutoStartDaily', 'Auto Start Daily', 'Starts Dailies for you. When you portal with this on, it will select the oldest Daily and run it. Use the settings in this tab to decide whats next. ', 'boolean', false, null, 'Daily');
     createSetting('u1daily', 'Daily in U1', 'If this is on, you will do your daily in U1. ', 'boolean', false, null, 'Daily');
     createSetting('RAutoPortalDaily', ['Daily Portal Off', 'DP: Rn/Hr', 'DP: Custom'], '<b>DP: Rn/Hr:</b> Portals when your world zone is above the minium you set (if applicable) and the buffer falls below the % you have defined. <br><b>DP: Custom:</b> Portals after clearing the zone you have defined in Daily Custom Portal. ', 'multitoggle', '0', null, "Daily");

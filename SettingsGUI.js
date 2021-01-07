@@ -158,6 +158,7 @@ function initializeAllTabs() {
     createTabs("Buildings", "Building Settings");
     createTabs("Jobs", "Jobs - Worker Settings");
     createTabs("Gear", "Gear - Equipment Settings");
+    createTabs("Μaps", "Maps - AutoMaps & VoidMaps Settings");
     createTabs("Maps", "Maps - AutoMaps & VoidMaps Settings");
     createTabs("Spire", "Spire - Settings for Spires");
     createTabs("Raiding", "Raiding - Settings for Raiding");
@@ -545,56 +546,56 @@ function initializeAllSettings() {
     createSetting('buywepsvoid', 'VM Buy Weps', 'Buys gear in Void maps regardless of your H:D ratio. Useful if you want to overkill as much as possible. ', 'boolean', false, null, 'Maps');
 
     
-    //RMaps
+    //RΜaps
 
     //Line 1
-    createSetting('RAutoMaps', ["Auto Maps Off", "Auto Maps On", "Auto Maps No Unique"], 'Automaps. The no unique setting will not run unique maps such as dimensions of rage. Recommended ON. Do not use MaZ, it will not work. ', 'multitoggle', 1, null, "Maps");
-    createSetting('Rautomapsportal', 'AM Portal', 'Makes sure Auto Maps is on after portalling. Turn this off to disable this and remember your choice. ', 'boolean', true, null, 'Maps');
-    createSetting('Rmapselection', 'Map Selection', 'Select which you prefer to use. Recommend Plentiful (Gardens) if you have unlocked it. ', 'dropdown', 'Mountain', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful"], 'Maps');
-    createSetting('RMaxMapBonusAfterZone', 'Max MapBonus After', 'Always gets Max Map Bonus from this zone on. (inclusive and after).<br><b>NOTE:</b> Set -1 to disable entirely (default). Set 0 to use it always. ', 'value', '-1', null, 'Maps');
-    createSetting('RMaxMapBonuslimit', 'Max MapBonus Limit', 'Limit the amount of Map Bonuses you get. Default is 10. ', 'value', '10', null, 'Maps');
-    createSetting('RMaxMapBonushealth', 'Max MapBonus Health', 'Limit the amount of map bonuses you get when AutoMaps requires more health. Default is 10. ', 'value', '10', null, 'Maps');
-    createSetting('Rhitssurvived', 'Hits Survived', 'Set this value to tell the script how many enemy attacks you wish to survive for. The default is 10. The lower this is the less health the script will get. If you set this too high it will farm too much so please be careful. ', 'value', '10', null, 'Maps');
-    createSetting('Rmapcuntoff', 'Map Cut Off', 'Decides when to get max map bonus. 4 is default. This means it will take 1 hit to kill an enemy if in D stance. ', 'value', '4', null, 'Maps');
-    createSetting('RDisableFarm', 'Farming H:D', 'If H:D goes above this value, it will farm for Damage & Health. The lower this setting, the more it will want to farm. Default is <b>16<b/>. <b>-1 to disable farming!</b>', 'value', -1, null, 'Maps');
+    createSetting('RAutoΜaps', ["Auto Μaps Off", "Auto Μaps On", "Auto Μaps No Unique"], 'AutoΜaps. The no unique setting will not run unique Μaps such as dimensions of rage. Recommended ON. Do not use MaZ, it will not work. ', 'multitoggle', 1, null, "Μaps");
+    createSetting('RautoΜapsportal', 'AM Portal', 'Makes sure Auto Μaps is on after portalling. Turn this off to disable this and remember your choice. ', 'boolean', true, null, 'Μaps');
+    createSetting('RΜapselection', 'Map Selection', 'Select which you prefer to use. Recommend Plentiful (Gardens) if you have unlocked it. ', 'dropdown', 'Mountain', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful"], 'Μaps');
+    createSetting('RMaxMapBonusAfterZone', 'Max MapBonus After', 'Always gets Max Map Bonus from this zone on. (inclusive and after).<br><b>NOTE:</b> Set -1 to disable entirely (default). Set 0 to use it always. ', 'value', '-1', null, 'Μaps');
+    createSetting('RMaxMapBonuslimit', 'Max MapBonus Limit', 'Limit the amount of Map Bonuses you get. Default is 10. ', 'value', '10', null, 'Μaps');
+    createSetting('RMaxMapBonushealth', 'Max MapBonus Health', 'Limit the amount of map bonuses you get when AutoΜaps requires more health. Default is 10. ', 'value', '10', null, 'Μaps');
+    createSetting('Rhitssurvived', 'Hits Survived', 'Set this value to tell the script how many enemy attacks you wish to survive for. The default is 10. The lower this is the less health the script will get. If you set this too high it will farm too much so please be careful. ', 'value', '10', null, 'Μaps');
+    createSetting('Rmapcuntoff', 'Map Cut Off', 'Decides when to get max map bonus. 4 is default. This means it will take 1 hit to kill an enemy if in D stance. ', 'value', '4', null, 'Μaps');
+    createSetting('RDisableFarm', 'Farming H:D', 'If H:D goes above this value, it will farm for Damage & Health. The lower this setting, the more it will want to farm. Default is <b>16<b/>. <b>-1 to disable farming!</b>', 'value', -1, null, 'Μaps');
 
     //Line 2
-    createSetting('RVoidMaps', 'Void Maps', '<b>0 to disable</b> The zone at which you want all your void maps to be cleared inclusive of the zone you type. Runs them at Cell 70. Use odd zones on Lead.<br>', 'value', '0', null, "Maps");
-    createSetting('Rvoidscell', 'Voids Cell', 'Run Voids at this Cell. -1 to run them at the default value, which is 70. ', 'value', '-1', null, 'Maps');
-    createSetting('RRunNewVoidsUntilNew', 'New Voids Mod', '<b>0 to disable. Positive numbers are added to your Void Map zone. -1 for no cap.</b> This allows you to run new Void Maps obtained after your Void Map zone by adding this number to your Void Map zone. <br> <b>Example</b> Void map zone=187 and This setting=10. New Voids run until 197).<br>This means that any new void maps gained until Z197. CAUTION: May severely slow you down by trying to do too-high level void maps. Default 0 (OFF).', 'value', '0', null, 'Maps');
-    createSetting('Rprispalace', 'Prismatic Palace', 'Run Prismatic Palace when its unlocked. ', 'boolean', true, null, 'Maps');
-    createSetting('Rmeltpoint', 'Melting Point', '-1 to disable. When to run the map Melting Point. Use it like this: 50,91. The first number is what zone Melting Point should be run at, the second number is what Cell to run it at. In this example AutoMaps would run Melting Point at z50 cell 91. Must define both values. Works in the challenges Melt and Trappapalooza. ', 'multiValue', [-1], null, 'Maps');
+    createSetting('RVoidΜaps', 'Void Μaps', '<b>0 to disable</b> The zone at which you want all your void Μaps to be cleared inclusive of the zone you type. Runs them at Cell 70. Use odd zones on Lead.<br>', 'value', '0', null, "Μaps");
+    createSetting('Rvoidscell', 'Voids Cell', 'Run Voids at this Cell. -1 to run them at the default value, which is 70. ', 'value', '-1', null, 'Μaps');
+    createSetting('RRunNewVoidsUntilNew', 'New Voids Mod', '<b>0 to disable. Positive numbers are added to your Void Map zone. -1 for no cap.</b> This allows you to run new Void Μaps obtained after your Void Map zone by adding this number to your Void Map zone. <br> <b>Example</b> Void map zone=187 and This setting=10. New Voids run until 197).<br>This means that any new void Μaps gained until Z197. CAUTION: May severely slow you down by trying to do too-high level void Μaps. Default 0 (OFF).', 'value', '0', null, 'Μaps');
+    createSetting('Rprispalace', 'Prismatic Palace', 'Run Prismatic Palace when its unlocked. ', 'boolean', true, null, 'Μaps');
+    createSetting('Rmeltpoint', 'Melting Point', '-1 to disable. When to run the map Melting Point. Use it like this: 50,91. The first number is what zone Melting Point should be run at, the second number is what Cell to run it at. In this example AutoΜaps would run Melting Point at z50 cell 91. Must define both values. Works in the challenges Melt and Trappapalooza. ', 'multiValue', [-1], null, 'Μaps');
     
     //Melting Points
     document.getElementById('Rmeltpoint').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('MeltingPoint', 'Melting Point', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Maps');
-    createSetting('MPZone', 'MP Zone', 'Which zone to run Melting Point', 'value', '-1', null, 'Maps');
-    createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Maps');
+    createSetting('MeltingPoint', 'Melting Point', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
+    createSetting('MPZone', 'MP Zone', 'Which zone to run Melting Point', 'value', '-1', null, 'Μaps');
+    createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Μaps');
 
     //Atlantrimp
     document.getElementById('MPCell').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Atlantrimp', 'Atlantrimp', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Maps');
-    createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Maps');
-    createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Maps');
+    createSetting('Atlantrimp', 'Atlantrimp', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
+    createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Μaps');
+    createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Μaps');
 
     //Tribute Farming
     document.getElementById('ATCell').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Maps');
-    createSetting('Rtributefarmzone', 'TF: Zone', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
-    createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
-    createSetting('Rtributespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>hc = Huge Cache<br>lsc = Large Savory Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "hc", "lsc"], 'Maps');
+    createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Μaps');
+    createSetting('Rtributefarmzone', 'TF: Zone', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Μaps');
+    createSetting('Rtributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');
+    createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +Μaps. Using 0 by itself will use global level for all Μaps. ', 'multiValue', [0], null, 'Μaps');
+    createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
+    createSetting('Rtributespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>hc = Huge Cache<br>lsc = Large Savory Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "hc", "lsc"], 'Μaps');
     
     //Time Farming
     document.getElementById('Rtributespecialselection').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Maps');
-    createSetting('Rtimefarmzone', 'TF: Zone', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtimefarmtime', 'TF: Time', 'How many minutes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. If using TF and TF: Times examples (59 and 2) it will farm at z59 for 2 minutes. ', 'multiValue', [-1], null, 'Maps');
-    createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Maps');
-    createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Maps');
-    createSetting('Rtimespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Maps');
-    createSetting('Rtimegatherselection', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Maps');
+    createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Μaps');
+    createSetting('Rtimefarmzone', 'TF: Zone', 'Farms for specified minutes in TF: Time at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Μaps');
+    createSetting('Rtimefarmtime', 'TF: Time', 'How many minutes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. If using TF and TF: Times examples (59 and 2) it will farm at z59 for 2 minutes. ', 'multiValue', [-1], null, 'Μaps');
+    createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +Μaps. Using 0 by itself will use global level for all Μaps. ', 'multiValue', [0], null, 'Μaps');
+    createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
+    createSetting('Rtimespecialselection', 'TF: Special Selection', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Μaps');
+    createSetting('Rtimegatherselection', 'TF: Gather Selection', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Μaps');
 
     //Spire
     
@@ -1376,6 +1377,12 @@ function updateCustomButtons() {
     var radonon = getPageSetting('radonsettings') == 1;
     
     //Tabs
+    if (document.getElementById("tabMaps") != null) {
+        document.getElementById("tabMaps").style.display = radonon ? "none" : "";
+    }
+    if (document.getElementById("tabΜaps") != null) {
+        document.getElementById("tabΜaps").style.display = !radonon ? "none" : "";
+    }
     if (document.getElementById("tabSpire") != null) {
         document.getElementById("tabSpire").style.display = radonon ? "none" : "";
     }

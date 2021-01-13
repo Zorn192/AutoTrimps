@@ -1862,7 +1862,6 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap5 == undefined && !RAMPmapbought5 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(0)) {
-                debug("Check complete for 5th map");
                 RAMPplusPres(0);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
@@ -1874,7 +1873,6 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap4 == undefined && !RAMPmapbought4 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(1)) {
-                debug("Check complete for 4th map");
                 RAMPplusPres(1);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
@@ -1886,7 +1884,6 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap3 == undefined && !RAMPmapbought3 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(2)) {
-                debug("Check complete for 3rd map");
                 RAMPplusPres(2);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
@@ -1898,7 +1895,6 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap2 == undefined && !RAMPmapbought2 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(3)) {
-                debug("Check complete for 2nd map");
                 RAMPplusPres(3);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
@@ -1910,7 +1906,6 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap1 == undefined && !RAMPmapbought1 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(4)) {
-                debug("Check complete for 1st map");
                 RAMPplusPres(4);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
@@ -1932,7 +1927,7 @@ function RautoMap() {
                 autoTrimpSettings["RAutoMaps"].value = 0;
             }
             if (RAMPfragcheck && game.global.preMapsActive && !game.global.mapsActive && RAMPmapbought1 && RAMPpMap1 != undefined && Rshoulddopraid) {
-                debug("running map 1");
+                debug("Running map 1");
                 selectedMap = RAMPpMap1;
                 selectMap(RAMPpMap1);
                 runMap();
@@ -1941,7 +1936,7 @@ function RautoMap() {
                 RAMPpMap1 = undefined;
             }
             if (RAMPfragcheck && game.global.preMapsActive && !game.global.mapsActive && RAMPmapbought2 && RAMPpMap2 != undefined && Rshoulddopraid) {
-                debug("running map 2");
+                debug("Running map 2");
                 selectedMap = RAMPpMap2;
                 selectMap(RAMPpMap2);
                 runMap();
@@ -1950,7 +1945,7 @@ function RautoMap() {
                 RAMPpMap2 = undefined;
             }
             if (RAMPfragcheck && game.global.preMapsActive && !game.global.mapsActive && RAMPmapbought3 && RAMPpMap3 != undefined && Rshoulddopraid) {
-                debug("running map 3");
+                debug("Running map 3");
                 selectedMap = RAMPpMap3;
                 selectMap(RAMPpMap3);
                 runMap();
@@ -1959,7 +1954,7 @@ function RautoMap() {
                 RAMPpMap3 = undefined;
             }
             if (RAMPfragcheck && game.global.preMapsActive && !game.global.mapsActive && RAMPmapbought4 && RAMPpMap4 != undefined && Rshoulddopraid) {
-                debug("running map 4");
+                debug("Running map 4");
                 selectedMap = RAMPpMap4;
                 selectMap(RAMPpMap4);
                 runMap();
@@ -1968,7 +1963,7 @@ function RautoMap() {
                 RAMPpMap4 = undefined;
             }
             if (RAMPfragcheck && game.global.preMapsActive && !game.global.mapsActive && RAMPmapbought5 && RAMPpMap5 != undefined && Rshoulddopraid) {
-                debug("running map 5");
+                debug("Running map 5");
                 selectedMap = RAMPpMap5;
                 selectMap(RAMPpMap5);
                 runMap();
@@ -2145,7 +2140,7 @@ function RautoMap() {
                             }
                         }
                         if (!shipfragcheck && game.global.preMapsActive && !game.global.mapsActive && shipfragmappybought && shipfragmappy != undefined && Rshouldshipfarm) {
-                            debug("running ship frag map");
+                            debug("Running ship frag map");
                             selectedMap = shipfragmappy;
                             selectMap(shipfragmappy);
                             runMap();

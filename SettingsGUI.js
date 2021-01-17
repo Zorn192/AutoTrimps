@@ -566,17 +566,17 @@ function initializeAllSettings() {
     createSetting('Rprispalace', 'Prismatic Palace', 'Run Prismatic Palace when its unlocked. ', 'boolean', true, null, 'Μaps');
     createSetting('Rmeltpoint', 'Melting Point', '-1 to disable. When to run the map Melting Point. Use it like this: 50,91. The first number is what zone Melting Point should be run at, the second number is what Cell to run it at. In this example AutoMaps would run Melting Point at z50 cell 91. Must define both values. Works in the challenges Melt and Trappapalooza. ', 'multiValue', [-1], null, 'Μaps');
     
-    //Melting Points
-    document.getElementById('Rmeltpoint').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('MeltingPoint', 'Melting Point', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
-    createSetting('MPZone', 'MP Zone', 'Which zone to run Melting Point', 'value', '-1', null, 'Μaps');
-    createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Μaps');
-
     //Atlantrimp
+    document.getElementById('Rmeltpoint').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Atlantrimp', 'Atlantrimp', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
     createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Μaps');
     createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Μaps');
 
+    //Melting Point
+    createSetting('MeltingPoint', 'Melting Point', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
+    createSetting('MPZone', 'MP Zone', 'Which zone to run Melting Point', 'value', '-1', null, 'Μaps');
+    createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Μaps');
+    
     //Tribute Farming
     document.getElementById('ATCell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Μaps');
@@ -596,9 +596,9 @@ function initializeAllSettings() {
     createSetting('Rtimespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Μaps');
     createSetting('Rtimegatherselection', 'TF: Gather', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Μaps');
     document.getElementById('Rtimegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rtimealtres', 'TF: Alt Res', 'Turn this on if you want to gather a second resource while time farming. ', 'boolean', false, null, 'Μaps');
-    createSetting('Rtimealtrestype', 'TF: Alt Resource', 'Select a secondary worker to hire during time farming. ', 'dropdown', '0', ["Default", "Farmer", "Lumberjack", "Miner", "Scientist"], 'Μaps');
-    createSetting('Rtimealtreseamt', 'TF: Alt Res Amt', 'What percentage of workers in relation to the selected primary resource you would like to be put into the secondary resource. ', 'value', '-1', null, 'Μaps');
+    createSetting('Rtimealtworker', 'TF: Alt Res', 'Turn this on if you want to gather a second resource while time farming. ', 'boolean', false, null, 'Μaps');
+    createSetting('Rtimealtworkertype', 'AW: Worker', 'Select a secondary worker to hire during time farming. ', 'dropdown', '0', ["Farmer", "Lumberjack", "Miner", "Scientist"], 'Μaps');
+    createSetting('Rtimealtworkerpct', 'AW: Percentage', 'What percentage of workers in relation to the selected primary worker you would like to be put into the secondary worker. ', 'value', '-1', null, 'Μaps');
     
     //Spire
     
@@ -1710,9 +1710,9 @@ function updateCustomButtons() {
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
     //Time farming alt resource
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimealtres'): turnOff('Rtimealtres');
-    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtres') == true) ? turnOn('Rtimealtrestype'): turnOff('Rtimealtrestype');
-    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtres') == true) ? turnOn('Rtimealtreseamt'): turnOff('Rtimealtreseamt');
+    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimealtworker'): turnOff('Rtimealtworker');
+    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtworker') == true) ? turnOn('Rtimealtworkertype'): turnOff('Rtimealtworkertype');
+    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtworker') == true) ? turnOn('Rtimealtworkerpct'): turnOff('Rtimealtworkerpct');
 
     radonon ? turnOn('RVoidMaps'): turnOff('RVoidMaps');
     radonon ? turnOn('Rvoidscell'): turnOff('Rvoidscell');

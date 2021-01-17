@@ -548,6 +548,14 @@ function RbuyJobs() {
     freeWorkers -= (game.resources.trimps.owned > 1e6) ? reservedJobs : 0;
 
     // Calculate how much of each worker we should have
+    if (game.global.StaffEquipped.rarity >= 10 && getPageSetting("NoFarmersAbove") == true && getPageSetting("NoFarmerZone") >= game.global.world) {
+        var desiredRatios = [0,1,1,0];
+	} else if (game.global.StaffEquipped.rarity >= 10) {
+	    var desiredRatios = [1,1,1,0];
+    } else {
+    	var desiredRatios = [0,0,0,0];
+    }
+
     // If focused farming go all in for caches
     var allIn = "";
     if (Rshouldtimefarm) {
@@ -563,13 +571,14 @@ function RbuyJobs() {
     }
 
     if (Rshouldshipfarm || Rshouldtributefarm) {
-	allIn = "Farmer";
+	    allIn = "Farmer";
     }	
-	
-    var desiredRatios = [0,0,0,0];
+
     if (allIn != "") {
-        desiredRatios[ratioWorkers.indexOf(allIn)] = 1;
-	    if(Rshouldtimefarm) { desiredRatios[ratioWorkers.indexOf("Lumberjack")] =0.3;}
+        desiredRatios[ratioWorkers.indexOf(allIn)] = 100;
+        if (Rshouldtimefarm && getPageSetting("Rtimealtres") == true && getPageSetting("Rtimealtrestype") != "Default" && getPageSetting("Rtimealtreseamt") != -1) {
+        	desiredRatios[ratioWorkers.indexOf(allIn)] = getPageSetting("Rtimealtreseamt");
+        }
     } else {
         // Weird scientist ratio hack. Based on previous AJ, I don't know why it's like this.
         var scientistMod = MODULES["jobs"].RscientistRatio;

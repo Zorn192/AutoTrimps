@@ -578,7 +578,7 @@ function initializeAllSettings() {
     createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Μaps');
     
     //Tribute Farming
-    document.getElementById('ATCell').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('MPCell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Μaps');
     createSetting('Rtributefarmzone', 'TF: Zone', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Μaps');
     createSetting('Rtributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');

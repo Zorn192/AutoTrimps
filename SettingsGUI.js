@@ -598,7 +598,7 @@ function initializeAllSettings() {
     createSetting('Rtimegatherselection', 'TF: Gather', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Μaps');
     document.getElementById('Rtimegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtimealtres', 'TF: Alt Res', 'Turn this on if you want to gather a second resource while time farming. ', 'boolean', false, null, 'Μaps');
-    createSetting('Rtimealtrestype'), 'TF: Alt Resource', 'Select a secondary worker to hire during time farming.', 'dropdown', '0', ["Default", "Farmer", "Lumberjack", "Miner", "Scientist"], 'Maps');
+    createSetting('Rtimealtrestype', 'TF: Alt Resource', 'Select a secondary worker to hire during time farming. ', 'dropdown', '0', ["Default", "Farmer", "Lumberjack", "Miner", "Scientist"], 'Μaps');
     createSetting('Rtimealtreseamt', 'TF: Alt Res Amt', 'What percentage of workers in relation to the selected primary resource you would like to be put into the secondary resource. ', 'value', '-1', null, 'Μaps');
     
     //Spire

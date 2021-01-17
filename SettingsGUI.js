@@ -573,7 +573,6 @@ function initializeAllSettings() {
     createSetting('MPCell', 'MP: Cell', 'Which cell to run Melting Point', 'value', '-1', null, 'Μaps');
 
     //Atlantrimp
-    document.getElementById('MPCell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Atlantrimp', 'Atlantrimp', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
     createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Μaps');
     createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Μaps');

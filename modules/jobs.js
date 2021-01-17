@@ -576,8 +576,10 @@ function RbuyJobs() {
 
     if (allIn != "") {
         desiredRatios[ratioWorkers.indexOf(allIn)] = 100;
-        if (Rshouldtimefarm && getPageSetting("Rtimealtres") == true && getPageSetting("Rtimealtrestype") != "Default" && getPageSetting("Rtimealtreseamt") != -1) {
-        	desiredRatios[ratioWorkers.indexOf(allIn)] = getPageSetting("Rtimealtreseamt");
+        if (Rshouldtimefarm && getPageSetting("Rtimealtworker") == true && getPageSetting('Rtimealtworkertype') != '' && getPageSetting("Rtimealtworkerpct") != -1) {
+        	if (getPageSetting('Rtimealtworkertype') != allIn) {
+        	    desiredRatios[ratioWorkers.indexOf(getPageSetting('Rtimealtworkertype'))] = getPageSetting("Rtimealtworkerpct");
+        	}
         }
     } else {
         // Weird scientist ratio hack. Based on previous AJ, I don't know why it's like this.

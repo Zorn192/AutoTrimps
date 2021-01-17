@@ -548,7 +548,7 @@ function RbuyJobs() {
     freeWorkers -= (game.resources.trimps.owned > 1e6) ? reservedJobs : 0;
 
     // Calculate how much of each worker we should have
-    if (game.global.StaffEquipped.rarity >= 10 && getPageSetting("NoFarmersAbove") == true && getPageSetting("NoFarmerZone") >= game.global.world) {
+    if (game.global.StaffEquipped.rarity >= 10 && getPageSetting("NoFarmersAbove") == true && (game.global.world >= getPageSetting("NoFarmerZone"))) {
         var desiredRatios = [0,1,1,0];
 	} else if (game.global.StaffEquipped.rarity >= 10) {
 	    var desiredRatios = [1,1,1,0];

@@ -596,7 +596,11 @@ function initializeAllSettings() {
     createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
     createSetting('Rtimespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Μaps');
     createSetting('Rtimegatherselection', 'TF: Gather', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Μaps');
-
+    document.getElementById('Rtimegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rtimealtres', 'TF: Alt Res', 'Turn this on if you want to gather a second resource while time farming. ', 'boolean', false, null, 'Μaps');
+    createSetting('Rtimealtrestype'), 'TF: Alt Resource', 'Select a secondary worker to hire during time farming.', 'dropdown', '0', ["Default", "Farmer", "Lumberjack", "Miner", "Scientist"], 'Maps');
+    createSetting('Rtimealtreseamt', 'TF: Alt Res Amt', 'What percentage of workers in relation to the selected primary resource you would like to be put into the secondary resource. ', 'value', '-1', null, 'Μaps');
+    
     //Spire
     
     //Line 1
@@ -1706,6 +1710,10 @@ function updateCustomButtons() {
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimefarmcell'): turnOff('Rtimefarmcell');
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
+    //Time farming alt resource
+    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimealtres'): turnOff('Rtimealtres');
+    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtres') == true) ? turnOn('Rtimealtrestype'): turnOff('Rtimealtrestype');
+    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtres') == true) ? turnOn('Rtimealtreseamt'): turnOff('Rtimealtreseamt');
 
     radonon ? turnOn('RVoidMaps'): turnOff('RVoidMaps');
     radonon ? turnOn('Rvoidscell'): turnOff('Rvoidscell');

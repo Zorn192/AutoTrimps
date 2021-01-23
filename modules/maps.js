@@ -1792,6 +1792,7 @@ function RautoMap() {
             }
         }
     } else if (!game.global.preMapsActive && !game.global.mapsActive) {
+        game.global.mapRunCounter=0
         if (selectedMap != "world") {
             if (!game.global.switchToMaps) {
                 mapsClicked();

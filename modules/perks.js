@@ -5,7 +5,7 @@ MODULES["perks"].showDetails = true;
 var head = document.getElementsByTagName('head')[0];
 var queuescript = document.createElement('script');
 queuescript.type = 'text/javascript';
-queuescript.src = 'https://Zorn192.github.io/AutoTrimps/FastPriorityQueue.js';
+queuescript.src = 'https://SadAugust.github.io/AutoTrimps_Test/FastPriorityQueue.js';
 head.appendChild(queuescript);
 if (game.global.universe == 1) {
 //[looting,toughness,power,motivation,pheromones,artisanistry,carpentry,resilience,coordinated,resourceful,overkill,cunning,curious,classy]
@@ -735,7 +735,7 @@ MODULES["perks"].RshowDetails = true;
 var Rhead = document.getElementsByTagName('head')[0];
 var Rqueuescript = document.createElement('script');
 queuescript.type = 'text/javascript';
-queuescript.src = 'https://Zorn192.github.io/AutoTrimps/FastPriorityQueue.js';
+queuescript.src = 'https://SadAugust.github.io/AutoTrimps_Test/FastPriorityQueue.js';
 head.appendChild(queuescript);
 //[looting,toughness,power,motivation,pheromones,artisanistry,carpentry,prismal,equality,criticality,resilience,tenacity,greed,frenzy]
 var preset_Rspace = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];

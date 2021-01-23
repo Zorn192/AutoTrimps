@@ -750,6 +750,7 @@ var RdodMaxMapBonus = !1;
 var RvanillaMapatZone = !1;
 var Rtributefarm = !1;
 var Rtimefarm = !1;
+var Rzonecleared = !1;
 var RadditionalCritMulti = 2 < getPlayerCritChance() ? 25 : 5;
 var Rshouldtributefarm = !1;
 var Rshouldtimefarm = !1;
@@ -969,6 +970,12 @@ function RautoMap() {
     Rshouldstormfarm = false;
     Rshouldequipfarm = false;
     Rshouldshipfarm = false;
+    if (getPageSetting('Rtimefarm') == true) { var x; timezones = getPageSetting('Rtimefarmtime')[getPageSetting('Rtimefarmzone').indexOf(game.global.world)]; if (timezones == 1) { x = 0; }else {  x = 2; }
+        if (Rshouldtimefarm == false && (timezones < game.global.mapRunCounter+x)){
+            game.global.mapRunCounter = 0;
+            Rzonecleared=game.stats.zonesCleared.value;
+            }
+        }
     if (ourBaseDamage > 0) {
         RshouldDoMaps = (!RenoughDamage || RshouldFarm || RscryerStuck);
     }
@@ -1033,18 +1040,24 @@ function RautoMap() {
     var timefarmcell;
     timefarmcell = ((getPageSetting('Rtimefarmcell') > 0) ? getPageSetting('Rtimefarmcell') : 1);
     Rtimefarm = (getPageSetting('Rtimefarm') == true && ((timefarmcell <= 1) || (timefarmcell > 1 && (game.global.lastClearedCell + 1) >= timefarmcell)) && game.global.world > 5 && (getPageSetting('Rtimefarmzone')[0] > 0 && getPageSetting('Rtimefarmtime')[0] > 0));
-    if (Rtimefarm) {
+    if (Rtimefarm && (game.stats.zonesCleared.value != Rzonecleared)) {
         var timefarmzone;
         var timefarmtime;
-        var time = ((new Date().getTime() - game.global.zoneStarted) / 1000);
+        //debug(game.stats.zonesCleared.value);
+        //debug("Zones cleared: "+Rzonecleared);
 
         timefarmzone = getPageSetting('Rtimefarmzone');
         timefarmtime = getPageSetting('Rtimefarmtime');
+        
+        timezoness = getPageSetting('Rtimefarmtime')[getPageSetting('Rtimefarmzone').indexOf(game.global.world)];
 
         var timefarmindex = timefarmzone.indexOf(game.global.world);
         var timezones = timefarmtime[timefarmindex];
 
-        if (timefarmzone.includes(game.global.world) && timezones > time) {
+        if (timefarmzone.includes(game.global.world) && (timezones > game.global.mapRunCounter)) {
+            if (game.global.mapsActive && timezones == 1) {
+                game.global.mapRunCounter++;
+            }
             Rshouldtimefarm = true;
         }
 

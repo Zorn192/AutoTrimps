@@ -972,7 +972,6 @@ function RautoMap() {
     Rshouldshipfarm = false;
     if (getPageSetting('Rtimefarm') == true) { var x; timezones = getPageSetting('Rtimefarmtime')[getPageSetting('Rtimefarmzone').indexOf(game.global.world)]; if (timezones == 1) { x = 0; }else {  x = 2; }
         if (Rshouldtimefarm == false && (timezones < game.global.mapRunCounter+x)){
-            game.global.mapRunCounter = 0;
             Rzonecleared=game.stats.zonesCleared.value;
             }
         }

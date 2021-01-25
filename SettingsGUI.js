@@ -564,10 +564,9 @@ function initializeAllSettings() {
     createSetting('Rvoidscell', 'Voids Cell', 'Run Voids at this Cell. -1 to run them at the default value, which is 70. ', 'value', '-1', null, 'Μaps');
     createSetting('RRunNewVoidsUntilNew', 'New Voids Mod', '<b>0 to disable. Positive numbers are added to your Void Map zone. -1 for no cap.</b> This allows you to run new Void Maps obtained after your Void Map zone by adding this number to your Void Map zone. <br> <b>Example</b> Void map zone=187 and This setting=10. New Voids run until 197).<br>This means that any new void maps gained until Z197. CAUTION: May severely slow you down by trying to do too-high level void maps. Default 0 (OFF).', 'value', '0', null, 'Μaps');
     createSetting('Rprispalace', 'Prismatic Palace', 'Run Prismatic Palace when its unlocked. ', 'boolean', true, null, 'Μaps');
-    createSetting('Rmeltpoint', 'Melting Point', '-1 to disable. When to run the map Melting Point. Use it like this: 50,91. The first number is what zone Melting Point should be run at, the second number is what Cell to run it at. In this example AutoMaps would run Melting Point at z50 cell 91. Must define both values. Works in the challenges Melt and Trappapalooza. ', 'multiValue', [-1], null, 'Μaps');
     
     //Atlantrimp
-    document.getElementById('Rmeltpoint').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rprispalace').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Atlantrimp', 'Atlantrimp', 'Toggle to use Atlantrimp settings', 'boolean', false, null, 'Μaps');
     createSetting('ATZone', 'Atlantrimp: Zone', 'Which zone to run atlantrimp', 'value', -1, null, 'Μaps');
     createSetting('ATCell', 'Atlantrimp: Cell', 'Which cell to run atlantrimp', 'value', '-1', null, 'Μaps');
@@ -1716,7 +1715,6 @@ function updateCustomButtons() {
     radonon ? turnOn('Rvoidscell'): turnOff('Rvoidscell');
     radonon ? turnOn('RRunNewVoidsUntilNew'): turnOff('RRunNewVoidsUntilNew');
     radonon ? turnOn('Rprispalace'): turnOff('Rprispalace');
-    radonon ? turnOn('Rmeltpoint'): turnOff('Rmeltpoint');
     radonon ? turnOn('Rblackbog'): turnOff('Rblackbog');
     (radonon && getPageSetting('Rblackbog') == true) ? turnOn('Rblackbogzone'): turnOff('Rblackbogzone');
     (radonon && getPageSetting('Rblackbog') == true) ? turnOn('Rblackbogamount'): turnOff('Rblackbogamount');

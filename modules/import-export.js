@@ -184,7 +184,6 @@ function ImportExportTooltip(what, event) {
             };
         }
         costText += "</div>";
-	} 
 	
     } else if (what == "ImportAutoTrimps") {
         tooltipText = "Import your AUTOTRIMPS save string! It'll be fine, I promise.<br/><br/><textarea id='importBox' style='width: 100%' rows='5'></textarea>";

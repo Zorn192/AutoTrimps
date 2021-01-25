@@ -101,13 +101,9 @@ function PrestigeValue(a){var b=game.upgrades[a].prestiges,c=game.equipment[b],d
 function evaluateEquipmentEfficiency(equipName) {
     var equip = equipmentList[equipName];
     var gameResource = equip.Equip ? game.equipment[equipName] : game.buildings[equipName];
-    if (equipName == 'Shield') {
-        if (gameResource.blockNow) {
-            equip.Stat = 'block';
-        } else {
-            equip.Stat = 'health';
-        }
-    }
+    if (equipName == 'Shield')
+		equip.Stat = gameResource.blockNow ? "block" : "health";
+
     var Effect = equipEffect(gameResource, equip);
     var Cost = equipCost(gameResource, equip);
     var Factor = Effect / Cost;

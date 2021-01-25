@@ -462,8 +462,8 @@ function initializeAllSettings() {
     createSetting('Rshipspending', 'Ship percentage', 'What percentage of owned food to spend on Worshippers. -1 for 100% or value between 1-100 for lower.', 'value', '-1', null, "Jobs");
     //Maintaining ships
     document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('NoFarmersAbove', 'No Farmers Above zone', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');
-    createSetting('NoFarmerZone', 'NFA: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75','value', '-1', null, 'Jobs');
+    createSetting('NoFarmersAbove', 'No Farmers From', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');
+    createSetting('NoFarmerZone', 'NFF: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75 and above','value', '-1', null, 'Jobs');
     
     //Ships
     document.getElementById('NoFarmerZone').parentNode.insertAdjacentHTML('afterend', '<br>');

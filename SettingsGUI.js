@@ -297,8 +297,8 @@ function initializeAllSettings() {
     createSetting('dPreSpireNurseries', 'Daily Nurseries pre-Spire', 'Set the maximum number of Nurseries to build for Spires in Dailies. Overrides No Nurseries Until z and Max Nurseries so you can keep them seperate! Disable with -1.', 'value', -1, null, 'Daily');
 
     //Radon Daily Gear & Raiding
-    createSetting('Rdequipon', 'AutoEquip', 'AutoEquip. Buys Prestiges and levels equipment according to various settings. Will only buy prestiges if it is worth it. Levels all eqiupment according to best efficiency. ', 'boolean', false, null, "Gear");
-    createSetting('Rdequipzone', 'AE: Zone', 'What zone to stop caring about H:D and buy as much prestiges and equipment as possible. ', 'value', -1, null, "Gear");
+    createSetting('Rdequipon', 'AutoEquip', 'AutoEquip. Buys Prestiges and levels equipment according to various settings. Will only buy prestiges if it is worth it. Levels all eqiupment according to best efficiency. ', 'boolean', false, null, "Daily");
+    createSetting('Rdequipzone', 'AE: Zone', 'What zone to stop caring about H:D and buy as much prestiges and equipment as possible. ', 'value', -1, null, "Daily");
     createSetting('RdPraidingzone', 'Daily P Raiding Z', 'Raids Maps for prestiges at zone specified in Dailies. Example: 495, will raid Maps at 501. Once all gear is obtained from the map, it will revert back to regular farming. Extremely helpful for spire. Best used in poison zones. <b>You can use multiple values like this 495,506,525! </b>', 'multiValue', [-1], null, 'Daily');
     createSetting('RdMaxPraidZone', 'Daily Max P Raid Z', 'List of maximum zones to Praid on Dailies corresponding to the list specified in Daily Praiding Z.  e.g. if Daily P raiding Z setting is 491,495 and this setting is 495,505, AT will P raid up to 495 from 491, and 505 from 495.  Set to -1 to always buy highest available prestige map.  If no corrsponding value, or value is invalid, defaults to max available (up to +10)', 'multiValue', [-1], null, 'Daily');
     

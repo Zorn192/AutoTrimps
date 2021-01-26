@@ -972,7 +972,14 @@ function RautoEquip() {
     var alwaysLvl2 = getPageSetting('Requip2');
     var attackEquipCap = ((getPageSetting('Requipcapattack') <= 0) ? Infinity : getPageSetting('Requipcapattack'));
     var healthEquipCap = ((getPageSetting('Requipcaphealth') <= 0) ? Infinity : getPageSetting('Requipcaphealth'));
-    var zoneGo = game.global.world >= getPageSetting('Requipzone');
+    if (game.global.challengeActive == "Daily" && getPageSetting('Rdequipon') == true) {
+		var zoneGo = game.global.world >= getPageSetting('Rdequipzone');
+		debug("Daily = "+zoneGo);
+	}
+	else {
+		var zoneGo = game.global.world >= getPageSetting('Requipzone');
+		debug("Regular = "+zoneGo);
+	}
     var resourceMaxPercent = getPageSetting('Requippercent') / 100;
 
     // Always 2

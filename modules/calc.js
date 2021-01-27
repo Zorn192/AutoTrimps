@@ -929,15 +929,15 @@ function RcalcBadGuyDmg(enemy, attack, equality) {
 	number *= game.challenges.Exterminate.getSwarmMult();
     }
     if (game.global.challengeActive == "Nurture") {
-	health *= 2;
+	number *= 2;
 	if (game.buildings.Laboratory.owned > 0) {
-	    health *= game.buildings.Laboratory.getEnemyMult();
+	    number *= game.buildings.Laboratory.getEnemyMult();
 	}
     }
     if (!enemy && game.global.usingShriek) {
         number *= game.mapUnlocks.roboTrimp.getShriekValue();
     }
-    return health;
+    return number;
 }
 
 function RcalcEnemyBaseHealth(world, level, name) {

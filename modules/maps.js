@@ -1443,7 +1443,7 @@ function RautoMap() {
                 if (getPageSetting('MeltingPoint') == true && getPageSetting('MPZone') >= 0) meltingpoint[0] = getPageSetting('MPZone');
                 if (getPageSetting('MeltingPoint') == true && getPageSetting('MPCell') >= 0) meltingpoint[1] = getPageSetting('MPCell');
                 if (theMap.name == 'Melting Point' && (game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1]) || (getPageSetting('Rmeltsmithy') > 0 && getPageSetting('Rmeltsmithy') <= game.buildings.Smithy.owned)) && game.mapUnlocks.SmithFree.canRunOnce) {
-                if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.challengeActive == "Daily") || (game.global.runningChallengeSquared == true)) continue;
+                if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.challengeActive == "Daily") || (game.global.runningChallengeSquared == true) || Rshouldtimefarm) continue;
                     selectedMap = theMap.id;
                     break;
                 }

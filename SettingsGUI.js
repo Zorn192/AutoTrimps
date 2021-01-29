@@ -581,6 +581,7 @@ function initializeAllSettings() {
     createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Μaps');
     createSetting('Rtributefarmzone', 'TF: Zone', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Μaps');
     createSetting('Rtributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');
+    createSetting('Rtributefarmmets', 'TF: Meteorologist', 'How many meteorologists to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');
     createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Μaps');
     createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
     createSetting('Rtributespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>hc = Huge Cache<br>lsc = Large Savory Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "hc", "lsc"], 'Μaps');
@@ -1698,6 +1699,7 @@ function updateCustomButtons() {
     //Tribute Farming
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmzone'): turnOff('Rtributefarmzone');
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmvalue'): turnOff('Rtributefarmvalue');
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmmets'): turnOff('Rtributefarmmets');
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributemaplevel'): turnOff('Rtributemaplevel');
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmcell'): turnOff('Rtributefarmcell');
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributespecialselection'): turnOff('Rtributespecialselection');

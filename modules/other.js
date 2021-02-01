@@ -2677,10 +2677,10 @@ function RAMPplusPresfragmax(number) {
     document.getElementById("biomeAdvMapsSelect").value = "Plentiful";
     document.getElementById("advExtraLevelSelect").value = RAMPplusMapToRun(number);
     document.getElementById("advSpecialSelect").value = "p";
-    document.getElementById("lootAdvMapsRange").value = 0;
+    document.getElementById("lootAdvMapsRange").value = 9;
     document.getElementById("difficultyAdvMapsRange").value = 9;
     document.getElementById("sizeAdvMapsRange").value = 9;
-    document.getElementById("advPerfectCheckbox").checked = false;
+    document.getElementById("advPerfectCheckbox").checked = true;
     document.getElementById("mapLevelInput").value = game.global.world;
     updateMapCost();
     return updateMapCost(true);

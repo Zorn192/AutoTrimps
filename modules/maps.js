@@ -1874,8 +1874,14 @@ function RautoMap() {
                     RAMPfragfarming = false;
                 }
             }
+	    if (getPageSetting('RAMPraidfrag') == 2) {
+                    raiding = RAMPplusPresfragmax
+            }  
+            else {
+                    raiding = RAMPplusPres
+            }
             if (RAMPfragcheck && RAMPpMap5 == undefined && !RAMPmapbought5 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(0)) {
-                RAMPplusPres(0);
+                raiding(0);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
                     RAMPmapbought5 = true;
@@ -1886,7 +1892,7 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap4 == undefined && !RAMPmapbought4 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(1)) {
-                RAMPplusPres(1);
+                raiding(1);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
                     RAMPmapbought4 = true;
@@ -1897,7 +1903,7 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap3 == undefined && !RAMPmapbought3 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(2)) {
-                RAMPplusPres(2);
+                raiding(2);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
                     RAMPmapbought3 = true;
@@ -1908,7 +1914,7 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap2 == undefined && !RAMPmapbought2 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(3)) {
-                RAMPplusPres(3);
+                raiding(3);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
                     RAMPmapbought2 = true;
@@ -1919,7 +1925,7 @@ function RautoMap() {
                 }
             }
             if (RAMPfragcheck && RAMPpMap1 == undefined && !RAMPmapbought1 && game.global.preMapsActive && Rshoulddopraid && RAMPshouldrunmap(4)) {
-                RAMPplusPres(4);
+                raiding(4);
                 if ((updateMapCost(true) <= game.resources.fragments.owned)) {
                     buyMap();
                     RAMPmapbought1 = true;

@@ -693,7 +693,15 @@ function initializeAllSettings() {
     document.getElementById('dhATGA2timer').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('cATGA2timer', 'ATGA: T: C2', '<b>ATGA Timer: C2s</b><br>ATGA will use this value in C2s. Overwrites Default, Before Z and After Z. ', 'value', '-1', null, 'ATGA');
     createSetting('chATGA2timer', 'ATGA: T: C: Hard', '<b>ATGA Timer: Hard C2s</b><br>ATGA will use this value in C2s that are considered Hard. Electricity, Nom, Toxicity. Overwrites Default, Before Z and After Z and C2 ATGA', 'value', '-1', null, 'ATGA');
-
+	
+    //C3 Time Farming
+    createSetting('Rc3timefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'C2');
+    createSetting('Rc3timefarmzone', 'TF: Zone', 'Which zones you would like to farm at. Can use 59,61,62. ', 'multiValue', [-1], null, 'C2');
+    createSetting('Rc3timefarmtime', 'TF: Maps', 'How many maps you would like to farm at the zone specified in TF: Zone. Can use 2,3,4. These values should match up to your TF zones. If using TF: Zone and TF: Maps examples (59 and 2) it will farm at z59 for 2 maps. ', 'multiValue', [-1], null, 'C2');
+    createSetting('Rc3timemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'C2');
+    createSetting('Rc3timefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'C2');
+    createSetting('Rc3timespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'multiValue', [0], null, 'C2');
+    createSetting('Rc3timegatherselection', 'TF: Gather', 'Select which resource to Gather. Food, Wood, Metal are the possible options. ', 'multiValue', [-1], null, 'C2');
 
     
     //Challenges
@@ -1527,14 +1535,23 @@ function updateCustomButtons() {
     //C2
     !radonon ? turnOn('FinishC2'): turnOff('FinishC2');
     !radonon ? turnOn('buynojobsc'): turnOff('buynojobsc');
-    !radonon ? turnOn('cfightforever'): turnOff('cfightforever');
+    !radonon ? turnOn('carmormagic'): turnOff('carmormagic');
+    !radonon ? turnOn('carmormagic'): turnOff('carmormagic');
     !radonon ? turnOn('mapc2hd'): turnOff('mapc2hd');
     !radonon ? turnOn('novmsc2'): turnOff('novmsc2');
     !radonon ? turnOn('c2runnerstart'): turnOff('c2runnerstart');
     !radonon && getPageSetting('c2runnerstart') == true ? turnOn('c2runnerportal'): turnOff('c2runnerportal');
     !radonon && getPageSetting('c2runnerstart') == true ? turnOn('c2runnerpercent'): turnOff('c2runnerpercent');
-
-
+    
+    //C3 Time Farming
+    radonon ? turnOn('Rc3timefarm'): turnOff('Rc3timefarm');
+    var rc3timeon = (getPageSetting('Rc3timefarm') == true);
+    (radonon && rc3timeon ? turnOn('Rc3timefarmzone'): turnOff('Rc3timefarmzone');
+    (radonon && rc3timeon ? turnOn('Rc3timefarmtime'): turnOff('Rc3timefarmtime');
+    (radonon && rc3timeon ? turnOn('Rc3timemaplevel'): turnOff('Rc3timemaplevel');
+    (radonon && rc3timeon ? turnOn('Rc3timefarmcell'): turnOff('Rc3timefarmcell');
+    (radonon && rc3timeon ? turnOn('Rc3timespecialselection'): turnOff('Rc3timespecialselection');
+    (radonon && rc3timeon ? turnOn('Rc3timegatherselection'): turnOff('Rc3timegatherselection');
     
     //Buildings
     !radonon ? turnOn('BuyBuildingsNew'): turnOff('BuyBuildingsNew');
@@ -1681,8 +1698,6 @@ function updateCustomButtons() {
     radonon ? turnOn('Rhitssurvived'): turnOff('Rhitssurvived');
     radonon ? turnOn('Rmapcuntoff'): turnOff('Rmapcuntoff');
     radonon ? turnOn('RDisableFarm'): turnOff('RDisableFarm');
-    radonon ? turnOn('Rtributefarm'): turnOff('Rtributefarm');
-    radonon ? turnOn('Rtimefarm'): turnOff('Rtimefarm');
     
     //Melting Points
     radonon ? turnOn('MeltingPoint') : turnOff('MeltingPoint');
@@ -1697,19 +1712,23 @@ function updateCustomButtons() {
     radonon && aton ? turnOn('ATCell') : turnOff('ATCell');
 	
     //Tribute Farming
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmzone'): turnOff('Rtributefarmzone');
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmvalue'): turnOff('Rtributefarmvalue');
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmmets'): turnOff('Rtributefarmmets');
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributemaplevel'): turnOff('Rtributemaplevel');
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributefarmcell'): turnOff('Rtributefarmcell');
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn('Rtributespecialselection'): turnOff('Rtributespecialselection');
+    radonon ? turnOn('Rtributefarm'): turnOff('Rtributefarm');
+    var rtributeon = (getPageSetting('Rtributefarm') == true);
+    (radonon && rtributeon ? turnOn('Rtributefarmzone'): turnOff('Rtributefarmzone');
+    (radonon && rtributeon ? turnOn('Rtributefarmvalue'): turnOff('Rtributefarmvalue');
+    (radonon && rtributeon ? turnOn('Rtributefarmmets'): turnOff('Rtributefarmmets');
+    (radonon && rtributeon ? turnOn('Rtributemaplevel'): turnOff('Rtributemaplevel');
+    (radonon && rtributeon ? turnOn('Rtributefarmcell'): turnOff('Rtributefarmcell');
+    (radonon && rtributeon ? turnOn('Rtributespecialselection'): turnOff('Rtributespecialselection');
     //Time Farming
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimefarmzone'): turnOff('Rtimefarmzone');
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimefarmtime'): turnOff('Rtimefarmtime');
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimemaplevel'): turnOff('Rtimemaplevel');
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimefarmcell'): turnOff('Rtimefarmcell');
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
+    radonon ? turnOn('Rtimefarm'): turnOff('Rtimefarm');
+    var rtimeon = (getPageSetting('Rtimefarm') == true);
+    (radonon && rtimeon ? turnOn('Rtimefarmzone'): turnOff('Rtimefarmzone');
+    (radonon && rtimeon ? turnOn('Rtimefarmtime'): turnOff('Rtimefarmtime');
+    (radonon && rtimeon ? turnOn('Rtimemaplevel'): turnOff('Rtimemaplevel');
+    (radonon && rtimeon ? turnOn('Rtimefarmcell'): turnOff('Rtimefarmcell');
+    (radonon && rtimeon ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
+    (radonon && rtimeon ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
     //Time farming alt resource
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimealtworker'): turnOff('Rtimealtworker');
     (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtworker') == true) ? turnOn('Rtimealtworkertype'): turnOff('Rtimealtworkertype');

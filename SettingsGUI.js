@@ -1546,12 +1546,12 @@ function updateCustomButtons() {
     //C3 Time Farming
     radonon ? turnOn('Rc3timefarm'): turnOff('Rc3timefarm');
     var rc3timeon = (getPageSetting('Rc3timefarm') == true);
-    (radonon && rc3timeon ? turnOn('Rc3timefarmzone'): turnOff('Rc3timefarmzone');
-    (radonon && rc3timeon ? turnOn('Rc3timefarmtime'): turnOff('Rc3timefarmtime');
-    (radonon && rc3timeon ? turnOn('Rc3timemaplevel'): turnOff('Rc3timemaplevel');
-    (radonon && rc3timeon ? turnOn('Rc3timefarmcell'): turnOff('Rc3timefarmcell');
-    (radonon && rc3timeon ? turnOn('Rc3timespecialselection'): turnOff('Rc3timespecialselection');
-    (radonon && rc3timeon ? turnOn('Rc3timegatherselection'): turnOff('Rc3timegatherselection');
+    (radonon && rc3timeon) ? turnOn('Rc3timefarmzone'): turnOff('Rc3timefarmzone');
+    (radonon && rc3timeon) ? turnOn('Rc3timefarmtime'): turnOff('Rc3timefarmtime');
+    (radonon && rc3timeon) ? turnOn('Rc3timemaplevel'): turnOff('Rc3timemaplevel');
+    (radonon && rc3timeon) ? turnOn('Rc3timefarmcell'): turnOff('Rc3timefarmcell');
+    (radonon && rc3timeon) ? turnOn('Rc3timespecialselection'): turnOff('Rc3timespecialselection');
+    (radonon && rc3timeon) ? turnOn('Rc3timegatherselection'): turnOff('Rc3timegatherselection');
     
     //Buildings
     !radonon ? turnOn('BuyBuildingsNew'): turnOff('BuyBuildingsNew');
@@ -1714,21 +1714,21 @@ function updateCustomButtons() {
     //Tribute Farming
     radonon ? turnOn('Rtributefarm'): turnOff('Rtributefarm');
     var rtributeon = (getPageSetting('Rtributefarm') == true);
-    (radonon && rtributeon ? turnOn('Rtributefarmzone'): turnOff('Rtributefarmzone');
-    (radonon && rtributeon ? turnOn('Rtributefarmvalue'): turnOff('Rtributefarmvalue');
-    (radonon && rtributeon ? turnOn('Rtributefarmmets'): turnOff('Rtributefarmmets');
-    (radonon && rtributeon ? turnOn('Rtributemaplevel'): turnOff('Rtributemaplevel');
-    (radonon && rtributeon ? turnOn('Rtributefarmcell'): turnOff('Rtributefarmcell');
-    (radonon && rtributeon ? turnOn('Rtributespecialselection'): turnOff('Rtributespecialselection');
+    (radonon && rtributeon) ? turnOn('Rtributefarmzone'): turnOff('Rtributefarmzone');
+    (radonon && rtributeon) ? turnOn('Rtributefarmvalue'): turnOff('Rtributefarmvalue');
+    (radonon && rtributeon) ? turnOn('Rtributefarmmets'): turnOff('Rtributefarmmets');
+    (radonon && rtributeon) ? turnOn('Rtributemaplevel'): turnOff('Rtributemaplevel');
+    (radonon && rtributeon) ? turnOn('Rtributefarmcell'): turnOff('Rtributefarmcell');
+    (radonon && rtributeon) ? turnOn('Rtributespecialselection'): turnOff('Rtributespecialselection');
     //Time Farming
     radonon ? turnOn('Rtimefarm'): turnOff('Rtimefarm');
     var rtimeon = (getPageSetting('Rtimefarm') == true);
-    (radonon && rtimeon ? turnOn('Rtimefarmzone'): turnOff('Rtimefarmzone');
-    (radonon && rtimeon ? turnOn('Rtimefarmtime'): turnOff('Rtimefarmtime');
-    (radonon && rtimeon ? turnOn('Rtimemaplevel'): turnOff('Rtimemaplevel');
-    (radonon && rtimeon ? turnOn('Rtimefarmcell'): turnOff('Rtimefarmcell');
-    (radonon && rtimeon ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
-    (radonon && rtimeon ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
+    (radonon && rtimeon) ? turnOn('Rtimefarmzone'): turnOff('Rtimefarmzone');
+    (radonon && rtimeon) ? turnOn('Rtimefarmtime'): turnOff('Rtimefarmtime');
+    (radonon && rtimeon) ? turnOn('Rtimemaplevel'): turnOff('Rtimemaplevel');
+    (radonon && rtimeon) ? turnOn('Rtimefarmcell'): turnOff('Rtimefarmcell');
+    (radonon && rtimeon) ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
+    (radonon && rtimeon) ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
     //Time farming alt resource
     (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimealtworker'): turnOff('Rtimealtworker');
     (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtworker') == true) ? turnOn('Rtimealtworkertype'): turnOff('Rtimealtworkertype');

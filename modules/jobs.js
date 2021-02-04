@@ -549,9 +549,9 @@ function RbuyJobs() {
 
     // Calculate how much of each worker we should have
     if (game.global.StaffEquipped.rarity >= 10 && getPageSetting("NoFarmersAbove") == true && (game.global.world >= getPageSetting("NoFarmerZone"))) {
-        var desiredRatios = [0,1,1,0];
+        var desiredRatios = [0,30,30,0];
 	} else if (game.global.StaffEquipped.rarity >= 10) {
-	    var desiredRatios = [1,1,1,0];
+	    var desiredRatios = [30,30,30,0];
     } else {
     	var desiredRatios = [0,0,0,0];
     }
@@ -559,28 +559,44 @@ function RbuyJobs() {
     // If focused farming go all in for caches
     var allIn = "";
     if (Rshouldtimefarm) {
-        if (autoTrimpSettings.Rtimespecialselection.selected.includes('wc')) {
+
+    	if (game.global.runningChallengeSquared) {
+            var timefarmzone = getPageSetting('Rc3timefarmzone');
+            var timefarmindex = timefarmzone.indexOf(game.global.world);
+            debug(timefarmindex)
+			var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
+			debug(stringsplit)
+			var rtimespecial = stringsplit[timefarmindex];
+		} else {
+			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected;
+		}
+
+    	debug(rtimespecial)
+        if (rtimespecial.includes('wc')) {
             allIn = "Lumberjack";
-        } else if (autoTrimpSettings.Rtimespecialselection.selected.includes('sc')) {
+        } else if (rtimespecial.includes('sc')) {
             allIn = "Farmer";
-        } else if (autoTrimpSettings.Rtimespecialselection.selected.includes('mc')) {
+            debug("test")
+        } else if (rtimespecial.includes('mc')) {
             allIn = "Miner";
-        } else if (autoTrimpSettings.Rtimespecialselection.selected.includes('rc')) {
+        } else if (rtimespecial.includes('rc')) {
             allIn = "Scientist";
         }
+          else if (rtimespecial.includes('hc')) {
+          	allIn = "Farmer"
+	        var desiredRatios = [100,100,100,0];
+	        debug(desiredRatios)
+          }
     }
 
     if (Rshouldshipfarm || Rshouldtributefarm) {
 	    allIn = "Farmer";
+	    var desiredRatios = [0,1,1,0];
     }	
 
     if (allIn != "") {
         desiredRatios[ratioWorkers.indexOf(allIn)] = 100;
-        if (Rshouldtimefarm && getPageSetting("Rtimealtworker") == true && getPageSetting('Rtimealtworkertype') != '' && getPageSetting("Rtimealtworkerpct") != -1) {
-        	if (getPageSetting('Rtimealtworkertype') != allIn) {
-        	    desiredRatios[ratioWorkers.indexOf(getPageSetting('Rtimealtworkertype'))] = getPageSetting("Rtimealtworkerpct");
-        	}
-        }
+        
     } else {
         // Weird scientist ratio hack. Based on previous AJ, I don't know why it's like this.
         var scientistMod = MODULES["jobs"].RscientistRatio;

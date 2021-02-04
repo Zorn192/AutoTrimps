@@ -594,11 +594,6 @@ function initializeAllSettings() {
     createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Μaps');
     createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
     createSetting('Rtimespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Μaps');
-    createSetting('Rtimegatherselection', 'TF: Gather', 'Select which resource to Gather. ', 'dropdown', '0', ["Default", "Food", "Wood", "Metal", "Science"], 'Μaps');
-    document.getElementById('Rtimegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rtimealtworker', 'TF: Alt Worker', 'Turn this on if you want to gather a second resource while time farming. ', 'boolean', false, null, 'Μaps');
-    createSetting('Rtimealtworkertype', 'AW: Worker', 'Select a secondary worker to hire during time farming. ', 'dropdown', '0', ["Farmer", "Lumberjack", "Miner", "Scientist"], 'Μaps');
-    createSetting('Rtimealtworkerpct', 'AW: Percentage', 'What percentage of workers in relation to the selected primary worker you would like to be put into the secondary worker. ', 'value', '-1', null, 'Μaps');
     
     //Spire
     
@@ -1728,12 +1723,7 @@ function updateCustomButtons() {
     (radonon && rtimeon) ? turnOn('Rtimemaplevel'): turnOff('Rtimemaplevel');
     (radonon && rtimeon) ? turnOn('Rtimefarmcell'): turnOff('Rtimefarmcell');
     (radonon && rtimeon) ? turnOn('Rtimespecialselection'): turnOff('Rtimespecialselection');
-    (radonon && rtimeon) ? turnOn('Rtimegatherselection'): turnOff('Rtimegatherselection');
-    //Time farming alt resource
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn('Rtimealtworker'): turnOff('Rtimealtworker');
-    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtworker') == true) ? turnOn('Rtimealtworkertype'): turnOff('Rtimealtworkertype');
-    (radonon && getPageSetting('Rtimefarm') == true && getPageSetting('Rtimealtworker') == true) ? turnOn('Rtimealtworkerpct'): turnOff('Rtimealtworkerpct');
-
+    
     radonon ? turnOn('RVoidMaps'): turnOff('RVoidMaps');
     radonon ? turnOn('Rvoidscell'): turnOff('Rvoidscell');
     radonon ? turnOn('RRunNewVoidsUntilNew'): turnOff('RRunNewVoidsUntilNew');
@@ -2046,7 +2036,6 @@ function updateCustomButtons() {
     document.getElementById('Rmapselection').value = autoTrimpSettings.Rmapselection.selected;
     document.getElementById('Rtributespecialselection').value = autoTrimpSettings.Rtributespecialselection.selected;
     document.getElementById('Rtimespecialselection').value = autoTrimpSettings.Rtimespecialselection.selected;
-    document.getElementById('Rtimegatherselection').value = autoTrimpSettings.Rtimegatherselection.selected;
     document.getElementById('Prestige').value = autoTrimpSettings.Prestige.selected;
     //document.getElementById('RPrestige').value = autoTrimpSettings.RPrestige.selected;
     document.getElementById('AutoGoldenUpgrades').value = autoTrimpSettings.AutoGoldenUpgrades.selected;

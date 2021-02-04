@@ -570,24 +570,23 @@ function RbuyJobs() {
 			}
 		}
 
-		if (rtimespecial.includes('wc')) {
+		if (Rshouldtimefarm && rtimespecial.includes('wc')) {
 			allIn = "Lumberjack";
-		} else if (rtimespecial.includes('sc')) {
+		} else if (Rshouldtimefarm && rtimespecial.includes('sc')) {
 			allIn = "Farmer";
-		} else if (rtimespecial.includes('mc')) {
+		} else if (Rshouldtimefarm && rtimespecial.includes('mc')) {
 			allIn = "Miner";
-		} else if (rtimespecial.includes('rc')) {
+		} else if (Rshouldtimefarm && rtimespecial.includes('rc')) {
 			allIn = "Scientist";
-		} else if (rtimespecial.includes('hc')) {
+		} else if (Rshouldtimefarm && rtimespecial.includes('hc')) {
 			allIn = "Farmer"
 			var desiredRatios = [100,100,100,0];
 		}
     
-
-    if (Rshouldshipfarm || Rshouldtributefarm) {
-	    allIn = "Farmer";
-	    var desiredRatios = [0,1,1,0];
-    }	
+		if (Rshouldshipfarm || Rshouldtributefarm) {
+			allIn = "Farmer";
+			var desiredRatios = [0,1,1,0];
+		}	
 
     if (allIn != "") {
         desiredRatios[ratioWorkers.indexOf(allIn)] = 100;

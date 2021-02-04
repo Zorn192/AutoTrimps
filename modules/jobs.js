@@ -558,33 +558,31 @@ function RbuyJobs() {
 
     // If focused farming go all in for caches
     var allIn = "";
-    if (Rshouldtimefarm) {
-    	if (game.global.runningChallengeSquared) {
-            var timefarmzone = getPageSetting('Rc3timefarmzone');
-            var timefarmindex = timefarmzone.indexOf(game.global.world);
-	    var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
-	    var rtimespecial = stringsplit[timefarmindex];
-	} else {
-	    var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected;
-	}
-    }
+    
+		if (Rshouldtimefarm) {
+			if (game.global.runningChallengeSquared) {
+				var timefarmzone = getPageSetting('Rc3timefarmzone');
+				var timefarmindex = timefarmzone.indexOf(game.global.world);
+				var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
+				var rtimespecial = stringsplit[timefarmindex];
+			} else {
+				var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected;
+			}
+		}
 
-        if (rtimespecial.includes('wc')) {
-            allIn = "Lumberjack";
-        } else if (rtimespecial.includes('sc')) {
-            allIn = "Farmer";
-            debug("test")
-        } else if (rtimespecial.includes('mc')) {
-            allIn = "Miner";
-        } else if (rtimespecial.includes('rc')) {
-            allIn = "Scientist";
-        }
-          else if (rtimespecial.includes('hc')) {
-          	allIn = "Farmer"
-	        var desiredRatios = [100,100,100,0];
-	        debug(desiredRatios)
-          }
-    }
+		if (rtimespecial.includes('wc')) {
+			allIn = "Lumberjack";
+		} else if (rtimespecial.includes('sc')) {
+			allIn = "Farmer";
+		} else if (rtimespecial.includes('mc')) {
+			allIn = "Miner";
+		} else if (rtimespecial.includes('rc')) {
+			allIn = "Scientist";
+		} else if (rtimespecial.includes('hc')) {
+			allIn = "Farmer"
+			var desiredRatios = [100,100,100,0];
+		}
+    
 
     if (Rshouldshipfarm || Rshouldtributefarm) {
 	    allIn = "Farmer";
@@ -661,5 +659,4 @@ function RbuyJobs() {
             game.global.firing = fireState;
             game.global.buyAmt = buyAmountStore;
         }
-    }
-}
+    }}

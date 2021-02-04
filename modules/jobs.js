@@ -558,7 +558,7 @@ function RbuyJobs() {
 
     // If focused farming go all in for caches
     var allIn = "";
-    
+
 		if (Rshouldtimefarm) {
 			if (game.global.runningChallengeSquared) {
 				var timefarmzone = getPageSetting('Rc3timefarmzone');
@@ -659,4 +659,5 @@ function RbuyJobs() {
             game.global.firing = fireState;
             game.global.buyAmt = buyAmountStore;
         }
-    }}
+    }
+}

@@ -178,6 +178,20 @@ function RmanualLabor2() {
         }
 	return;
     }
+
+    if (Rshouldtimefarm) {
+    	if (game.global.runningChallengeSquared) {
+            var timefarmzone = getPageSetting('Rc3timefarmzone');
+            var timefarmindex = timefarmzone.indexOf(game.global.world);
+            debug(timefarmindex)
+			var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
+			debug(stringsplit)
+			var rtimespecial = stringsplit[timefarmindex];
+		} else {
+			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected
+		}
+    }
+
     if (game.global.challengeActive == "Quest" && (questcheck() == 10 || questcheck() == 20)) {
 	setGather('food');
     }
@@ -193,16 +207,16 @@ function RmanualLabor2() {
     else if (Rshouldshipfarm || Rshouldtributefarm) {
 	     setGather('food');
     }
-    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && autoTrimpSettings.Rtimegatherselection.selected == "Food") {
+    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && (rtimespecial.includes('sc') || rtimespecial.includes('hc'))) {
 	     setGather('food');
     }
-    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && autoTrimpSettings.Rtimegatherselection.selected == "Wood") {
+    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && rtimespecial.includes('wc')) {
 	     setGather('wood');
     }
-    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && autoTrimpSettings.Rtimegatherselection.selected == "Metal") {
+    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && rtimespecial.includes('mc')) {
 	     setGather('metal');
     }
-    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && autoTrimpSettings.Rtimegatherselection.selected == "Science") {
+    else if ((Rshouldtimefarm || Rshouldinsanityfarm) && rtimespecial.includes('rc')) {
 	     setGather('science');
     }
     else if (getPageSetting('RManualGather2') != 2 && game.resources.science.owned < MODULES["gather"].RminScienceAmount && document.getElementById('scienceCollectBtn').style.display != 'none' && document.getElementById('science').style.visibility != 'hidden') {

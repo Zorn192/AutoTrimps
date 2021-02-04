@@ -584,10 +584,9 @@ function initializeAllSettings() {
     createSetting('Rtributefarmmets', 'TF: Meteorologist', 'How many meteorologists to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');
     createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Μaps');
     createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
-    createSetting('Rtributespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>hc = Huge Cache<br>lsc = Large Savory Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "hc", "lsc"], 'Μaps');
     
     //Time Farming
-    document.getElementById('Rtributespecialselection').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rtributefarmcell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Μaps');
     createSetting('Rtimefarmzone', 'TF: Zone', 'Which zones you would like to farm at. Can use 59,61,62. ', 'multiValue', [-1], null, 'Μaps');
     createSetting('Rtimefarmtime', 'TF: Maps', 'How many maps you would like to farm at the zone specified in TF: Zone. Can use 2,3,4. These values should match up to your TF zones. If using TF: Zone and TF: Maps examples (59 and 2) it will farm at z59 for 2 maps. ', 'multiValue', [-1], null, 'Μaps');
@@ -1714,7 +1713,6 @@ function updateCustomButtons() {
     (radonon && rtributeon) ? turnOn('Rtributefarmmets'): turnOff('Rtributefarmmets');
     (radonon && rtributeon) ? turnOn('Rtributemaplevel'): turnOff('Rtributemaplevel');
     (radonon && rtributeon) ? turnOn('Rtributefarmcell'): turnOff('Rtributefarmcell');
-    (radonon && rtributeon) ? turnOn('Rtributespecialselection'): turnOff('Rtributespecialselection');
     //Time Farming
     radonon ? turnOn('Rtimefarm'): turnOff('Rtimefarm');
     var rtimeon = (getPageSetting('Rtimefarm') == true);
@@ -2034,7 +2032,6 @@ function updateCustomButtons() {
     document.getElementById('RdHeliumHourChallenge').value = autoTrimpSettings.RdHeliumHourChallenge.selected;
     document.getElementById('mapselection').value = autoTrimpSettings.mapselection.selected;
     document.getElementById('Rmapselection').value = autoTrimpSettings.Rmapselection.selected;
-    document.getElementById('Rtributespecialselection').value = autoTrimpSettings.Rtributespecialselection.selected;
     document.getElementById('Rtimespecialselection').value = autoTrimpSettings.Rtimespecialselection.selected;
     document.getElementById('Prestige').value = autoTrimpSettings.Prestige.selected;
     //document.getElementById('RPrestige').value = autoTrimpSettings.RPrestige.selected;

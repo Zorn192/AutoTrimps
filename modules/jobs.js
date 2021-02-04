@@ -559,19 +559,16 @@ function RbuyJobs() {
     // If focused farming go all in for caches
     var allIn = "";
     if (Rshouldtimefarm) {
-
     	if (game.global.runningChallengeSquared) {
             var timefarmzone = getPageSetting('Rc3timefarmzone');
             var timefarmindex = timefarmzone.indexOf(game.global.world);
-            debug(timefarmindex)
-			var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
-			debug(stringsplit)
-			var rtimespecial = stringsplit[timefarmindex];
-		} else {
-			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected;
-		}
+	    var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
+	    var rtimespecial = stringsplit[timefarmindex];
+	} else {
+	    var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected;
+	}
+    }
 
-    	debug(rtimespecial)
         if (rtimespecial.includes('wc')) {
             allIn = "Lumberjack";
         } else if (rtimespecial.includes('sc')) {

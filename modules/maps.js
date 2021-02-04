@@ -1028,7 +1028,7 @@ function RautoMap() {
         var tributefarmindex = tributefarmzone.indexOf(game.global.world);
         var tributezones = tributefarmvalue[tributefarmindex];
         var metzones = metsfarmvalue[tributefarmindex];
-        var tribspecial = autoTrimpSettings.Rtributespecialselection.selected;
+        var tribspecial = "lsc";
 
         if (tributefarmzone.includes(game.global.world) && (tributezones > tributes || metzones > mets)) {
             //debug("Tributes - "+tributes+"/"+tributezones)

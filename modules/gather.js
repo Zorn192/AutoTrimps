@@ -183,9 +183,7 @@ function RmanualLabor2() {
     	if (game.global.runningChallengeSquared) {
             var timefarmzone = getPageSetting('Rc3timefarmzone');
             var timefarmindex = timefarmzone.indexOf(game.global.world);
-            debug(timefarmindex)
 			var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
-			debug(stringsplit)
 			var rtimespecial = stringsplit[timefarmindex];
 		} else {
 			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected

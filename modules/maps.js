@@ -1052,22 +1052,19 @@ function RautoMap() {
     if (game.global.runningChallengeSquared) {
         timefarmcell = ((getPageSetting('Rc3timefarmcell') > 0) ? getPageSetting('Rc3timefarmcell') : 1);
         timefarm = getPageSetting('Rc3timefarm')
+        var timefarmzone = getPageSetting('Rc3timefarmzone')
+        var timefarmtime = getPageSetting('Rc3timefarmtime')
     } else {
         timefarmcell = ((getPageSetting('Rtimefarmcell') > 0) ? getPageSetting('Rtimefarmcell') : 1);
         timefarm = getPageSetting('Rtimefarm')
+        var timefarmzone = getPageSetting('Rtimefarmzone')
+        var timefarmtime = getPageSetting('Rtimefarmtime')
     }
-    Rtimefarm = (timefarm == true && ((timefarmcell <= 1) || (timefarmcell > 1 && (game.global.lastClearedCell + 1) >= timefarmcell)) && game.global.world > 5 && (getPageSetting('Rtimefarmzone')[0] > 0 && getPageSetting('Rtimefarmtime')[0] > 0) || (getPageSetting('Rc3timefarmzone')[0] > 0 && getPageSetting('Rc3timefarmtime')[0] > 0));
+    Rtimefarm = (timefarm == true && ((timefarmcell <= 1) || (timefarmcell > 1 && (game.global.lastClearedCell + 1) >= timefarmcell)) && game.global.world > 5 && (timefarmzone[0] > 0 && timefarmtime[0] > 0));
     if (Rtimefarm && (game.stats.zonesCleared.value != Rzonecleared)) {
         
-        if (game.global.runningChallengeSquared) {
-            var timefarmzone = getPageSetting('Rc3timefarmzone');
-            var timefarmtime = getPageSetting('Rc3timefarmtime');
-        } else {
-            var timefarmzone = getPageSetting('Rtimefarmzone');
-            var timefarmtime = getPageSetting('Rtimefarmtime');
-        }
-            var timefarmindex = timefarmzone.indexOf(game.global.world);
-            var timezones = timefarmtime[timefarmindex];
+        var timefarmindex = timefarmzone.indexOf(game.global.world);
+        var timezones = timefarmtime[timefarmindex];
         
         x=0;
 
@@ -1076,7 +1073,7 @@ function RautoMap() {
         }
 
         if (timefarmzone.includes(game.global.world) && (timezones > game.global.mapRunCounter)) {
-            //debug("Maps run = "+game.global.mapRunCounter+"/"+timezones)
+            debug("Maps run = "+game.global.mapRunCounter+"/"+timezones)
             if (game.global.mapsActive && timezones == 1) {
                 Rzonecleared=game.stats.zonesCleared.value;
             } else if (timezones < game.global.mapRunCounter+x) {

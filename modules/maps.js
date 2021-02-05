@@ -750,6 +750,7 @@ var RdodMaxMapBonus = !1;
 var RvanillaMapatZone = !1;
 var Rtributefarm = !1;
 var Tributefarmmap = undefined;
+var y = 0;
 var Rtimefarm = !1;
 var Rzonecleared = 0;
 var RadditionalCritMulti = 2 < getPlayerCritChance() ? 25 : 5;
@@ -1073,13 +1074,20 @@ function RautoMap() {
         }
 
         if (timefarmzone.includes(game.global.world) && (timezones > game.global.mapRunCounter)) {
-            debug("Maps run = "+game.global.mapRunCounter+"/"+timezones)
+            //Testing to see how many maps have been run
+            //if (game.global.mapRunCounter != y && game.global.mapRunCounter != 0) {
+            //    if (y > game.global.mapRunCounter) { y = 0;}
+            //    debug("Maps run = "+game.global.mapRunCounter+"/"+timezones)
+            //    y++;
+            //}
+            //Statement to enable Time Farming loop to end
             if (game.global.mapsActive && timezones == 1) {
                 Rzonecleared=game.stats.zonesCleared.value;
             } else if (timezones < game.global.mapRunCounter+x) {
                 Rzonecleared=game.stats.zonesCleared.value;
             }
             Rshouldtimefarm = true;
+
 	        if (game.global.runningChallengeSquared) {
                 var timemaplevel = getPageSetting('Rc3timemaplevel');
                 var stringsplit = getPageSetting('Rc3timespecialselection').split(",")

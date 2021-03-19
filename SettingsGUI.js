@@ -371,6 +371,7 @@ function initializeAllSettings() {
     createSetting('drunnewvoidspoison', 'New Voids Poison', 'Only run new voids in poison zones.', 'boolean', false, null, 'Daily');
     
     //Daily Time Farming
+    document.getElementById('Rdtributefarmcell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rdtimefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'Daily');
     createSetting('Rdtimefarmzone', 'TF: Zone', 'Which zones you would like to farm at. Can use 59,61,62. ', 'multiValue', [-1], null, 'Daily');
     createSetting('Rdtimefarmtime', 'TF: Maps', 'How many maps you would like to farm at the zone specified in TF: Zone. Can use 2,3,4. These values should match up to your TF zones. If using TF: Zone and TF: Maps examples (59 and 2) it will farm at z59 for 2 maps. ', 'multiValue', [-1], null, 'Daily');
@@ -528,8 +529,6 @@ function initializeAllSettings() {
     createSetting('Requipfarmmult', 'AEF: Multiplier', 'Starting from the zone above AEF: Zone, this setting will multiply the H:D you have set in AEF: H:D. So if AEF: Zone was 100, AEF: H:D was 10, AEF: Multiplier was 1.2, at z101 your H:D target will be 12, then at z102 it will be 14.4 and so on. This way you can account for the zones getting stronger and you will not waste time farming for a really low H:D. ', 'value', '-1', null, 'Gear');
     createSetting('Requipfarmhits', 'AEF: Hits', 'How many hits do you want to kill an enemy in a AEF map. ', 'value', '-1', null, 'Gear');
     
-	
-
     //Maps
 
     //Line 1
@@ -702,15 +701,6 @@ function initializeAllSettings() {
     createSetting('cATGA2timer', 'ATGA: T: C2', '<b>ATGA Timer: C2s</b><br>ATGA will use this value in C2s. Overwrites Default, Before Z and After Z. ', 'value', '-1', null, 'ATGA');
     createSetting('chATGA2timer', 'ATGA: T: C: Hard', '<b>ATGA Timer: Hard C2s</b><br>ATGA will use this value in C2s that are considered Hard. Electricity, Nom, Toxicity. Overwrites Default, Before Z and After Z and C2 ATGA', 'value', '-1', null, 'ATGA');
 
-    //C3 Tribute Farming
-    document.getElementById('MPCell').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rc3tributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'C2');
-    createSetting('Rc3tributefarmzone', 'TF: Zone', 'Farms for specified tributes in TF: Value at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'C2');
-    createSetting('Rc3tributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'C2');
-    createSetting('Rc3tributefarmmets', 'TF: Meteorologist', 'How many meteorologists to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'C2');
-    createSetting('Rc3tributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'C2');
-    createSetting('Rc3tributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'C2');
-    	
     //C3 Time Farming
     document.getElementById('Rc3tributefarmcell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rc3timefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'C2');
@@ -1550,6 +1540,25 @@ function updateCustomButtons() {
     radonon && getPageSetting('RAutoPortalDaily')==1 ? turnOn('RdHeliumHrBuffer') : turnOff('RdHeliumHrBuffer');
     radonon && getPageSetting('RAutoPortalDaily')>0 ? turnOn('RdHeliumHourChallenge') : turnOff('RdHeliumHourChallenge');
     
+    //Radon Daily Tribute Farming
+    radonon ? turnOn('Rdtributefarm'): turnOff('Rdtributefarm');
+    var rdtributeon = (getPageSetting('Rdtributefarm') == true);
+    (radonon && rdtributeon) ? turnOn('Rdtributefarmzone'): turnOff('Rdtributefarmzone');
+    (radonon && rdtributeon) ? turnOn('Rdtributefarmvalue'): turnOff('Rdtributefarmvalue');
+    (radonon && rdtributeon) ? turnOn('Rdtributefarmmets'): turnOff('Rdtributefarmmets');
+    (radonon && rdtributeon) ? turnOn('Rdtributemaplevel'): turnOff('Rdtributemaplevel');
+    (radonon && rdtributeon) ? turnOn('Rdtributefarmcell'): turnOff('Rdtributefarmcell');
+	
+    //Radon Daily Time Farming
+    radonon ? turnOn('Rdtimefarm'): turnOff('Rdtimefarm');
+    var rdtimeon = (getPageSetting('Rdtimefarm') == true);
+    (radonon && rdtimeon) ? turnOn('dtimefarmzone'): turnOff('Rdtimefarmzone');
+    (radonon && rdtimeon) ? turnOn('Rdtimefarmtime'): turnOff('Rdtimefarmtime');
+    (radonon && rdtimeon) ? turnOn('Rdtimemaplevel'): turnOff('Rdtimemaplevel');
+    (radonon && rdtimeon) ? turnOn('Rdtimefarmcell'): turnOff('Rdtimefarmcell');
+    (radonon && rdtimeon) ? turnOn('Rdtimespecialselection'): turnOff('Rdtimespecialselection');
+    (radonon && rdtimeon) ? turnOn('Rdtimegatherselection'): turnOff('Rdtimegatherselection');
+	
     //C2
     !radonon ? turnOn('FinishC2'): turnOff('FinishC2');
     !radonon ? turnOn('buynojobsc'): turnOff('buynojobsc');

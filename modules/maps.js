@@ -1491,7 +1491,7 @@ function RautoMap() {
 		if (game.global.challengeActive != "Daily" && !game.global.runningChallengeSquared) {
                     if (getPageSetting('MeltingPoint') == true && getPageSetting('MPZone') >= 0) meltingpoint[0] = getPageSetting('MPZone');
                     if (getPageSetting('MeltingPoint') == true && getPageSetting('MPCell') >= 0) meltingpoint[1] = getPageSetting('MPCell');
-		}
+		} 
 		if (game.global.challengeActive = "Daily") {
 		    var meltsmithy = (getPageSetting('Rdmeltsmithy')
                 } else {

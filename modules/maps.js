@@ -1011,19 +1011,34 @@ function RautoMap() {
     }
 	
     //Tribute Farm
+	
     var tributefarmcell;
-    tributefarmcell = ((getPageSetting('Rtributefarmcell') > 0) ? getPageSetting('Rtributefarmcell') : 1);
-    Rtributefarm = (getPageSetting('Rtributefarm') == true && ((tributefarmcell <= 1) || (tributefarmcell > 1 && (game.global.lastClearedCell + 1) >= tributefarmcell)) && game.global.world > 5 && (getPageSetting('Rtributefarmzone')[0] > 0 && getPageSetting('Rtributefarmvalue')[0] > 0));
+    var tributefarm;
+    var metsfarmvalue;
+    if (game.global.runningChallengeSquared) {
+        tributefarmcell = ((getPageSetting('Rc3tributefarmcell') > 0) ? getPageSetting('Rc3tributefarmcell') : 1);
+        tributefarm = getPageSetting('Rc3tributefarm')
+        var tributefarmzone = getPageSetting('Rc3tributefarmzone')
+        var tributefarmvalue = getPageSetting('Rc3tributefarmvalue')
+        var metsfarmvalue = getPageSetting('Rc3tributefarmmets')
+    }   else if (game.global.challengeActive = "Daily") {
+            tributefarmcell = ((getPageSetting('Rdtributefarmcell') > 0) ? getPageSetting('Rdtributefarmcell') : 1);
+            tributefarm = getPageSetting('Rdtributefarm')
+            var tributefarmzone = getPageSetting('Rdtributefarmzone')
+            var tributefarmvalue = getPageSetting('Rdtributefarmvalue')
+            var metsfarmvalue = getPageSetting('Rdtributefarmmets')
+    }   else {
+            tributefarmcell = ((getPageSetting('Rtributefarmcell') > 0) ? getPageSetting('Rtributefarmcell') : 1);
+            tributefarm = getPageSetting('Rtributefarm')
+            var tributefarmzone = getPageSetting('Rtributefarmzone')
+            var tributefarmvalue = getPageSetting('Rtributefarmvalue')
+            var metsfarmvalue = getPageSetting('Rtributefarmmets')
+    }
+	
+    Rtributefarm = (tributefarm == true && ((tributefarmcell <= 1) || (tributefarmcell > 1 && (game.global.lastClearedCell + 1) >= tributefarmcell)) && game.global.world > 5 && (tributefarmzone[0] > 0 && (tributefarmvalue[0] > 0 || metsfarmvalue [0] > 0)));
     if (Rtributefarm) {
-        var tributefarmzone;
-        var tributefarmvalue;
-        var metsfarmvalue;
         var tributes = game.buildings.Tribute.owned
         var mets = game.jobs.Meteorologist.owned
-
-        tributefarmzone = getPageSetting('Rtributefarmzone');
-        tributefarmvalue = getPageSetting('Rtributefarmvalue');
-        metsfarmvalue = getPageSetting('Rtributefarmmets');
 
         var tributefarmindex = tributefarmzone.indexOf(game.global.world);
         var tributezones = tributefarmvalue[tributefarmindex];
@@ -1034,13 +1049,13 @@ function RautoMap() {
             //debug("Tributes - "+tributes+"/"+tributezones)
             //debug("Mets - "+mets+"/"+metzones)
             Rshouldtributefarm = true;
-			Tributefarmmap = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length - 1].id;
+	    Tributefarmmap = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length - 1].id;
         }
 		
-		if (!Rshouldtributefarm && Tributefarmmap != undefined) {
+	if (!Rshouldtributefarm && Tributefarmmap != undefined) {
             mapsClicked();
             recycleMap(getMapIndex(Tributefarmmap));
-		    Tributefarmmap = undefined;
+	    Tributefarmmap = undefined;
 	   }
 	   
     }
@@ -1054,11 +1069,16 @@ function RautoMap() {
         timefarm = getPageSetting('Rc3timefarm')
         var timefarmzone = getPageSetting('Rc3timefarmzone')
         var timefarmtime = getPageSetting('Rc3timefarmtime')
-    } else {
-        timefarmcell = ((getPageSetting('Rtimefarmcell') > 0) ? getPageSetting('Rtimefarmcell') : 1);
-        timefarm = getPageSetting('Rtimefarm')
-        var timefarmzone = getPageSetting('Rtimefarmzone')
-        var timefarmtime = getPageSetting('Rtimefarmtime')
+    }   else if (game.global.challengeActive = "Daily") {
+            timefarmcell = ((getPageSetting('Rdtimefarmcell') > 0) ? getPageSetting('Rdtimefarmcell') : 1);
+            timefarm = getPageSetting('Rdtimefarm')
+            var timefarmzone = getPageSetting('Rdtimefarmzone')
+            var timefarmtime = getPageSetting('Rdtimefarmtime')
+    }   else {
+            timefarmcell = ((getPageSetting('Rtimefarmcell') > 0) ? getPageSetting('Rtimefarmcell') : 1);
+            timefarm = getPageSetting('Rtimefarm')
+            var timefarmzone = getPageSetting('Rtimefarmzone')
+            var timefarmtime = getPageSetting('Rtimefarmtime')
     }
     Rtimefarm = (timefarm == true && ((timefarmcell <= 1) || (timefarmcell > 1 && (game.global.lastClearedCell + 1) >= timefarmcell)) && game.global.world > 5 && (timefarmzone[0] > 0 && timefarmtime[0] > 0));
     if (Rtimefarm && (game.stats.zonesCleared.value != Rzonecleared)) {

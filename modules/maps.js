@@ -1060,7 +1060,6 @@ function RautoMap() {
 	   
     }
 
-
     //Time Farm
     var timefarmcell;
     var timefarm;

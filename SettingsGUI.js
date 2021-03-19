@@ -702,7 +702,6 @@ function initializeAllSettings() {
     createSetting('chATGA2timer', 'ATGA: T: C: Hard', '<b>ATGA Timer: Hard C2s</b><br>ATGA will use this value in C2s that are considered Hard. Electricity, Nom, Toxicity. Overwrites Default, Before Z and After Z and C2 ATGA', 'value', '-1', null, 'ATGA');
 
     //C3 Time Farming
-    document.getElementById('Rc3tributefarmcell').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rc3timefarm', 'Time Farm', 'Turn this on if you want to use Time Farming. ', 'boolean', false, null, 'C2');
     createSetting('Rc3timefarmzone', 'TF: Zone', 'Which zones you would like to farm at. Can use 59,61,62. ', 'multiValue', [-1], null, 'C2');
     createSetting('Rc3timefarmtime', 'TF: Maps', 'How many maps you would like to farm at the zone specified in TF: Zone. Can use 2,3,4. These values should match up to your TF zones. If using TF: Zone and TF: Maps examples (59 and 2) it will farm at z59 for 2 maps. ', 'multiValue', [-1], null, 'C2');
@@ -2066,6 +2065,8 @@ function updateCustomButtons() {
     document.getElementById('mapselection').value = autoTrimpSettings.mapselection.selected;
     document.getElementById('Rmapselection').value = autoTrimpSettings.Rmapselection.selected;
     document.getElementById('Rtimespecialselection').value = autoTrimpSettings.Rtimespecialselection.selected;
+    document.getElementById('Rdtimespecialselection').value = autoTrimpSettings.Rdtimespecialselection.selected;
+    document.getElementById('Rc3timespecialselection').value = autoTrimpSettings.Rc3timespecialselection.selected;
     document.getElementById('Prestige').value = autoTrimpSettings.Prestige.selected;
     //document.getElementById('RPrestige').value = autoTrimpSettings.RPrestige.selected;
     document.getElementById('AutoGoldenUpgrades').value = autoTrimpSettings.AutoGoldenUpgrades.selected;

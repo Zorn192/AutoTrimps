@@ -185,6 +185,8 @@ function RmanualLabor2() {
             var timefarmindex = timefarmzone.indexOf(game.global.world);
 			var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
 			var rtimespecial = stringsplit[timefarmindex];
+		} else if (game.global.challengeAcive = "Daily" {
+			var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected
 		} else {
 			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected
 		}

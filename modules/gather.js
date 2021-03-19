@@ -183,13 +183,13 @@ function RmanualLabor2() {
     	if (game.global.runningChallengeSquared) {
             var timefarmzone = getPageSetting('Rc3timefarmzone');
             var timefarmindex = timefarmzone.indexOf(game.global.world);
-			var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
-			var rtimespecial = stringsplit[timefarmindex];
-		} else if (game.global.challengeAcive = "Daily" {
-			var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected
-		} else {
-			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected
-		}
+            var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
+            var rtimespecial = stringsplit[timefarmindex];
+	} else if (game.global.challengeAcive = "Daily" {
+            var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected
+	} else {
+            var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected
+	}
     }
 
     if (game.global.challengeActive == "Quest" && (questcheck() == 10 || questcheck() == 20)) {

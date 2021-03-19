@@ -1551,7 +1551,7 @@ function updateCustomButtons() {
     //Radon Daily Time Farming
     radonon ? turnOn('Rdtimefarm'): turnOff('Rdtimefarm');
     var rdtimeon = (getPageSetting('Rdtimefarm') == true);
-    (radonon && rdtimeon) ? turnOn('dtimefarmzone'): turnOff('Rdtimefarmzone');
+    (radonon && rdtimeon) ? turnOn('Rdtimefarmzone'): turnOff('Rdtimefarmzone');
     (radonon && rdtimeon) ? turnOn('Rdtimefarmtime'): turnOff('Rdtimefarmtime');
     (radonon && rdtimeon) ? turnOn('Rdtimemaplevel'): turnOff('Rdtimemaplevel');
     (radonon && rdtimeon) ? turnOn('Rdtimefarmcell'): turnOff('Rdtimefarmcell');

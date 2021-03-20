@@ -1523,6 +1523,7 @@ function updateCustomButtons() {
     radonon ? turnOn('RdMaxMapBonuslimit'): turnOff('RdMaxMapBonuslimit');
     radonon ? turnOn('Rdmeltsmithy'): turnOff('Rdmeltsmithy');
     radonon ? turnOn('RDailyVoidMod'): turnOff('RDailyVoidMod');
+    radonon ? turnOn('Rdvoidscell'): turnOff('Rdvoidscell');
     radonon ? turnOn('RdRunNewVoidsUntilNew'): turnOff('RdRunNewVoidsUntilNew');
 
     //Radon Daily Gear & Raid

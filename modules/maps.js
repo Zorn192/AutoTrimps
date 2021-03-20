@@ -1017,7 +1017,6 @@ function RautoMap() {
     }
 	
     //Tribute Farm
-	
     var tributefarmcell;
     var tributefarm;
     var metsfarmvalue;
@@ -1063,6 +1062,15 @@ function RautoMap() {
             recycleMap(getMapIndex(Tributefarmmap));
 	    Tributefarmmap = undefined;
 	   }
+
+	if (game.global.runningChallengeSquared) {
+            var tribmaplevel = getPageSetting('Rc3tributemaplevel');
+	} else if (game.global.challengeActive == "Daily") {
+            var tribmaplevel = getPageSetting('Rdtributemaplevel');
+	} else {
+            var tribmaplevel = getPageSetting('Rtributemaplevel');
+	}
+            var levelzones = tribmaplevel[tributefarmindex];
 	   
     }
 
@@ -1102,14 +1110,17 @@ function RautoMap() {
             }
             Rshouldtimefarm = true;
 
-	        if (game.global.runningChallengeSquared) {
+	    if (game.global.runningChallengeSquared) {
                 var timemaplevel = getPageSetting('Rc3timemaplevel');
                 var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
                 var rtimespecial = stringsplit[timefarmindex];
-	        } else {
+	    } else if (game.global.challengeActive == "Daily") {
+                var timemaplevel = getPageSetting('Rdtimemaplevel');
+                var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected;
+	    } else {
                 var timemaplevel = getPageSetting('Rtimemaplevel');
                 var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected;
-	        }
+	    }
                 var levelzones = timemaplevel[timefarmindex];
         }
     }
@@ -1696,7 +1707,7 @@ function RautoMap() {
                     }
                 }
             } else if (Rshouldtributefarm && !Rshouldtimefarm && !Rshouldequipfarm) {
-                if (getPageSetting('Rtributemaplevel') == 0) {
+                if (tribmaplevel == 0) {
                     for (var map in game.global.mapsOwnedArray) {
                         if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
                             selectedMap = game.global.mapsOwnedArray[map].id;
@@ -1705,10 +1716,7 @@ function RautoMap() {
                             selectedMap = "create";
                         }
                     }
-                } else if (getPageSetting('Rtributemaplevel') != 0) {
-                    var tributefarmlevel = getPageSetting('Rtributemaplevel');
-                    var tributefarmlevelindex = tributefarmzone.indexOf(game.global.world);
-                    var levelzones = tributefarmlevel[tributefarmlevelindex];
+                } else if (tribmaplevel != 0) {
                     if (levelzones > 0) {
                         for (var map in game.global.mapsOwnedArray) {
                             if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + levelzones) == game.global.mapsOwnedArray[map].level) && (game.global.mapsOwnedArray[map].bonus == tribspecial)) {

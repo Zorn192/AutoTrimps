@@ -891,8 +891,14 @@ function RautoMap() {
 
     //Void Vars
     var voidMapLevelSetting = 0;
-    var voidMapLevelSettingCell = ((getPageSetting('Rvoidscell') > 0) ? getPageSetting('Rvoidscell') : 70);
+    var voidMapLevelSettingCell;
     var voidMapLevelPlus = 0;
+    if (game.global.challengeActive != "Daily") {
+        voidMapLevelSettingCell = ((getPageSetting('Rvoidscell') > 0) ? getPageSetting('voidscell') : 70);
+    }
+    if (game.global.challengeActive == "Daily") {
+        voidMapLevelSettingCell = ((getPageSetting('Rdvoidscell') > 0) ? getPageSetting('dvoidscell') : 70);
+    }
     if (game.global.challengeActive != "Daily" && getPageSetting('RVoidMaps') > 0) {
         voidMapLevelSetting = getPageSetting('RVoidMaps');
     }

@@ -894,10 +894,10 @@ function RautoMap() {
     var voidMapLevelSettingCell;
     var voidMapLevelPlus = 0;
     if (game.global.challengeActive != "Daily") {
-        voidMapLevelSettingCell = ((getPageSetting('Rvoidscell') > 0) ? getPageSetting('voidscell') : 70);
+        voidMapLevelSettingCell = ((getPageSetting('Rvoidscell') > 0) ? getPageSetting('Rvoidscell') : 70);
     }
     if (game.global.challengeActive == "Daily") {
-        voidMapLevelSettingCell = ((getPageSetting('Rdvoidscell') > 0) ? getPageSetting('dvoidscell') : 70);
+        voidMapLevelSettingCell = ((getPageSetting('Rdvoidscell') > 0) ? getPageSetting('Rdvoidscell') : 70);
     }
     if (game.global.challengeActive != "Daily" && getPageSetting('RVoidMaps') > 0) {
         voidMapLevelSetting = getPageSetting('RVoidMaps');

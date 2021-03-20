@@ -2282,12 +2282,7 @@ function RautoMap() {
                 updateMapCost();
             }
             if (Rshouldtributefarm && !Rshouldtimefarm && !Rshoulddoquest) {
-                if (getPageSetting('Rtributemaplevel') != 0) {
-
-                    var tributefarmlevel = getPageSetting('Rtributemaplevel');
-
-                    var tributefarmlevelindex = tributefarmzone.indexOf(game.global.world);
-                    var levelzones = tributefarmlevel[tributefarmlevelindex];
+                if (tribmaplevel != 0) {
 
                     if (tributefarmzone.includes(game.global.world)) {
                         if (levelzones > 0) {

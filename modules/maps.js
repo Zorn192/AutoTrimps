@@ -1,4 +1,4 @@
-//Helium
+//Heliuma
 
 MODULES.maps = {};
 MODULES.maps.numHitsSurvived = 8;

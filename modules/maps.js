@@ -1021,7 +1021,7 @@ function RautoMap() {
         var tributefarmzone = getPageSetting('Rc3tributefarmzone')
         var tributefarmvalue = getPageSetting('Rc3tributefarmvalue')
         var metsfarmvalue = getPageSetting('Rc3tributefarmmets')
-    }   else if (game.global.challengeActive = "Daily") {
+    }   else if (game.global.challengeActive == "Daily") {
             tributefarmcell = ((getPageSetting('Rdtributefarmcell') > 0) ? getPageSetting('Rdtributefarmcell') : 1);
             tributefarm = getPageSetting('Rdtributefarm')
             var tributefarmzone = getPageSetting('Rdtributefarmzone')
@@ -1068,7 +1068,7 @@ function RautoMap() {
         timefarm = getPageSetting('Rc3timefarm')
         var timefarmzone = getPageSetting('Rc3timefarmzone')
         var timefarmtime = getPageSetting('Rc3timefarmtime')
-    }   else if (game.global.challengeActive = "Daily") {
+    }   else if (game.global.challengeActive == "Daily") {
             timefarmcell = ((getPageSetting('Rdtimefarmcell') > 0) ? getPageSetting('Rdtimefarmcell') : 1);
             timefarm = getPageSetting('Rdtimefarm')
             var timefarmzone = getPageSetting('Rdtimefarmzone')
@@ -1492,7 +1492,7 @@ function RautoMap() {
                     if (getPageSetting('MeltingPoint') == true && getPageSetting('MPZone') >= 0) meltingpoint[0] = getPageSetting('MPZone');
                     if (getPageSetting('MeltingPoint') == true && getPageSetting('MPCell') >= 0) meltingpoint[1] = getPageSetting('MPCell');
 		} 
-		if (game.global.challengeActive = "Daily") {
+		if (game.global.challengeActive == "Daily") {
 		    var meltsmithy = getPageSetting('Rdmeltsmithy');
                 } else {
 		    var meltsmithy = getPageSetting('Rmeltsmithy');

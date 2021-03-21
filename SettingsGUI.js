@@ -853,7 +853,7 @@ function initializeAllSettings() {
     
     
     //Staff swapping
-    document.getElementById('Rhshzone').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rhshighvmdc').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhsstaff', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
     createSetting('Rhsworldstaff', 'World', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhsmapstaff', 'Map', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');

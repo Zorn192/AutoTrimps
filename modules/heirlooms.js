@@ -499,6 +499,7 @@ function Rheirloomswap() {
     } else {
         var highvmdczone = 0;
     }
+	debug(highvmdczone);
 	
 	if (getPageSetting('Rhshighvmdctoggle') == true && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world < highvmdczone) {
 	    Rhshighvmdcequip();

@@ -504,17 +504,15 @@ function Rheirloomswap() {
 	}
 	
     //Swapping Shields
-	if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world <= highvmdczone) {
-	    Rhshighvmdcequip();
-	}
+    if (getPageSetting('Rhsshield') != false && getPageSetting('Rhshzone') > 0) {
 
-    if (getPageSetting('Rhsshield') == true && getPageSetting('Rhshzone') > 0) {
-        if (getPageSetting('Rhslowvmdc') !== "undefined" && game.global.world < getPageSetting('Rhshzone')) {
-	        if (getPageSetting('Rhshighvmdctoggle') == true && (highvmdczone <= game.global.world)) {
-				Rhslowvmdcequip();
-			}
+        if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && game.global.world <= highvmdczone) {
+	        Rhshighvmdcequip();
+	    } 
+	    else if (getPageSetting('Rhslowvmdc') !== "undefined" && game.global.world < getPageSetting('Rhshzone')) {
+		    Rhslowvmdcequip();
 	    }
-		if (getPageSetting('Rhsnovmdc') !== "undefined" && game.global.world >= getPageSetting('Rhshzone')) {
+		else if (getPageSetting('Rhsnovmdc') !== "undefined" && game.global.world >= getPageSetting('Rhshzone')) {
 			Rhsnovmdcequip();
 	    }
     }
@@ -522,7 +520,7 @@ function Rheirloomswap() {
     //Swapping Staffs
     if (getPageSetting('Rhsstaff') != false) {
         if (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false) {
-	    Rhsworldstaffequip();
+			Rhsworldstaffequip();
 		}
 		if (getPageSetting('Rhsmapstaff') != "undefined" && Rshouldtributefarm == false && game.global.mapsActive == true) {
 			Rhsmapstaffequip();

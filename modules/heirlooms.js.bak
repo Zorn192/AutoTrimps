@@ -484,17 +484,28 @@ function Rheirloomswap() {
 	
 	//Setting up high vmdc shield swap zones
     var highvmdczone;
+	var swapcell;
+	var highvmdcswapcell;
 	if (game.global.world < 10) {
 		if ((game.global.challengeActive != "") && (!game.global.runningChallengeSquared)) {
 			var challengecompletion = (game.challenges[game.global.challengeActive].completeAfterZone)
 			if ((challengecompletion != "undefined") && (!isNaN(challengecompletion))) {
 				 if (challengecompletion % 10== 0) {
 					var highvmdczone = 10;
+					voidMapCell = ((getPageSetting('Rvoidscell') > 0) ? getPageSetting('Rvoidscell') : 70);
+					var swapcell = voidMapCell - 5;
+					var highvmdcswapcell = ((swapcell > 0) ? swapcell : -1);
 				} else {
 					var highvmdczone = challengecompletion % 10;
+					voidMapCell = ((getPageSetting('Rvoidscell') > 0) ? getPageSetting('Rvoidscell') : 70);
+					var swapcell = voidMapCell - 5;
+					var highvmdcswapcell = ((swapcell > 0) ? swapcell : -1);
 				}
 			} else if (game.global.challengeActive == "Daily") {
 					var highvmdczone = (getPageSetting('RDailyVoidMod')+getPageSetting('RdRunNewVoidsUntilNew')) % 10
+					voidMapCell = ((getPageSetting('Rdvoidscell') > 0) ? getPageSetting('Rdvoidscell') : 70);
+					var swapcell = voidMapCell - 5;
+					var highvmdcswapcell = ((swapcell > 0) ? swapcell : -1);
 			} else {
 				var highvmdczone = 0;
 			}
@@ -502,14 +513,15 @@ function Rheirloomswap() {
 			var highvmdczone = 0;
 		}
 	}
+	debug(highvmdcswapcell)
+	debug("Wearing "+game.global.ShieldEquipped.name+" at zone "+game.global.world+" cell "+game.global.lastClearedCell)
 	
     //Swapping Shields
     if (getPageSetting('Rhsshield') != false && getPageSetting('Rhshzone') > 0) {
-
-        if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && game.global.world <= highvmdczone) {
+        if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && (game.global.world < highvmdczone || (game.global.world == highvmdczone && game.global.lastClearedCell < highvmdcswapcell))) {
 	        Rhshighvmdcequip();
 	    } 
-	    else if (getPageSetting('Rhslowvmdc') !== "undefined" && game.global.world < getPageSetting('Rhshzone')) {
+		else if (getPageSetting('Rhslowvmdc') !== "undefined" && game.global.world < getPageSetting('Rhshzone')) {
 		    Rhslowvmdcequip();
 	    }
 		else if (getPageSetting('Rhsnovmdc') !== "undefined" && game.global.world >= getPageSetting('Rhshzone')) {

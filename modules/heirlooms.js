@@ -482,6 +482,7 @@ function Rhstributestaffequip() {
 
 function Rheirloomswap() {
 	
+	//Setting up high vmdc shield swap zones
     var highvmdczone;
     if ((game.global.challengeActive != "") && (!game.global.runningChallengeSquared)) {
         var challengecompletion = (game.challenges[game.global.challengeActive].completeAfterZone)
@@ -500,15 +501,14 @@ function Rheirloomswap() {
         var highvmdczone = 0;
     }
 	
+    //Swapping Shields
 	if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world < highvmdczone) {
 	    Rhshighvmdcequip();
 	}
 
-
-    //Swapping Shields
     if (getPageSetting('Rhsshield') == true && getPageSetting('Rhshzone') > 0) {
-        if ((getPageSetting('Rhslowvmdc') !== "undefined") && (game.global.world < getPageSetting('Rhshzone'))) {
-	        if (getPageSetting('Rhshighvmdctoggle') == true && (highvmdczone > game.global.world)) continue;
+        if (getPageSetting('Rhslowvmdc') !== "undefined" && game.global.world < getPageSetting('Rhshzone')) {
+	        if (getPageSetting('Rhshighvmdctoggle') == true && (highvmdczone > game.global.world)) break;
 	        Rhslowvmdcequip();
 			debug(highvmdczone);
 	    }

@@ -1764,8 +1764,6 @@ function updateCustomButtons() {
     radonon ? turnOn('Rblackbog'): turnOff('Rblackbog');
     (radonon && getPageSetting('Rblackbog') == true) ? turnOn('Rblackbogzone'): turnOff('Rblackbogzone');
     (radonon && getPageSetting('Rblackbog') == true) ? turnOn('Rblackbogamount'): turnOff('Rblackbogamount');
-
-    
     
     //Spire
     !radonon ? turnOn('MaxStacksForSpire'): turnOff('MaxStacksForSpire');
@@ -1776,8 +1774,6 @@ function updateCustomButtons() {
     !radonon ? turnOn('PreSpireNurseries'): turnOff('PreSpireNurseries');
     !radonon ? turnOn('spireshitbuy'): turnOff('spireshitbuy');
     !radonon ? turnOn('SkipSpires'): turnOff('SkipSpires');
-    
-    
 
     //Raiding
     !radonon ? turnOn('Praidingzone'): turnOff('Praidingzone');
@@ -1794,7 +1790,6 @@ function updateCustomButtons() {
     !radonon && getPageSetting('BWraid')==true ? turnOn('BWraidingz'): turnOff('BWraidingz');
     !radonon && getPageSetting('BWraid')==true ? turnOn('BWraidingmax'): turnOff('BWraidingmax');
 
-    
     //RRaiding
     radonon ? turnOn('RPraidingzone'): turnOff('RPraidingzone');
     radonon ? turnOn('RPraidingcell') : turnOff('RPraidingcell');
@@ -1823,7 +1818,6 @@ function updateCustomButtons() {
     (!radonon && wson) ? turnOn('windcutoffmap'): turnOff('windcutoffmap');
     (!radonon && wson) ? turnOn('wsmax'): turnOff('wsmax');
     (!radonon && wson) ? turnOn('wsmaxhd'): turnOff('wsmaxhd');
-
     
     //ATGA
     !radonon ? turnOn('ATGA2'): turnOff('ATGA2');
@@ -1842,8 +1836,6 @@ function updateCustomButtons() {
     (!radonon && ATGAon) ? turnOn('chATGA2timer') : turnOff('chATGA2timer');
     (!radonon && ATGAon) ? turnOn('dATGA2Auto') : turnOff('dATGA2Auto');
 
-    
-    
     //Combat
     !radonon ? turnOn('AutoStance'): turnOff('AutoStance');
     !radonon ? turnOn('AutoStanceNew'): turnOff('AutoStanceNew');
@@ -1856,14 +1848,11 @@ function updateCustomButtons() {
     !radonon ? turnOn('ForceAbandon'): turnOff('ForceAbandon');
     !radonon && getPageSetting('AutoStance')!=3 ? turnOn('IgnoreCrits') : turnOff('IgnoreCrits');
     
-    
     //RCombat
     radonon ? turnOn('Rfightforever'): turnOff('Rfightforever');
     radonon ? turnOn('Rcalcmaxequality'): turnOff('Rcalcmaxequality');
     radonon ? turnOn('Rmanageequality'): turnOff('Rmanageequality');
-    
-    
-    
+        
     //Challenges
     
     //Arch
@@ -1900,8 +1889,6 @@ function updateCustomButtons() {
     radonon && getPageSetting('Rexterminateon') == true ? turnOn('Rexterminatecalc') : turnOff('Rexterminatecalc');
     radonon && getPageSetting('Rexterminateon') == true ? turnOn('Rexterminateeq') : turnOff('Rexterminateeq');
 
-    
-    
     //Scryer
     !radonon ? turnOn('UseScryerStance'): turnOff('UseScryerStance');
     !radonon ? turnOn('ScryerUseWhenOverkill'): turnOff('ScryerUseWhenOverkill');
@@ -1922,7 +1909,6 @@ function updateCustomButtons() {
     !radonon ? turnOn('ScryerDieZ'): turnOff('ScryerDieZ');
     !radonon ? turnOn('screwessence'): turnOff('screwessence');
 
-
     //Magma
     !radonon ? turnOn('UseAutoGen'): turnOff('UseAutoGen');
     !radonon ? turnOn('beforegen'): turnOff('beforegen');
@@ -1942,7 +1928,6 @@ function updateCustomButtons() {
     (!radonon && ratiospend) ? turnOn('supratio'): turnOff('supratio');
     (!radonon && ratiospend) ? turnOn('ocratio'): turnOff('ocratio');
     
-
     //Golden
     !radonon ? turnOn('AutoGoldenUpgrades'): turnOff('AutoGoldenUpgrades');
     !radonon ? turnOn('dAutoGoldenUpgrades'): turnOff('dAutoGoldenUpgrades');
@@ -1965,7 +1950,6 @@ function updateCustomButtons() {
     radonon && getPageSetting('RAutoGoldenUpgrades') == 'Battle' ? turnOn('Rbattleradon') : turnOff('Rbattleradon');
     radonon && getPageSetting('RdAutoGoldenUpgrades') == 'Battle' ? turnOn('Rdbattleradon') : turnOff('Rdbattleradon');
 
-
     //Nature
     !radonon ? turnOn('AutoNatureTokens'): turnOff('AutoNatureTokens');
     !radonon && getPageSetting('AutoNatureTokens') == true ? turnOn('tokenthresh'): turnOff('tokenthresh');
@@ -1973,7 +1957,6 @@ function updateCustomButtons() {
     !radonon && getPageSetting('AutoNatureTokens') == true ? turnOn('AutoWind'): turnOff('AutoWind');
     !radonon && getPageSetting('AutoNatureTokens') == true ? turnOn('AutoIce'): turnOff('AutoIce');
 
-    
     //Enlight
     !radonon ? turnOn('autoenlight'): turnOff('autoenlight');
     !radonon && getPageSetting('autoenlight') == true ? turnOn('pfillerenlightthresh'): turnOff('pfillerenlightthresh');
@@ -1986,10 +1969,8 @@ function updateCustomButtons() {
     !radonon && getPageSetting('autoenlight') == true ? turnOn('wc2enlightthresh'): turnOff('wc2enlightthresh');
     !radonon && getPageSetting('autoenlight') == true ? turnOn('ic2enlightthresh'): turnOff('ic2enlightthresh');
 
-    
     //Display
     (game.worldUnlocks.easterEgg.locked == false) ? turnOn('AutoEggs') : turnOff('AutoEggs');
-
 
     //Memory
     if (getPageSetting('showbreedtimer')==false) turnOff("hiddenBreedTimer");
@@ -1997,7 +1978,6 @@ function updateCustomButtons() {
     !radonon ? turnOn("showautomapstatus"): turnOff("showautomapstatus");
     radonon ? turnOn("Rshowautomapstatus"): turnOff("Rshowautomapstatus");
 
-    
     //Heirlooms
     /*var nuratio = (getPageSetting('rationu')==0 && getPageSetting('autonu')==true);
 
@@ -2058,7 +2038,6 @@ function updateCustomButtons() {
     (keepcoreenable) ? turnOn('slot2modcr') : turnOff('slot2modcr');
     (keepcoreenable) ? turnOn('slot3modcr') : turnOff('slot3modcr');
     (keepcoreenable) ? turnOn('slot4modcr') : turnOff('slot4modcr');
-
 
     //Dropdowns
     document.getElementById('AutoPortal').value = autoTrimpSettings.AutoPortal.selected;

@@ -499,25 +499,35 @@ function Rheirloomswap() {
     } else {
         var highvmdczone = 0;
     }
-	debug(highvmdczone);
 	
-	if (getPageSetting('Rhshighvmdctoggle') == true && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world < highvmdczone) {
+	if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world < highvmdczone) {
 	    Rhshighvmdcequip();
 	}
-	if (getPageSetting('Rhslowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone')) {
-	    if (getPageSetting('Rhshighvmdctoggle') == true && highvmdczone > game.global.world) continue;
-	    Rhslowvmdcequip();
-	}
-	if (getPageSetting('Rhsnovmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && game.global.world >= getPageSetting('Rhshzone')) {
-	    Rhsnovmdcequip();
-	}
-	if (getPageSetting('Rhsworldstaff') != "undefined" && getPageSetting('Rhsstaff') != false && game.global.mapsActive == false) {
+
+
+    //Swapping Shields
+    if (getPageSetting('Rhsshield') == true && getPageSetting('Rhshzone') > 0) {
+        if (getPageSetting('Rhslowvmdc') !== "undefined") && game.global.world < getPageSetting('Rhshzone') {
+	        if (getPageSetting('Rhshighvmdctoggle') == true && (highvmdczone > game.global.world)) continue;
+	        Rhslowvmdcequip();
+	    }
+		if (getPageSetting('Rhsnovmdc') !== "undefined" && game.global.world >= getPageSetting('Rhshzone')) {
+			Rhsnovmdcequip();
+	    }
+    }
+    
+    //Swapping Staffs
+    if (getPageSetting('Rhsstaff') != false {
+        if (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false) {
 	    Rhsworldstaffequip();
-	}
-	if (getPageSetting('Rhsmapstaff') != "undefined" && getPageSetting('Rhsstaff') != false && Rshouldtributefarm == false && game.global.mapsActive == true) {
-	    Rhsmapstaffequip();
-	}
-	if (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') != false && Rshouldtributefarm == true && game.global.mapsActive == true) {
-	    Rhstributestaffequip();
-	}
+		}
+		if (getPageSetting('Rhsmapstaff') != "undefined" && Rshouldtributefarm == false && game.global.mapsActive == true) {
+			Rhsmapstaffequip();
+		}
+		if (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') && Rshouldtributefarm == true && game.global.mapsActive == true) {
+			Rhstributestaffequip();
+	    }
+
+    }
+}
 }

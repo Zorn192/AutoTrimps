@@ -486,7 +486,7 @@ function Rheirloomswap() {
     var highvmdczone;
 	var swapcell;
 	var highvmdcswapcell;
-	if (game.global.world < 10) {
+	if (game.global.world <= 10) {
 		if ((game.global.challengeActive != "") && (!game.global.runningChallengeSquared)) {
 			var challengecompletion = (game.challenges[game.global.challengeActive].completeAfterZone)
 			if ((challengecompletion != "undefined") && (!isNaN(challengecompletion))) {

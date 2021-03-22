@@ -513,8 +513,6 @@ function Rheirloomswap() {
 			var highvmdczone = 0;
 		}
 	}
-	debug(highvmdcswapcell)
-	debug("Wearing "+game.global.ShieldEquipped.name+" at zone "+game.global.world+" cell "+game.global.lastClearedCell)
 	
     //Swapping Shields
     if (getPageSetting('Rhsshield') != false && getPageSetting('Rhshzone') > 0) {

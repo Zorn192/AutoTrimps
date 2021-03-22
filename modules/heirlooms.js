@@ -484,22 +484,24 @@ function Rheirloomswap() {
 	
 	//Setting up high vmdc shield swap zones
     var highvmdczone;
-    if ((game.global.challengeActive != "") && (!game.global.runningChallengeSquared)) {
-        var challengecompletion = (game.challenges[game.global.challengeActive].completeAfterZone)
-        if ((challengecompletion != "undefined") && (!isNaN(challengecompletion))) {
-             if (challengecompletion % 10== 0) {
-                var highvmdczone = 10;
-            } else {
-                var highvmdczone = challengecompletion % 10;
-            }
-        } else if (game.global.challengeActive == "Daily") {
-                var highvmdczone = (getPageSetting('RDailyVoidMod')+getPageSetting('RdRunNewVoidsUntilNew')) % 10
-        } else {
-            var highvmdczone = 0;
-        }
-    } else {
-        var highvmdczone = 0;
-    }
+	if (game.global.world < 10) {
+		if ((game.global.challengeActive != "") && (!game.global.runningChallengeSquared)) {
+			var challengecompletion = (game.challenges[game.global.challengeActive].completeAfterZone)
+			if ((challengecompletion != "undefined") && (!isNaN(challengecompletion))) {
+				 if (challengecompletion % 10== 0) {
+					var highvmdczone = 10;
+				} else {
+					var highvmdczone = challengecompletion % 10;
+				}
+			} else if (game.global.challengeActive == "Daily") {
+					var highvmdczone = (getPageSetting('RDailyVoidMod')+getPageSetting('RdRunNewVoidsUntilNew')) % 10
+			} else {
+				var highvmdczone = 0;
+			}
+		} else {
+			var highvmdczone = 0;
+		}
+	}
 	
     //Swapping Shields
 	if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world <= highvmdczone) {

@@ -510,7 +510,7 @@ function Rheirloomswap() {
         if (getPageSetting('Rhslowvmdc') !== "undefined") && (game.global.world < getPageSetting('Rhshzone')) {
 	        if (getPageSetting('Rhshighvmdctoggle') == true && (highvmdczone > game.global.world)) continue;
 	        Rhslowvmdcequip();
-			debug(highvmdczone)
+			debug(highvmdczone);
 	    }
 		if (getPageSetting('Rhsnovmdc') !== "undefined" && game.global.world >= getPageSetting('Rhshzone')) {
 			Rhsnovmdcequip();

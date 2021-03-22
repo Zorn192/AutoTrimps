@@ -507,7 +507,7 @@ function Rheirloomswap() {
 
     //Swapping Shields
     if (getPageSetting('Rhsshield') == true && getPageSetting('Rhshzone') > 0) {
-        if (getPageSetting('Rhslowvmdc') !== "undefined") && (game.global.world < getPageSetting('Rhshzone')) {
+        if ((getPageSetting('Rhslowvmdc') !== "undefined") && (game.global.world < getPageSetting('Rhshzone'))) {
 	        if (getPageSetting('Rhshighvmdctoggle') == true && (highvmdczone > game.global.world)) continue;
 	        Rhslowvmdcequip();
 			debug(highvmdczone);

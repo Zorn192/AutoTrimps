@@ -518,7 +518,7 @@ function Rheirloomswap() {
     }
     
     //Swapping Staffs
-    if (getPageSetting('Rhsstaff') != false {
+    if (getPageSetting('Rhsstaff') != false) {
         if (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false) {
 	    Rhsworldstaffequip();
 		}

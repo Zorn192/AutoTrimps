@@ -481,10 +481,30 @@ function Rhstributestaffequip() {
 }
 
 function Rheirloomswap() {
-	if (getPageSetting('Rhshighvmdc') !== "undefined" && getPageSetting('Rhshighvmdczone') > 0 && getPageSetting('Rhsshield') != false && game.global.world < getPageSetting('Rhshighvmdczone')) {
+	
+    var highvmdczone;
+    if ((game.global.challengeActive != "") && (!game.global.runningChallengeSquared)) {
+        var challengecompletion = (game.challenges[game.global.challengeActive].completeAfterZone)
+        if ((challengecompletion != "undefined") && (!isNaN(challengecompletion))) {
+             if (challengecompletion % 10== 0) {
+                var highvmdczone = 10;
+            } else {
+                var highvmdczone = challengecompletion % 10;
+            }
+        } else if (game.global.challengeActive == "Daily") {
+                var highvmdczone = (getPageSetting('RDailyVoidMod')+getPageSetting('RdRunNewVoidsUntilNew')) % 10
+        } else {
+            var highvmdczone = 0;
+        }
+    } else {
+        var highvmdczone = 0;
+    }
+	
+	if (getPageSetting('Rhshighvmdctoggle') == true && highvmdczone > 0 && getPageSetting('Rhsshield') != false && game.global.world < highvmdczone) {
 	    Rhshighvmdcequip();
 	}
-	if (getPageSetting('Rhslowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone') && game.global.world >= getPageSetting('Rhshighvmdczone'))) {
+	if (getPageSetting('Rhslowvmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && (game.global.world < getPageSetting('Rhshzone')) {
+	    if (getPageSetting('Rhshighvmdctoggle') == true && highvmdczone > game.global.world) continue;
 	    Rhslowvmdcequip();
 	}
 	if (getPageSetting('Rhsnovmdc') !== "undefined" && getPageSetting('Rhshzone') > 0 && getPageSetting('Rhsshield') != false && game.global.world >= getPageSetting('Rhshzone')) {

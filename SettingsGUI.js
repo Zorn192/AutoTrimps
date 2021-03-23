@@ -436,7 +436,6 @@ function initializeAllSettings() {
 	//Line 2
 	createSetting('RMaxCollector', 'Max Collectors', 'recommend: -1', 'value', '-1', null, 'Buildings');
 	createSetting('RMaxTribute', 'Max Tributes', 'Advanced. recommend: -1 ', 'value', '-1', null, 'Buildings');
-	createSetting('RTributeSpend', 'Tribute spending %', 'What percentage of your food you would like to spend on tributes. recommend: -1 ', 'value', '-1', null, 'Buildings');
 	createSetting('Rmeltsmithy', 'Melt Smithy', 'Run the Melting Point Map to gain one extra Smithy when at or above this value. ', 'value', '-1', null, 'Buildings');
 
 	//Smithy Savings
@@ -457,8 +456,6 @@ function initializeAllSettings() {
 	createSetting('MinerRatio', 'Miner Ratio', '', 'value', '1', null, 'Jobs');
 	createSetting('MaxScientists', 'Max Scientists', 'Advanced. Cap your scientists (This is an absolute number not a ratio). recommend: -1 (infinite still controls itself)', 'value', '-1', null, 'Jobs');
 	createSetting('MaxExplorers', 'Max Explorers', 'Advanced. Cap your explorers (This is an absolute number not a ratio). recommend: -1', 'value', '-1', null, 'Jobs');
-
-	//Line 2
 	createSetting('MaxTrainers', 'Max Trainers', 'Advanced. Cap your trainers (This is an absolute number not a ratio). recommend: -1', 'value', '-1', null, 'Jobs');
 
 	//RJobs
@@ -472,8 +469,8 @@ function initializeAllSettings() {
 	createSetting('Rshipspending', 'Ship percentage', 'What percentage of owned food to spend on Worshippers. -1 for 100% or value between 1-100 for lower.', 'value', '-1', null, "Jobs");
 	//Maintaining ships
 	document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
-	createSetting('NoFarmersAbove', 'No Farmers From', 'Stops buying farmers above this zone', 'boolean', false, null, 'Jobs');
-	createSetting('NoFarmerZone', 'NFF: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75 and above','value', '-1', null, 'Jobs');
+	createSetting('NoFarmersAbove', 'No Farmers From', 'Stops buying farmers from this zone and above.', 'boolean', false, null, 'Jobs');
+	createSetting('NoFarmerZone', 'NFF: Zone', 'Which zone to stop buying farmers. I.e if this value is 75 it will swap your farmer ratio to 0 at zone 75 and above.','value', '-1', null, 'Jobs');
 	
 	//Ships
 	document.getElementById('NoFarmerZone').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -484,7 +481,6 @@ function initializeAllSettings() {
 	createSetting('Rshipfarmlevel', 'SF: Map Level', 'What map level to use for SF. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Jobs');
 	createSetting('Rshipfarmfrag', 'SF: Frags', 'Turn this on to farm fragments if you cannot afford the map you have selected for SF. ', 'boolean', 'false', null, 'Jobs');
 
-	
 	//Gear
 
 	//Line 1

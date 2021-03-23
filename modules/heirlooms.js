@@ -515,8 +515,8 @@ function Rheirloomswap() {
 	}
 	
     //Swapping Shields
-    if (getPageSetting('Rhsshield') != false && getPageSetting('Rhshzone') > 0) {
-        if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && (game.global.world < highvmdczone || (game.global.world == highvmdczone && game.global.lastClearedCell < highvmdcswapcell))) {
+	if (getPageSetting('Rhsshield') != false && getPageSetting('Rhshzone') > 0) {
+		if (getPageSetting('Rhshighvmdctoggle') != false && highvmdczone > 0 && (game.global.world < highvmdczone || (game.global.world == highvmdczone && game.global.lastClearedCell < highvmdcswapcell))) {
 			Rhshighvmdcequip();
 		} 
 		else if (getPageSetting('Rhslowvmdc') !== "undefined" && game.global.world < getPageSetting('Rhshzone')) {

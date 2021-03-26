@@ -1018,19 +1018,17 @@ function RautoMap() {
 	
 	//Tribute Farm
 	if (getPageSetting('Rtributefarm') && (game.global.challengeActive != "Daily" && !game.global.runningChallengeSquared) || (getPageSetting('Rdtributefarm') && game.global.challengeActive == "Daily")) {
-		var tributefarmcell;
-		var tributefarm;
-		var metsfarmvalue;
+		
 		if (game.global.challengeActive == "Daily") {
-				tributefarmcell = ((getPageSetting('Rdtributefarmcell') > 0) ? getPageSetting('Rdtributefarmcell') : 1);
-				tributefarm = getPageSetting('Rdtributefarm')
+				var tributefarmcell = ((getPageSetting('Rdtributefarmcell') > 0) ? getPageSetting('Rdtributefarmcell') : 81);
+				var tributefarm = getPageSetting('Rdtributefarm')
 				var tributefarmzone = getPageSetting('Rdtributefarmzone')
 				var tributefarmvalue = getPageSetting('Rdtributefarmvalue')
 				var metsfarmvalue = getPageSetting('Rdtributefarmmets')
 				var tribmaplevel = getPageSetting('Rdtributemaplevel');
 		}   else {
-				tributefarmcell = ((getPageSetting('Rtributefarmcell') > 0) ? getPageSetting('Rtributefarmcell') : 1);
-				tributefarm = getPageSetting('Rtributefarm')
+				var tributefarmcell = ((getPageSetting('Rtributefarmcell') > 0) ? getPageSetting('Rtributefarmcell') : 81);
+				var tributefarm = getPageSetting('Rtributefarm')
 				var tributefarmzone = getPageSetting('Rtributefarmzone')
 				var tributefarmvalue = getPageSetting('Rtributefarmvalue')
 				var metsfarmvalue = getPageSetting('Rtributefarmmets')
@@ -1045,6 +1043,7 @@ function RautoMap() {
 			var tributefarmindex = tributefarmzone.indexOf(game.global.world);
 			var tributezones = tributefarmvalue[tributefarmindex];
 			var metzones = metsfarmvalue[tributefarmindex];
+			
 			if (game.global.highestRadonLevelCleared > 83) {
 				var tribspecial = "lsc";
 			} else {
@@ -1053,13 +1052,13 @@ function RautoMap() {
 
 			if (tributefarmzone.includes(game.global.world) && (tributezones > tributes || metzones > mets)) {
 				Rshouldtributefarm = true;
-				Tributefarmmap = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length - 1].id;
+				var Tributefarmmap = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length - 1].id;
 			}
 			
 			if (!Rshouldtributefarm && Tributefarmmap != undefined) {
 				mapsClicked();
 				recycleMap(getMapIndex(Tributefarmmap));
-				Tributefarmmap = undefined;
+				var Tributefarmmap = undefined;
 			}
 
 			var levelzones = tribmaplevel[tributefarmindex];
@@ -1071,15 +1070,15 @@ function RautoMap() {
 		var timefarmcell;
 		var timefarm;
 		if (game.global.challengeActive == "Daily") {
-			timefarmcell = ((getPageSetting('Rdtimefarmcell') > 0) ? getPageSetting('Rdtimefarmcell') : 71);
-			timefarm = getPageSetting('Rdtimefarm')
+			var timefarmcell = ((getPageSetting('Rdtimefarmcell') > 0) ? getPageSetting('Rdtimefarmcell') : 71);
+			var timefarm = getPageSetting('Rdtimefarm')
 			var timefarmzone = getPageSetting('Rdtimefarmzone')
 			var timefarmtime = getPageSetting('Rdtimefarmtime')
 			var timemaplevel = getPageSetting('Rdtimemaplevel');
 			var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected;
 		} else {
-			timefarmcell = ((getPageSetting('Rtimefarmcell') > 0) ? getPageSetting('Rtimefarmcell') : 71);
-			timefarm = getPageSetting('Rtimefarm')
+			var timefarmcell = ((getPageSetting('Rtimefarmcell') > 0) ? getPageSetting('Rtimefarmcell') : 71);
+			var timefarm = getPageSetting('Rtimefarm')
 			var timefarmzone = getPageSetting('Rtimefarmzone')
 			var timefarmtime = getPageSetting('Rtimefarmtime')
 			var timemaplevel = getPageSetting('Rtimemaplevel');
@@ -1098,9 +1097,9 @@ function RautoMap() {
 
 			if (timefarmzone.includes(game.global.world) && (timezones > game.global.mapRunCounter)) {
 				if (game.global.mapsActive && timezones == 1) {
-					Rzonecleared=game.stats.zonesCleared.value;
+					var Rzonecleared=game.stats.zonesCleared.value;
 				} else if (timezones < game.global.mapRunCounter+x) {
-					Rzonecleared=game.stats.zonesCleared.value;
+					var Rzonecleared=game.stats.zonesCleared.value;
 				}
 				var levelzones = timemaplevel[timefarmindex];
 				Rshouldtimefarm = true;
@@ -1520,11 +1519,11 @@ function RautoMap() {
 				} else {
 					var meltsmithy = getPageSetting('Rmeltsmithy');
 				}
-				if (theMap.name == 'Melting Point' && (game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1]) || (meltsmithy > 0 && meltsmithy <= game.buildings.Smithy.owned)) && game.mapUnlocks.SmithFree.canRunOnce) {
-					if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.runningChallengeSquared == true) || Rshouldtimefarm) continue;
-						selectedMap = theMap.id;
-						break;
-				}
+					if (theMap.name == 'Melting Point' && (game.global.world >= meltingpoint[0] && ((game.global.lastClearedCell + 1) >= meltingpoint[1]) || (meltsmithy > 0 && meltsmithy <= game.buildings.Smithy.owned)) && game.mapUnlocks.SmithFree.canRunOnce) {
+						if (game.global.world < 50 || (game.global.world == 50 && game.global.lastClearedCell < 50) || (game.global.challengeActive == "Insanity") || (game.global.runningChallengeSquared == true) || Rshouldtimefarm) continue;
+							selectedMap = theMap.id;
+							break;
+						}
 			}
 		}
 	}

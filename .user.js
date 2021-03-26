@@ -4,7 +4,7 @@
 // @namespace    https://SadAugust.github.io/AutoTrimps
 // @updateURL    https://SadAugust.github.io/AutoTrimps/.user.js
 // @description  Automate all the trimps!
-// @author       zininzinin, spindrjr, Ishkaru, genBTC, Zeker0, SadAugust
+// @author       zininzinin, spindrjr, Ishkaru, genBTC, Zeker0
 // @include      *trimps.github.io*
 // @include      *kongregate.com/games/GreenSatellite/trimps
 // @include      *trimpstest54.netlify.app/*

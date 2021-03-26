@@ -180,7 +180,7 @@ function RmanualLabor2() {
     }
 
 	if (Rshouldtimefarm) {
-    	if (game.global.challengeAcive = "Daily") {
+		if (game.global.challengeAcive = "Daily") {
 			var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected
 		} else {
 			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected

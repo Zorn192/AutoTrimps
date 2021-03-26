@@ -335,7 +335,7 @@ function initializeAllSettings() {
 	createSetting('Rdtributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Daily');
 	createSetting('Rdtributefarmmets', 'TF: Meteorologist', 'How many meteorologists to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Daily');
 	createSetting('Rdtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Daily');
-	createSetting('Rdtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Daily');
+	createSetting('Rdtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 81. ', 'value', '-1', null, 'Daily');
 
 	//Helium Heirloom
 	document.getElementById('dBWraidingmax').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -347,7 +347,7 @@ function initializeAllSettings() {
 	createSetting('Rdtimefarmzone', 'TF: Zone', 'Which zones you would like to farm at. Can use 59,61,62. ', 'multiValue', [-1], null, 'Daily');
 	createSetting('Rdtimefarmtime', 'TF: Maps', 'How many maps you would like to farm at the zone specified in TF: Zone. Can use 2,3,4. These values should match up to your TF zones. If using TF: Zone and TF: Maps examples (59 and 2) it will farm at z59 for 2 maps. ', 'multiValue', [-1], null, 'Daily');
 	createSetting('Rdtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Daily');
-	createSetting('Rdtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Daily');
+	createSetting('Rdtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 71. ', 'value', '-1', null, 'Daily');
 	createSetting('Rdtimespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Daily');
 
 	//Helium Daily Portal
@@ -556,7 +556,7 @@ function initializeAllSettings() {
 	createSetting('Rtributefarmvalue', 'TF: Tributes', 'How many tributes to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');
 	createSetting('Rtributefarmmets', 'TF: Meteorologist', 'How many meteorologists to farm at zone specified in TF. Can use 2,3,4. These values should match up to your TF zones. ', 'multiValue', [-1], null, 'Μaps');
 	createSetting('Rtributemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Μaps');
-	createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
+	createSetting('Rtributefarmcell', 'TF: Cell', 'Tribute Farm at this Cell. -1 to run them at the default value, which is 81. ', 'value', '-1', null, 'Μaps');
 
 	//Time Farming
 	document.getElementById('Rtributefarmcell').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -564,7 +564,7 @@ function initializeAllSettings() {
 	createSetting('Rtimefarmzone', 'TF: Zone', 'Which zones you would like to farm at. Can use 59,61,62. ', 'multiValue', [-1], null, 'Μaps');
 	createSetting('Rtimefarmtime', 'TF: Maps', 'How many maps you would like to farm at the zone specified in TF: Zone. Can use 2,3,4. These values should match up to your TF zones. If using TF: Zone and TF: Maps examples (59 and 2) it will farm at z59 for 2 maps. ', 'multiValue', [-1], null, 'Μaps');
 	createSetting('Rtimemaplevel', 'TF: Map Level', 'What map level to use. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Μaps');
-	createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Μaps');
+	createSetting('Rtimefarmcell', 'TF: Cell', 'Time Farm at this Cell. -1 to run them at the default value, which is 71. ', 'value', '-1', null, 'Μaps');
 	createSetting('Rtimespecialselection', 'TF: Special', 'Select which Special to use. May bug out if you cannot afford selected. Also overrides your autojobs to buy workers relating to the resource you want to farm. I.e if LFC is chosen all workers will be hired as farmers and rest fired for the duration of farm. <br> 0 = None<br>fa = Fast Attacks<br>lc = Large Cache<br>ssc = Small Savory Cache<br>swc = Small Wooden Cache<br>smc = Small Metal Cache<br>src = Small Research Cache<br>p = Prestigous<br>hc = Huge Cache<br>lsc = Large Savory Cache<br>lwc = Large Wooden Cache<br>lmc = Large Metal Cache<br>lrc = Large Research Cache ', 'dropdown', '0', ["0", "fa", "lc", "ssc", "swc", "smc", "src", "p", "hc", "lsc", "lwc", "lmc", "lrc"], 'Μaps');
 
 	//Spire

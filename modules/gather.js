@@ -179,18 +179,13 @@ function RmanualLabor2() {
 	return;
     }
 
-    if (Rshouldtimefarm) {
-    	if (game.global.runningChallengeSquared) {
-            var timefarmzone = getPageSetting('Rc3timefarmzone');
-            var timefarmindex = timefarmzone.indexOf(game.global.world);
-            var stringsplit = getPageSetting('Rc3timespecialselection').split(",")
-            var rtimespecial = stringsplit[timefarmindex];
-	} else if (game.global.challengeAcive = "Daily") {
-            var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected
-	} else {
-            var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected
+	if (Rshouldtimefarm) {
+    	if (game.global.challengeAcive = "Daily") {
+			var rtimespecial = autoTrimpSettings.Rdtimespecialselection.selected
+		} else {
+			var rtimespecial = autoTrimpSettings.Rtimespecialselection.selected
+		}
 	}
-    }
 
     if (game.global.challengeActive == "Quest" && (questcheck() == 10 || questcheck() == 20)) {
 	setGather('food');
@@ -283,14 +278,14 @@ function RmanualLabor2() {
          }
         if (game.global.challengeActive == "Transmute" && game.global.playerGathering != lowestResource && !haveWorkers && !breedFire) {
             if (hasTurkimp)
-                setGather('metal');
+                setGather('food');
             else
                 setGather(lowestResource);
         } else if (getPageSetting('RManualGather2') != 2 && document.getElementById('scienceCollectBtn').style.display != 'none' && document.getElementById('science').style.visibility != 'hidden') {
             if (game.resources.science.owned < getPsString('science', true) * MODULES["gather"].minScienceSeconds && game.global.turkimpTimer < 1 && haveWorkers)
                 setGather('science');
             else if (game.global.challengeActive == "Transmute" && hasTurkimp)
-                     setGather('metal');
+                     setGather('food');
             else
                 setGather(lowestResource);
         }

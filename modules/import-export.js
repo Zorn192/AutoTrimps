@@ -324,21 +324,21 @@ function ImportExportTooltip(what, event) {
         zone: game.c2.Nom,
         percentzone: (100 * (game.c2.Nom / (game.global.highestLevelCleared + 1))).toFixed(2) + '%',
         color: 0
-    },
-    Electricity: {
+    },Toxicity: {
         number: 10,
-        percent: getIndividualSquaredReward('Electricity') + '%',
-        zone: game.c2.Electricity,
-        percentzone: (100 * (game.c2.Electricity / (game.global.highestLevelCleared + 1))).toFixed(2) + '%',
-        color: 0
-    },
-    Toxicity: {
-        number: 11,
         percent: getIndividualSquaredReward('Toxicity') + '%',
         zone: game.c2.Toxicity,
         percentzone: (100 * (game.c2.Toxicity / (game.global.highestLevelCleared + 1))).toFixed(2) + '%',
         color: 0
     },
+    Electricity: {
+        number: 11,
+        percent: getIndividualSquaredReward('Electricity') + '%',
+        zone: game.c2.Electricity,
+        percentzone: (100 * (game.c2.Electricity / (game.global.highestLevelCleared + 1))).toFixed(2) + '%',
+        color: 0
+    },
+    
     Coordinate: {
         number: 12,
         percent: getIndividualSquaredReward('Coordinate') + '%',
@@ -595,6 +595,15 @@ function ImportExportTooltip(what, event) {
                 </td>
             </tr>
             <tr>
+				<td>Toxicity</td>
+                <td>` + c2list.Toxicity.number + `</td>
+                <td>` + c2list.Toxicity.percent + `</td>
+                <td>` + c2list.Toxicity.zone + `</td>
+                <td bgcolor='black'>
+                    <font color=` + c2list.Toxicity.color + `>` + c2list.Toxicity.percentzone + `
+                </td>
+            </tr>
+            <tr>
                 <td>Electricity</td>
                 <td>` + c2list.Electricity.number + `</td>
                 <td>` + c2list.Electricity.percent + `</td>
@@ -604,14 +613,6 @@ function ImportExportTooltip(what, event) {
                 </td>
             </tr>
             <tr>
-                <td>Toxicity</td>
-                <td>` + c2list.Toxicity.number + `</td>
-                <td>` + c2list.Toxicity.percent + `</td>
-                <td>` + c2list.Toxicity.zone + `</td>
-                <td bgcolor='black'>
-                    <font color=` + c2list.Toxicity.color + `>` + c2list.Toxicity.percentzone + `
-                </td>
-            </tr>
             <tr>
                 <td>Coordinate</td>
                 <td>` + c2list.Coordinate.number + `</td>

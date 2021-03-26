@@ -500,7 +500,7 @@ AutoPerks.applyCalculationsRespec = function(perks,remainingHelium){
         for(var i in perks) {
             var capitalized = AutoPerks.capitaliseFirstLetter(perks[i].name);
             game.global.buyAmt = perks[i].level;
-            if (getPortalUpgradePrice(capitalized) <= remainingHelium) {
+			if (getPortalUpgradePrice(capitalized) <= remainingHelium || perks[i].fixed) {
                 if (MODULES["perks"].showDetails)
                     debug("AutoPerks-Respec Buying: " + capitalized + " " + perks[i].level, "perks");
                 buyPortalUpgrade(capitalized);

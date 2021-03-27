@@ -1097,9 +1097,9 @@ function RautoMap() {
 
 			if (timefarmzone.includes(game.global.world) && (timezones > game.global.mapRunCounter)) {
 				if (game.global.mapsActive && timezones == 1) {
-					var Rzonecleared=game.stats.zonesCleared.value;
+					Rzonecleared=game.stats.zonesCleared.value;
 				} else if (timezones < game.global.mapRunCounter+x) {
-					var Rzonecleared=game.stats.zonesCleared.value;
+					Rzonecleared=game.stats.zonesCleared.value;
 				}
 				var levelzones = timemaplevel[timefarmindex];
 				Rshouldtimefarm = true;

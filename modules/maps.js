@@ -854,8 +854,6 @@ function RupdateAutoMapsStatus(get) {
     }
 }
 
-
-
 function RautoMap() {
 
     //Quest

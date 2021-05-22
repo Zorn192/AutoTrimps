@@ -1388,8 +1388,7 @@ function RautoMap() {
 			
 			var alchstacksfarmindex = alchfarmzone.indexOf(game.global.world);
 			var alchstackszones = alchfarmstacks[alchstacksfarmindex];
-			
-			if (alchstackszones != undefined) {
+            if (alchstackszones != undefined) {
 				//Working out which potion the input corresponds to.
 				potion = 	alchstackszones[0] == 'h' ? 0 : 
 							alchstackszones[0] == 'g' ? 1 : 
@@ -1412,7 +1411,6 @@ function RautoMap() {
 						Rshouldalchfarm = true;
 					}
 				}
-			}
 			}
 		}
 
@@ -1705,7 +1703,7 @@ function RautoMap() {
 	    } else if (Rshouldalchfarm && !Rshouldtimefarm && !Rshouldtributefarm && !Rshouldequipfarm && !Rshouldshipfarm) {
                 if (getPageSetting('Ralchfarmlevel') == 0) {
                     for (var map in game.global.mapsOwnedArray) {
-                        if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome) {
+                        if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
                             selectedMap = game.global.mapsOwnedArray[map].id;
 			    break;
                         } else {
@@ -1718,7 +1716,7 @@ function RautoMap() {
                     var alchlevelzones = alchfarmlevel[alchfarmlevelindex];
                     if (alchlevelzones > 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome)) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level)) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
@@ -1727,7 +1725,7 @@ function RautoMap() {
                         }
                     } else if (alchlevelzones == 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
@@ -1736,7 +1734,7 @@ function RautoMap() {
                         }
                     } else if (alchlevelzones < 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome)) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level)) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
@@ -2250,78 +2248,76 @@ function RautoMap() {
                 updateMapCost();
             }
         if (Rshouldalchfarm && !Rshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm && !Rshouldshipfarm) {
-		var alchfragcheck = true;
-		if (getPageSetting('Ralchfarmfrag') == true) {
-                    if (alchfrag() == true) {
-                        alchfragcheck = true;
-                        Ralchfragfarming = false;
-                    } else if (alchfrag() == false && Rshouldalchfarm) {
-                        Ralchfragfarming = true;
-                        alchfragcheck = false;
-                        if (!alchfragcheck && alchfragmappy == undefined && !alchfragmappybought && game.global.preMapsActive && Rshouldalchfarm) {
-                            debug("Check complete for alch frag map");
-                            alchfragmap();
-                            if ((updateMapCost(true) <= game.resources.fragments.owned)) {
-                                buyMap();
-                                alchfragmappybought = true;
-                                if (alchfragmappybought) {
-                                    alchfragmappy = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length - 1].id;
-                                    debug("alch frag map bought");
-                                }
+            var alchfragcheck = true;
+            if (getPageSetting('Ralchfarmfrag') == true) {
+                if (alchfrag() == true) {
+                    alchfragcheck = true;
+                    Ralchfragfarming = false;
+                } else if (alchfrag() == false && Rshouldalchfarm) {
+                    Ralchfragfarming = true;
+                    alchfragcheck = false;
+                    if (!alchfragcheck && alchfragmappy == undefined && !alchfragmappybought && game.global.preMapsActive && Rshouldalchfarm) {
+                        debug("Check complete for alch frag map");
+                        alchfragmap();
+                        if ((updateMapCost(true) <= game.resources.fragments.owned)) {
+                            buyMap();
+                            alchfragmappybought = true;
+                            if (alchfragmappybought) {
+                                alchfragmappy = game.global.mapsOwnedArray[game.global.mapsOwnedArray.length - 1].id;
+                                debug("alch frag map bought");
                             }
                         }
-                        if (!alchfragcheck && game.global.preMapsActive && !game.global.mapsActive && alchfragmappybought && alchfragmappy != undefined && Rshouldalchfarm) {
-                            debug("running alch frag map");
-                            selectedMap = alchfragmappy;
-                            selectMap(alchfragmappy);
-                            runMap();
-                            RlastMapWeWereIn = getCurrentMapObject();
-                            alchprefragmappy = alchfragmappy;
-                            alchfragmappy = undefined;
-                        }
-                        if (!alchfragcheck && game.global.mapsActive && alchfragmappybought && alchprefragmappy != undefined && Rshouldalchfarm) {
-                            if (alchfrag() == false) {
-                                if (!game.global.repeatMap) {
-                                    repeatClicked();
-                                }
-                            } else if (alchfrag() == true) {
-                                if (game.global.repeatMap) {
-                                    repeatClicked();
-                                    mapsClicked();
-                                }
-                                if (game.global.preMapsActive && alchfragmappybought && alchprefragmappy != undefined && Rshouldalchfarm) {
-                                    alchfragmappybought = false;
-                                }
-                                if (alchprefragmappy != undefined) {
-                                    recycleMap(getMapIndex(alchprefragmappy));
-                                    alchprefragmappy = undefined;
-                                }
-                                alchfragcheck = true;
-                                Ralchfragfarming = false;
-                            }
-                        }
-                    } else {
-                        alchfragcheck = true;
-                        Ralchfragfarming = false;
                     }
+                    if (!alchfragcheck && game.global.preMapsActive && !game.global.mapsActive && alchfragmappybought && alchfragmappy != undefined && Rshouldalchfarm) {
+                        debug("running alch frag map");
+                        selectedMap = alchfragmappy;
+                        selectMap(alchfragmappy);
+                        runMap();
+                        RlastMapWeWereIn = getCurrentMapObject();
+                        alchprefragmappy = alchfragmappy;
+                        alchfragmappy = undefined;
+                    }
+                    if (!alchfragcheck && game.global.mapsActive && alchfragmappybought && alchprefragmappy != undefined && Rshouldalchfarm) {
+                        if (alchfrag() == false) {
+                            if (!game.global.repeatMap) {
+                                repeatClicked();
+                            }
+                        } else if (alchfrag() == true) {
+                            if (game.global.repeatMap) {
+                                repeatClicked();
+                                mapsClicked();
+                            }
+                            if (game.global.preMapsActive && alchfragmappybought && alchprefragmappy != undefined && Rshouldalchfarm) {
+                                alchfragmappybought = false;
+                            }
+                            if (alchprefragmappy != undefined) {
+                                recycleMap(getMapIndex(alchprefragmappy));
+                                alchprefragmappy = undefined;
+                            }
+                            alchfragcheck = true;
+                            Ralchfragfarming = false;
+                        }
+                    }
+                } else {
+                    alchfragcheck = true;
+                    Ralchfragfarming = false;
                 }
-                if (alchfragcheck && getPageSetting('Ralchfarmlevel') != 0) {
-                    if (alchfarmzone.includes(game.global.world)) {
-			if (Rshouldalchfarm) {
-		
-	                var alchfarmzone = getPageSetting('Ralchfarmzone');
+            }
+            if (alchfragcheck && getPageSetting('Ralchfarmlevel') != 0) {
+                if (alchfarmzone.includes(game.global.world)) {
+                    if (Rshouldalchfarm) {
+                
+                        var alchfarmzone = getPageSetting('Ralchfarmzone');
                         var alchfarmlevel = getPageSetting('Ralchfarmlevel');
-
                         var alchfarmlevelindex = alchfarmzone.indexOf(game.global.world);
                         var alchlevelzones = alchfarmlevel[alchfarmlevelindex];
-                        var alchfarmselectionindex = alchfarmzone.indexOf(game.global.world);
 
-	                alchfragmin(alchlevelzones, alchbiome);
-		        }
+                        alchfragmin(alchlevelzones, alchbiome);
                     }
                 }
-                updateMapCost();
             }
+            updateMapCost();
+        }
 	    if (Rshouldshipfarm && !Rshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm) {
 		var shipfragcheck = true;
 		if (getPageSetting('Rshipfarmfrag') == true) {

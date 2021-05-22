@@ -1388,35 +1388,31 @@ function RautoMap() {
 			
 			var alchstacksfarmindex = alchfarmzone.indexOf(game.global.world);
 			var alchstackszones = alchfarmstacks[alchstacksfarmindex];
+			
 			if (alchstackszones != undefined) {
-			    var potion;
-			    var potionletter = alchstackszones[0];
-			    if (potionletter == 'h') { 
-				potion = alchObj.getPotionCount('Herby Brew');  
-				potionletter = "Herby Brew";
-			    }
-			    else if (potionletter == 'f') { 
-				potion = alchObj.getPotionCount('Potion of Finding'); 
-				potionletter = "Potion of Finding"; 
-			    }
-			    else if (potionletter == 'g') { 
-				potion = alchObj.getPotionCount('Gaseous Brew');  
-				potionletter = "Gaseous Brew";
-			    }
-			    else if (potionletter == 'v') { 
-				potion = alchObj.getPotionCount('Potion of the Void');  
-				potionletter = "Potion of the Void";
-			    }
-			    else if (potionletter == 's') { 
-				potion = alchObj.getPotionCount('Potion of Strength');  
-				potionletter = "Potion of Strength";
-			    }
+				//Working out which potion the input corresponds to.
+				potion = 	alchstackszones[0] == 'h' ? 0 : 
+							alchstackszones[0] == 'g' ? 1 : 
+							alchstackszones[0] == 'f' ? 2 : 
+							alchstackszones[0] == 'v' ? 3 : 
+							alchstackszones[0] == 's' ? 4 : 
+							undefined;
+				//Alchemy biome selection, will select Farmlands if it's unlocked and appropriate otherwise it'll use the default map type for that herb.
+				alchbiome = alchObj.potionNames[potion] == alchObj.potionNames[0] ? game.global.farmlandsUnlocked && getFarmlandsResType() == "Metal" ? "Farmlands" : "Mountain" : 
+								alchObj.potionNames[potion] == alchObj.potionNames[1] ? game.global.farmlandsUnlocked && getFarmlandsResType() == "Wood" ? "Farmlands" : "Forest" : 
+								alchObj.potionNames[potion] == alchObj.potionNames[2] ? game.global.farmlandsUnlocked && getFarmlandsResType() == "Food" ? "Farmlands" : "Sea" : 
+								alchObj.potionNames[potion] == alchObj.potionNames[3] ? game.global.farmlandsUnlocked && getFarmlandsResType() == "Gems" ? "Farmlands" : "Depths" : 
+								alchObj.potionNames[potion] == alchObj.potionNames[4] ? game.global.farmlandsUnlocked && getFarmlandsResType() == "Any" ? "Farmlands" : game.global.decayDone ? "Plentiful" : "Random" : 
+								game.global.farmlandsUnlocked && getFarmlandsResType() == "Any" ? "Farmlands" : game.global.decayDone ? "Plentiful" : "Random";
 
-			    if (alchstackszones.substring(1) > potion) { alchObj.craftPotion(potionletter); }
-
-			    if (alchfarmzone.includes(game.global.world) && alchstackszones.substring(1) > potion) {
-			        Rshouldalchfarm = true;
-			    }
+				if (potion == undefined) debug('You have an incorrect value in AF: Potions, each input needs to start with h, g, f, v, or s.');
+				else {
+					if (alchstackszones.toString().replace(/[^\d:-]/g, '') > alchObj.potionsOwned[potion]) alchObj.craftPotion(alchObj.potionNames[potion]);
+					if (alchfarmzone.includes(game.global.world) && alchstackszones.toString().replace(/[^\d,:-]/g, '') > alchObj.potionsOwned[potion]) {
+						Rshouldalchfarm = true;
+					}
+				}
+			}
 			}
 		}
 
@@ -1709,7 +1705,7 @@ function RautoMap() {
 	    } else if (Rshouldalchfarm && !Rshouldtimefarm && !Rshouldtributefarm && !Rshouldequipfarm && !Rshouldshipfarm) {
                 if (getPageSetting('Ralchfarmlevel') == 0) {
                     for (var map in game.global.mapsOwnedArray) {
-                        if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
+                        if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome) {
                             selectedMap = game.global.mapsOwnedArray[map].id;
 			    break;
                         } else {
@@ -1722,7 +1718,7 @@ function RautoMap() {
                     var alchlevelzones = alchfarmlevel[alchfarmlevelindex];
                     if (alchlevelzones > 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level)) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome)) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
@@ -1731,7 +1727,7 @@ function RautoMap() {
                         }
                     } else if (alchlevelzones == 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
@@ -1740,7 +1736,7 @@ function RautoMap() {
                         }
                     } else if (alchlevelzones < 0) {
                         for (var map in game.global.mapsOwnedArray) {
-                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level)) {
+                            if (!game.global.mapsOwnedArray[map].noRecycle && ((game.global.world + alchlevelzones) == game.global.mapsOwnedArray[map].level && game.global.mapsOwnedArray[map].location == alchbiome)) {
                                 selectedMap = game.global.mapsOwnedArray[map].id;
 				break;
                             } else {
@@ -2315,20 +2311,12 @@ function RautoMap() {
 		
 	                var alchfarmzone = getPageSetting('Ralchfarmzone');
                         var alchfarmlevel = getPageSetting('Ralchfarmlevel');
-	                var alchfarmselection = getPageSetting('Ralchfarmselection').split(',');
 
                         var alchfarmlevelindex = alchfarmzone.indexOf(game.global.world);
                         var alchlevelzones = alchfarmlevel[alchfarmlevelindex];
                         var alchfarmselectionindex = alchfarmzone.indexOf(game.global.world);
-                        var selection = alchfarmselection[alchfarmselectionindex];
-	                if (selection == 'm') selection = "Mountain";
-                        else if (selection == 'f') selection = "Forest";
-                        else if (selection == 's') selection = "Sea";
-                        else if (selection == 'd') selection = "Depths";
-                        else if (selection == 'g') selection = "Plentiful";
-                        else if (selection == 'l') selection = "Farmlands";
 
-	                alchfragmin(alchlevelzones, selection);
+	                alchfragmin(alchlevelzones, alchbiome);
 		        }
                     }
                 }

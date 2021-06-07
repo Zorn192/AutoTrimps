@@ -3755,8 +3755,8 @@ function alchfragmap() {
     }
 }
 
-function alchfragmin(number, selection) {
-    document.getElementById("biomeAdvMapsSelect").value = selection;
+function alchfragmin(number, biome) {
+    document.getElementById("biomeAdvMapsSelect").value = biome;
     document.getElementById("advExtraLevelSelect").value = number;
     document.getElementById("advSpecialSelect").value = "fa";
     document.getElementById("lootAdvMapsRange").value = 9;
@@ -3800,23 +3800,14 @@ function alchfrag() {
 		
 	    var alchfarmzone = getPageSetting('Ralchfarmzone');
             var alchfarmlevel = getPageSetting('Ralchfarmlevel');
-	    var alchfarmselection = getPageSetting('Ralchfarmselection').split(',');
 
             var alchfarmlevelindex = alchfarmzone.indexOf(game.global.world);
             var alchlevelzones = alchfarmlevel[alchfarmlevelindex];
-            var alchfarmselectionindex = alchfarmzone.indexOf(game.global.world);
-            var selection = alchfarmselection[alchfarmselectionindex];
-	    if (selection == 'm') selection = "Mountain";
-            else if (selection == 'f') selection = "Forest";
-            else if (selection == 's') selection = "Sea";
-            else if (selection == 'd') selection = "Depths";
-            else if (selection == 'g') selection = "Plentiful";
-            else if (selection == 'l') selection = "Farmlands";
 
-	    alchfragmin(alchlevelzones, selection);
+	    alchfragmin(alchlevelzones, alchbiome);
 		
 	    if (getPageSetting('Ralchfarmfrag') == true) {
-		cost = alchfragmin(alchlevelzones, selection);
+		cost = alchfragmin(alchlevelzones, alchbiome);
 	    }
 
 	    if (game.resources.fragments.owned >= cost) return true;

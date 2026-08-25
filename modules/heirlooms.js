@@ -55,8 +55,9 @@ function evaluateHeirloomMods2(loom, location) {
 	else if (raretokeep == 'Magmatic') raretokeep = 7;
 	else if (raretokeep == 'Plagued') raretokeep = 8;
 	else if (raretokeep == 'Radiating') raretokeep = 9;
-        else if (raretokeep == 'Hazardous') raretokeep = 10;
+    else if (raretokeep == 'Hazardous') raretokeep = 10;
 	else if (raretokeep == 'Enigmatic') raretokeep = 11;
+	else if (raretokeep == 'Mutated') raretokeep = 12;
 
   if (location.includes('Equipped'))
     loom = game.global[location];
